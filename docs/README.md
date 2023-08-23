@@ -3,13 +3,13 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: eYY-XXX-project-template
-title:
+repository-name: e19-co227-subclinical-mastitis-prediction-gui 
+title: A User-Friendly GUI for Subclinical Mastitis Prediction in Dairy Cows
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+# A User-Friendly GUI for Subclinical Mastitis Prediction in Dairy Cows
 
 ---
 
@@ -20,24 +20,20 @@ This is a sample image, to show how to add images to your page. To learn more op
  -->
 
 ## Team
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
+-  E/19/057, Colombage C.O., [email](mailto:e19057@eng.pdn.ac.lk)
+-  E/19/205, Kumara I.P.S.N.U., [email](mailto:e19205@eng.pdn.ac.lk)
+-  E/19/409, Udugamsooriya D.P., [email](mailto:e19409@eng.pdn.ac.lk)
+-  E/19/455, Yashan W.V., [email](mailto:e19455@eng.pdn.ac.lk)
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Other Sub Topics](#other-sub-topics)
-3. [Links](#links)
+2. [Links](#links)
 
 ---
 
 ## Introduction
 
- description of the real world problem and solution, impact
-
-## Other Sub Topics
-
-.....
+In this project we aim to develop a user-friendly graphical user interface (GUI) that integrates a prediction model for subclinical mastitis in dairy cows. The software aims to provide dairy farm owners with an intuitive tool to manage their farms effectively. The GUI presents the prediction results in a user-friendly manner, enabling users to make informed decisions regarding herd health and milk production.
 
 ## Links
 
