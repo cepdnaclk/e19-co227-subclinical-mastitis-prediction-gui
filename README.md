@@ -37,8 +37,8 @@ In this project we aim to develop a user-friendly graphical user interface (GUI)
 
 ## Links
 
-- [Project Repository](https://github.com/cepdnaclk/{{ page.repository-name }}){:target="_blank"}
-- [Project Page](https://cepdnaclk.github.io/{{ page.repository-name}}){:target="_blank"}
+- [Project Repository](https://github.com/cepdnaclk/e19-co227-subclinical-mastitis-prediction-gui)
+- [Project Page](https://cepdnaclk.github.io/e19-co227-subclinical-mastitis-prediction-gui)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
