@@ -25,13 +25,13 @@ In this project we aim to develop a user-friendly graphical user interface (GUI)
 
 ## Getting Started
 
-Welcome to our project! To get started, you'll need to set up a Python virtual environment to ensure you're using the same dependencies as the project. This guide will walk you through the process on a Windows machine.
+To get started, you'll need to set up a Python virtual environment to ensure you're using the same dependencies as the project. This guide will walk you through the process on a Windows machine.
 
 ### Prerequisites
 
 Before you begin, make sure you have the following prerequisites installed on your computer:
 
-1. **Python:** Ensure you have Python 3.x installed. If not, download and install it from the [official Python website](https://www.python.org/downloads/windows/).
+1. **Python:** Ensure you have Python 3.11 installed. If not, download and install it from the [official Python website](https://www.python.org/downloads/windows/).
 
 ### Setting Up the Virtual Environment
 
