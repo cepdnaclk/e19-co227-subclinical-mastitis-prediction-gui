@@ -1,0 +1,8 @@
+body {
+    background-image: url('../images/background.jpg');
+    background-size: cover; /* This ensures the image covers the entire viewport */
+    background-repeat: no-repeat; /* This prevents the image from repeating */
+    background-attachment: fixed; /* This fixes the background image in place */
+    color: rebeccapurple;
+  }
+  

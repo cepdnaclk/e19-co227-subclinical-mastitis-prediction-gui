@@ -82,11 +82,15 @@ Before you begin, make sure you have the following prerequisites installed on yo
 
    This command will install all the required packages for the project.
 
-5. **Start Working on the Project:**
+5. **Contact the Project Owner for the .env File:**
+
+   Our project uses a .env files to store sensitive information, such as Secret Keys. To run the project successfully, you'll need a copy of this file. Please contact one of the project owners to receive a copy of the .env file.
+
+6. **Start Working on the Project:**
 
    You're all set! You can now start working on the project within the virtual environment. Any Python scripts you run or modifications you make to the project will use the isolated environment.
 
-6. **Deactivate the Virtual Environment:**
+7. **Deactivate the Virtual Environment:**
 
    When you're done working on the project, you can deactivate the virtual environment by running:
 
