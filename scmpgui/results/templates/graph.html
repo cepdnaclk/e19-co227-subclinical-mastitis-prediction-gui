@@ -1,0 +1,29 @@
+<!-- results/templates/results/graph.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Visualization</title>
+    <!-- Include Charts.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="myChart" width="400" height="200"></canvas>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var data = {
+            labels: [{% for entry in data %}"{{ entry.idNum }}",{% endfor %}],
+            datasets: [{
+                label: 'Data Visualization',
+                data: [{% for entry in data %}{{ entry.lacNum }},{% endfor %}],
+                borderColor: 'blue',
+                borderWidth: 1
+            }]
+        };
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: data
+        });
+    </script>
+</body>
+</html>
