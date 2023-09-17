@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result Data</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/graphStyle.css' %}">
+</head>
+<body>
+    <h1 class = "mainTitle">SCM Status Prediction</h1>
+
+    <div class="card">
+        <div class="name"><h4><b>Sample Number: {{ cow_id }}</b></h4></div>
+        <p>SCM Status: {{ cow_result }}</p>
+      </div>
+
+    <div class="grid-container">
+        <div class="container">
+            <h1>Identification Number vs Lactation</h1>
+            <canvas id="Canvas1"></canvas>
+        </div>
+        <div class="container">
+            <h1>Identification Number vs Fat</h1>
+            <canvas id="Canvas2"></canvas>
+        </div>
+        <div class="container">
+            <h1>Identification Number vs SNF</h1>
+            <canvas id="Canvas3"></canvas>
+        </div>
+        <div class="container">
+            <h1>Identification Number vs Density</h1>
+            <canvas id="Canvas4"></canvas>
+        </div>
+        <!-- Add more containers as needed -->
+    </div>
+
+    <script>
+        {% comment %} graph 1 {% endcomment %}
+        var inumData = {
+            labels: [{% for item in inum %}"{{ item }}", {% endfor %}],
+            datasets: [{
+                label: 'Identification Number vs Lactation',
+                data: [{% for item in lacnum %}"{{ item }}", {% endfor %}],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        var inumChart = new Chart(document.getElementById('Canvas1'), {
+            type: 'line',
+            data: inumData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+        {% comment %} graph 2 {% endcomment %}
+        var inumData = {
+            labels: [{% for item in inum %}"{{ item }}", {% endfor %}],
+            datasets: [{
+                label: 'Identification Number vs Fat',
+                data: [{% for item in fat %}"{{ item }}", {% endfor %}],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        var inumChart = new Chart(document.getElementById('Canvas2'), {
+            type: 'line',
+            data: inumData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+        {% comment %} graph 3 {% endcomment %}
+        var inumData = {
+            labels: [{% for item in inum %}"{{ item }}", {% endfor %}],
+            datasets: [{
+                label: 'Identification Number vs SNF',
+                data: [{% for item in snf %}"{{ item }}", {% endfor %}],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        var inumChart = new Chart(document.getElementById('Canvas3'), {
+            type: 'line',
+            data: inumData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+        {% comment %} graph 4 {% endcomment %}
+        var inumData = {
+            labels: [{% for item in inum %}"{{ item }}", {% endfor %}],
+            datasets: [{
+                label: 'Identification Number vs density',
+                data: [{% for item in density %}"{{ item }}", {% endfor %}],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        var inumChart = new Chart(document.getElementById('Canvas4'), {
+            type: 'line',
+            data: inumData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+    </script>
+</body>
+</html>

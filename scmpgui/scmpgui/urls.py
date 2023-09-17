@@ -24,7 +24,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
-    path('', RedirectView.as_view(url='home/',permanent=True))
+    path('', RedirectView.as_view(url='home/',permanent=True)),
+    path('', include('results.urls')),
 ]
 
 if settings.DEBUG:

@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # From here on add custom apps
-    'home.apps.HomeConfig' # home page of the project
+    'home.apps.HomeConfig', # home page of the project
+    'results'
+    #'results.apps.ResultsConfig' #the page ehere we display the results of the scm prediction
 ]
 
 MIDDLEWARE = [
