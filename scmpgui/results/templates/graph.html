@@ -1,29 +1,45 @@
-<!-- results/templates/results/graph.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Data Visualization</title>
-    <!-- Include Charts.js library -->
+    <title>Result Data</title>
+    <!-- Include Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/graphStyle.css' %}">
 </head>
 <body>
-    <canvas id="myChart" width="400" height="200"></canvas>
+    <h1>Identification Number vs Lactation</h1>
+    <div class="container">
+        <canvas id="Identification Number vs Lactation"></canvas>
+
+    </div>
+
     <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var data = {
-            labels: [{% for entry in data %}"{{ entry.idNum }}",{% endfor %}],
+        // JavaScript code to create bar charts
+        var inumData = {
+            labels: [{% for item in inum %}"{{ item }}", {% endfor %}],
             datasets: [{
-                label: 'Data Visualization',
-                data: [{% for entry in data %}{{ entry.lacNum }},{% endfor %}],
-                borderColor: 'blue',
+                label: 'Identification Number vs Lactation',
+                data: [{% for item in lacnum %}"{{ item }}", {% endfor %}],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1
             }]
         };
-        var myChart = new Chart(ctx, {
+
+        var inumChart = new Chart(document.getElementById('Identification Number vs Lactation'), {
             type: 'line',
-            data: data
+            data: inumData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
         });
+
+
     </script>
 </body>
 </html>

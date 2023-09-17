@@ -1,0 +1,13 @@
+/* styles.css */
+
+/* Create a flex container to split the screen into two halves */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 10vh;
+}
+
+/* Set the canvas to occupy the top half of the screen */
+canvas {
+    flex: 1;
+}

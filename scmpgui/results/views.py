@@ -1,17 +1,28 @@
 # results/views.py
 import csv
-from django.shortcuts import render
+import pandas as pd
+from django.shortcuts import HttpResponse, render
 from .models import ResultData
 
 def graph_view(request):
-    data = []  # List to store data from CSV file
-    
-    # Read data from CSV file and populate the data list
-    with open('results/sampleInput.csv', 'r') as csv_file:
-        reader = csv.reader(csv_file)
-        next(reader)  # Skip header row if present
-        for row in reader:
-            idNum, lacNum = row
-            data.append({'Identification No': idNum, 'Lac. No.': lacNum})
+    df = pd.read_excel('results\sampleInput.xlsx')
+    #print(df)
+    inum = df.iloc[:, 0].tolist()
+    lacnum = df.iloc[:, 4].tolist()
+    #print(inum, lacnum)
+    #return HttpResponse(df)
+    # Create a context dictionary to pass the lists to the template
+    context = {
+        'inum': inum,
+        'lacnum': lacnum,
+    }
 
-    return render(request, 'results/graph.html', {'data': data})
+    # Render the template with the context data
+    return render(request, 'graph.html', context)
+    
+# from django.http import HttpResponse
+# from django.template import loader
+
+# def graph_view(request):
+#  template = loader.get_template('graph.html')
+#  return HttpResponse(template.render())
