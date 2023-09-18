@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSV File Upload</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/csvR.css' %}">
+</head>
+
+<body>
+    <h1>Upload a CSV File</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="csv_file" accept=".csv">
+        <button type="submit">Upload</button>
+    </form>
+</body>
+
+</html>
