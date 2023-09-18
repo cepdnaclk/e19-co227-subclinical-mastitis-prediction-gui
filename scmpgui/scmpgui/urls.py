@@ -26,6 +26,7 @@ urlpatterns = [
     path('home/', include('home.urls')),
     path('', RedirectView.as_view(url='home/',permanent=True)),
     path('', include('results.urls')),
+    path('', include('csvR.urls'))
 ]
 
 if settings.DEBUG:
