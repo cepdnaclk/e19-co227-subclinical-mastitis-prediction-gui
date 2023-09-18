@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class csvRModel(models.Model):
+    column1 = models.CharField(max_length=255)
+    column2 = models.CharField(max_length=255)
+    # Add fields as needed for your CSV data
