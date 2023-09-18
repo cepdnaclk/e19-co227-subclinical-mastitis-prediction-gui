@@ -1,4 +1,7 @@
 body {
-    color: rebeccapurple;
-  }
-  
+  color: rebeccapurple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
