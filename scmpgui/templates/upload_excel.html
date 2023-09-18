@@ -1,6 +1,17 @@
-<!-- csvR/templates/csvR/upload_excel.html -->
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload Excel</button>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Excel</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/up_ex.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload Excel</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,19 +1,29 @@
-<!-- csvR/templates/csvR/display_worksheet.html -->
-<table>
-    <thead>
-        <tr>
-            {% for column in df.columns %}
-                <th>{{ column }}</th>
-            {% endfor %}
-        </tr>
-    </thead>
-    <tbody>
-        {% for row in df.values %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Worksheet</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dis_ws.css' %}">
+</head>
+<body>
+    <h1>Worksheet Data</h1>
+    <table>
+        <thead>
             <tr>
-                {% for cell in row %}
-                    <td>{{ cell }}</td>
+                {% for column in df.columns %}
+                    <th>{{ column }}</th>
                 {% endfor %}
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% for row in df.values %}
+                <tr>
+                    {% for cell in row %}
+                        <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
