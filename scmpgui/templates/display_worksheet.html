@@ -1,0 +1,19 @@
+<!-- csvR/templates/csvR/display_worksheet.html -->
+<table>
+    <thead>
+        <tr>
+            {% for column in df.columns %}
+                <th>{{ column }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in df.values %}
+            <tr>
+                {% for cell in row %}
+                    <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
