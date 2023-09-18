@@ -1,6 +1,6 @@
+# csvR/models.py
 from django.db import models
 
-class csvRModel(models.Model):
-    column1 = models.CharField(max_length=255)
-    column2 = models.CharField(max_length=255)
-    # Add fields as needed for your CSV data
+class ExcelFile(models.Model):
+    file = models.FileField(upload_to='uploads/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)

@@ -1,7 +1,7 @@
-#Read csv
+# csvR/urls.py
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('csvR/', views.csvR, name='csvR'),
+    path('upload/', views.upload_excel, name='upload_excel'),
 ]

@@ -1,25 +1,15 @@
-import csv
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from .models import csvRModel  # Import my model for storing CSV data
+from django.shortcuts import render ,redirect
+from .forms import ExcelFileUploadForm
+import pandas as pd
 
-#function for html file
-def csvR(request):
-    return render(request,'csvR.html')
-
-#function for imoprt and read csv file
-def import_csv(request):
+def upload_excel(request):
     if request.method == 'POST':
-        csv_file = request.FILES['csv_file']
-        if not csv_file.name.endswith('.csv'):
-            # Add error handling for invalid file types
-            return render(request, 'csvR/import_csv.html', {'error_message': 'Invalid file type'})
-
-        # Assuming you have a model to store CSV data
-        # Replace 'YourModel' with your actual model class
-        for row in csv.reader(csv_file.read().decode('utf-8').splitlines()):
-            csvRModel.objects.create(column1=row[0], column2=row[1])  # Replace with your model fields
-
-        return HttpResponseRedirect('success/')  # Redirect to a success page
-
-    return render(request, 'csvR.html')
+        form = ExcelFileUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            excel_file = form.save()
+            # Assuming pandas library is installed
+            df = pd.read_excel(excel_file.file)
+            return render(request, 'display_worksheet.html', {'df': df})
+    else:
+        form = ExcelFileUploadForm()
+    return render(request, 'upload_excel.html', {'form': form})
