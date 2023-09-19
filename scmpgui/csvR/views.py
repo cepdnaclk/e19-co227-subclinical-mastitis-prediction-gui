@@ -9,7 +9,7 @@ def upload_excel(request):
             excel_file = form.save()
             # Assuming pandas library is installed
             df = pd.read_excel(excel_file.file)
-            return render(request, 'display_worksheet.html', {'df': df})
+            return render(request, 'csvR/display_worksheet.html', {'df': df})
     else:
         form = ExcelFileUploadForm()
-    return render(request, 'upload_excel.html', {'form': form})
+    return render(request, 'csvR/upload_excel.html', {'form': form})
