@@ -1,8 +1,9 @@
 # results/views.py
-import csv
 import pandas as pd
-from django.shortcuts import HttpResponse, render
+from django.shortcuts import render
+from django.http import HttpResponse
 from .models import ResultData
+from dataform.models import Record
 
 def graph_view(request):
     df = pd.read_excel('results\sampleInput.xlsx')
@@ -31,6 +32,10 @@ def graph_view(request):
 
     # Render the template with the context data
     return render(request, 'graph.html', context)
+
+def result_from_record(request,pk):
+    record = Record.objects.get(pk=pk)
+    return HttpResponse(record.to_string())
     
 # from django.http import HttpResponse
 # from django.template import loader
