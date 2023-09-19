@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from .models import Record
 from django.urls import reverse
@@ -30,7 +30,9 @@ def DataFormView(request):
             scc=request.POST['scc'],
             label=request.POST['label']
         )
-        return HttpResponseRedirect(reverse('result_from_record',args=[record.pk]))
+        detail_url = reverse('results_from_record', args=[record.pk])
+        print(detail_url)
+        return redirect(detail_url)
 
 def form_submission(request):
     if request.method == 'POST':
