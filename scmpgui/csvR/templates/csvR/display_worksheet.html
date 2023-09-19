@@ -4,26 +4,37 @@
     <title>Display Worksheet</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/dis_ws.css' %}">
+    <!-- Include Bootstrap CSS (adjust the path as needed) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Worksheet Data</h1>
-    <table>
-        <thead>
-            <tr>
-                {% for column in df.columns %}
-                    <th>{{ column }}</th>
-                {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in df.values %}
-                <tr>
-                    {% for cell in row %}
-                        <td>{{ cell }}</td>
+    <div class="container mt-5">
+        <h1 class="text-center">Worksheet Data</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        {% for column in df.columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in df.values %}
+                        <tr>
+                            {% for cell in row %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
                     {% endfor %}
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JavaScript (optional, if needed) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -24,9 +24,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
-    path('', RedirectView.as_view(url='home/',permanent=True)),
-    path('', include('results.urls')),
-    path('', include('csvR.urls'))
+    path('result/', include('results.urls')),
+    path('csvR/', include('csvR.urls')),
+    path('', RedirectView.as_view(url='home/',permanent=True))
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
