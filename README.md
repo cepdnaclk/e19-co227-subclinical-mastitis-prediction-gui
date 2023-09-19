@@ -3,8 +3,8 @@
 <!-- 
 This is a sample image, to show how to add images to your page. To learn more options, please refer [this](https://projects.ce.pdn.ac.lk/docs/faq/how-to-add-an-image/)
 
-![Sample Image](./images/sample.png)
  -->
+![banner](./docs/images/banner.png)
 
 ## Team
 -  E/19/057, Colombage C.O., [email](mailto:e19057@eng.pdn.ac.lk)
