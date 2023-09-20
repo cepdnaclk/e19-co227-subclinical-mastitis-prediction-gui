@@ -1,14 +1,46 @@
 /* your_stylesheet.css */
 
-/* Style for the table */
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    background-color: #343a40;
+}
+
+.navbar-brand {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+/* Jumbotron Styles */
+.jumbotron {
+    background-color: #007bff;
+    color: #000000; /* Black text color */
+    text-align: center;
+    padding: 20px;
+}
+
+/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #ddd;
     margin-bottom: 20px;
+    background-color: #ffffff;
 }
 
-/* Style for table headers */
 th {
     background-color: #f2f2f2;
     border: 1px solid #ddd;
@@ -16,11 +48,24 @@ th {
     text-align: left;
 }
 
-/* Style for table data cells */
 td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
-/* Add additional styles as needed */
+/* Button Styles */
+.btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+/* Form Styles */
+.form-group label {
+    font-weight: bold;
+}

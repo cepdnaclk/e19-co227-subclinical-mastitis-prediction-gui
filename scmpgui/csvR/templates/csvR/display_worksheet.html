@@ -8,6 +8,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Worksheet</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to the Worksheet</h1>
+        <p class="lead">Display and analyze worksheet data here.</p>
+    </div>
+
     <div class="container mt-5">
         <h1 class="text-center">Worksheet Data</h1>
         <div class="table-responsive">
@@ -31,6 +53,77 @@
             </table>
         </div>
     </div>
+
+    <!-- Buttons -->
+    <div class="container mt-3">
+        <button class="btn btn-primary">Download Worksheet</button>
+        <button class="btn btn-success">Submit Data</button>
+    </div>
+
+    <!-- Alerts -->
+    <!--   
+    <div class="container mt-3">
+        <div class="alert alert-info" role="alert">
+            This is an informational message.
+        </div>
+        <div class="alert alert-warning" role="alert">
+            Warning: Data format may not be supported.
+        </div>
+    </div>
+-->
+
+
+    <!-- Form Elements -->
+    <div class="container mt-3">
+        <form>
+            <div class="form-group">
+                <label for="inputName">Name</label>
+                <input type="text" class="form-control" id="inputName" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Modal 
+        <div class="container mt-3">-->
+
+        <!-- Button to trigger modal 
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+            Open Modal
+        </button>-->
+
+
+        <!-- Modal -->
+        <!--        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">-->
+
+                    <!-- Modal Header
+                                        <div class="modal-header">
+                        <h4 class="modal-title">Modal Title</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div> -->
+
+
+                    <!-- Modal body 
+                                        <div class="modal-body">
+                        Modal content goes here.
+                    </div>-->
+
+
+                    <!-- Modal footer
+                                        <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
 
     <!-- Include Bootstrap JavaScript (optional, if needed) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
