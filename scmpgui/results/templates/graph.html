@@ -38,12 +38,19 @@
     <script>
         {% comment %} graph 1 {% endcomment %}
         var inumData = {
-            labels: [{% for item in inum %}"{{ item }}", {% endfor %}],
+            labels: [{% for item in inum %}"{{ item }}", {% endfor %}, "{{ user_inum }}"],
             datasets: [{
                 label: 'Identification Number vs Lactation',
-                data: [{% for item in lacnum %}"{{ item }}", {% endfor %}],
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                data: [{% for item in lacnum %}"{{ item }}", {% endfor %}, "{{ user_lacnum }}"],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', 
                 borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Identification Number vs Lactation',
+                data: [{% for item in lacnum %}"{{ item }}", {% endfor %}],
+                backgroundColor: 'rgba(255, 0, 0, 1)', // User data color
+                borderColor: 'rgba(255, 0, 0, 1)', // User data color
                 borderWidth: 1
             }]
         };
@@ -63,12 +70,19 @@
 
         {% comment %} graph 2 {% endcomment %}
         var inumData = {
-            labels: [{% for item in inum %}"{{ item }}", {% endfor %}],
+            labels: [{% for item in inum %}"{{ item }}", {% endfor %} , "{{ user_inum }}"],
             datasets: [{
                 label: 'Identification Number vs Fat',
-                data: [{% for item in fat %}"{{ item }}", {% endfor %}],
+                data: [{% for item in fat %}"{{ item }}", {% endfor %}, , "{{ user_fat }}"],
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Identification Number vs Lactation',
+                data: [{% for item in fat %}"{{ item }}", {% endfor %}],
+                backgroundColor: 'rgba(255, 0, 0, 1)', // User data color
+                borderColor: 'rgba(255, 0, 0, 1)', // User data color
                 borderWidth: 1
             }]
         };
@@ -88,12 +102,19 @@
 
         {% comment %} graph 3 {% endcomment %}
         var inumData = {
-            labels: [{% for item in inum %}"{{ item }}", {% endfor %}],
+            labels: [{% for item in inum %}"{{ item }}", {% endfor %}, "{{ user_inum }}"],
             datasets: [{
                 label: 'Identification Number vs SNF',
-                data: [{% for item in snf %}"{{ item }}", {% endfor %}],
+                data: [{% for item in snf %}"{{ item }}", {% endfor %}, "{{ user_snf }}"],
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Identification Number vs Lactation',
+                data: [{% for item in snf %}"{{ item }}", {% endfor %}],
+                backgroundColor: 'rgba(255, 0, 0, 1)', // User data color
+                borderColor: 'rgba(255, 0, 0, 1)', // User data color
                 borderWidth: 1
             }]
         };
@@ -113,12 +134,19 @@
 
         {% comment %} graph 4 {% endcomment %}
         var inumData = {
-            labels: [{% for item in inum %}"{{ item }}", {% endfor %}],
+            labels: [{% for item in inum %}"{{ item }}", {% endfor %}, "{{ user_inum }}"],
             datasets: [{
                 label: 'Identification Number vs density',
-                data: [{% for item in density %}"{{ item }}", {% endfor %}],
+                data: [{% for item in density %}"{{ item }}", {% endfor %}, "{{ user_density }}"],
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Identification Number vs Lactation',
+                data: [{% for item in density %}"{{ item }}", {% endfor %}],
+                backgroundColor: 'rgba(255, 0, 0, 1)', // User data color
+                borderColor: 'rgba(255, 0, 0, 1)', // User data color
                 borderWidth: 1
             }]
         };
