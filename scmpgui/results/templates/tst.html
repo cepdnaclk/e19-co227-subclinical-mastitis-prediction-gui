@@ -9,11 +9,32 @@
 
     <div class="container p-3">
         <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Sample Number: {{ pk }}</h4>
-                <p class="card-text">SCM Status: {{ cow_result }}</p>
+            <div class="card-header bg-primary text-white text-center">
+                <h2 class="my-2">SCM Status: {{ cow_result }}</h2>
             </div>
+            <ul class="list-group  list-group-horizontal text-center">
+                <li class="list-group-item flex-fill">Sample Number: {{ user_inum }}</li>
+                <li class="list-group-item flex-fill">Breed: {{ user_breed }}</li>
+                <li class="list-group-item flex-fill">Lactation Number: {{ user_lacnum }}</li>
+                <li class="list-group-item flex-fill">Days In Milk: {{ user_dim }}</li>
+                <li class="list-group-item flex-fill">Avg. 7-day Daily Milk Yield (L): {{ user_yeild }}</li>
+            </ul>
+            <ul class="list-group flex-fill list-group-horizontal-xxl text-center">
+                <li class="list-group-item flex-fill">Test Day Milk Yield (L): {{ user_fat }}</li>
+                <li class="list-group-item flex-fill">Fat(%): {{ user_snf }}</li>
+                <li class="list-group-item flex-fill">SNF(%): {{ user_density }}</li>
+                <li class="list-group-item flex-fill">Density (Kg/m3): {{ user_protein }}</li>
+                <li class="list-group-item flex-fill">Protein(%): {{ user_conductivity }}</li>
+            </ul>
+            <ul class="list-group flex-fill list-group-horizontal-xxl text-center">
+                <li class="list-group-item flex-fill">Conductivity (mS/cm): {{ user_ph }}</li>
+                <li class="list-group-item flex-fill">pH: {{ user_freezing }}</li>
+                <li class="list-group-item flex-fill">Freezing Point (°C): {{ user_salt }}</li>
+                <li class="list-group-item flex-fill">Lactose(%): {{ user_lactose }}</li>
+                <li class="list-group-item flex-fill">SCC (103 cells/ml): {{ user_scc }}</li>
+            </ul>
         </div>
+        
     </div>
     
     
