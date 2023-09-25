@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/graphStyle.css' %}">
+
+    <h1 class = "mainTitle">SCM Status Prediction</h1>
+
+    <div class="container p-3">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+                <h2 class="my-2">SCM Status: {{ cow_result }}</h2>
+            </div>
+            <ul class="list-group  list-group-horizontal text-center">
+                <li class="list-group-item flex-fill">Sample Number: {{ user_inum }}</li>
+                <li class="list-group-item flex-fill">Breed: {{ user_breed }}</li>
+                <li class="list-group-item flex-fill">Lactation Number: {{ user_lacnum }}</li>
+                <li class="list-group-item flex-fill">Days In Milk: {{ user_dim }}</li>
+                <li class="list-group-item flex-fill">Avg. 7-day Daily Milk Yield (L): {{ user_yeild }}</li>
+            </ul>
+            <ul class="list-group flex-fill list-group-horizontal-xxl text-center">
+                <li class="list-group-item flex-fill">Test Day Milk Yield (L): {{ user_fat }}</li>
+                <li class="list-group-item flex-fill">Fat(%): {{ user_snf }}</li>
+                <li class="list-group-item flex-fill">SNF(%): {{ user_density }}</li>
+                <li class="list-group-item flex-fill">Density (Kg/m3): {{ user_protein }}</li>
+                <li class="list-group-item flex-fill">Protein(%): {{ user_conductivity }}</li>
+            </ul>
+            <ul class="list-group flex-fill list-group-horizontal-xxl text-center">
+                <li class="list-group-item flex-fill">Conductivity (mS/cm): {{ user_ph }}</li>
+                <li class="list-group-item flex-fill">pH: {{ user_freezing }}</li>
+                <li class="list-group-item flex-fill">Freezing Point (°C): {{ user_salt }}</li>
+                <li class="list-group-item flex-fill">Lactose(%): {{ user_lactose }}</li>
+                <li class="list-group-item flex-fill">SCC (103 cells/ml): {{ user_scc }}</li>
+            </ul>
+        </div>
+        
+    </div>
+    
+    
+
+
+    <h1 class = "mainTitle">Historicl Data Analysis</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 p-3">
+                <div class="card">
+                    <h1>Days In Milk vs Average daily Milk Yield</h1>
+                    <canvas id="Canvas1"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 p-3">
+                <div class="card">
+                    <h1>Percentage of SCM Contaminated Cows</h1>
+                    <canvas id="Canvas2"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        {% comment %} graph 1 {% endcomment %}
+        var inumData = {
+            labels: [{% for item in dim %}"{{ item }}", {% endfor %}],
+            datasets: [{
+                label: 'SCM Free Cows',
+                data: [{% for item in yeild %}"{{ item }}", {% endfor %}],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', 
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                backgroundColor: getPointColors([{% for item in all_results %}"{{ item }}", {% endfor %}]),
+                {% comment %} borderColor: getPointColors([{% for item in all_results %}"{{ item }}", {% endfor %}]) {% endcomment %}
+            }]
+        };
+
+        {% comment %} inumData.labels.push("{{ user_dim }}"); {% endcomment %}
+        {% comment %} inumData.datasets[0].data.push("{{ user_yeild }}"); {% endcomment %}
+
+
+        //function to identify cattles with sub clinical mastitis
+        function getPointColors(results) {
+            // Define an array of colors, one for each label
+            var colors = [];
+            for (var i = 0; i < results.length; i++) {
+                if (results[i] === 'True') {  //check the scm status and it displays in red color if it's true
+                    // Set a different color for the user_inum data point
+                    colors.push('rgba(255, 0, 0, 1)'); // Red color
+                }
+                else {
+                    // Use the default color for other data points
+                    colors.push('rgba(75, 192, 192, 0.2)'); // Default color
+                }
+            }
+            return colors;
+        }
+
+        
+
+
+
+        var inumChart = new Chart(document.getElementById('Canvas1'), {
+            type: 'scatter',
+            data: inumData,
+            options: {
+                scales: {
+                    y: {
+                        title: {
+                          display: true,
+                          text: 'Average Daily Milk Yeild',
+                          
+                        },
+                        beginAtZero : true
+                      },
+                    x: {
+                        title: {
+                          display: true,
+                          text: 'Days in Milk',
+                          
+                        },
+                        beginAtZero : true
+                      }
+                }
+            }
+        });
+
+
+        
+
+        
+
+
+        {% comment %} graph 2 {% endcomment %}
+        var inumData = {
+            labels: ['Jersey * Friesian', 'Friesian'],
+            datasets: [{
+                label: '',
+                data: getBreeds([{% for item in breed %}"{{ item }}", {% endfor %}],[{% for item in all_results %}"{{ item }}", {% endfor %}]),
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        var inumChart = new Chart(document.getElementById('Canvas2'), {
+            type: 'bar',
+            data: inumData,
+            options: {
+                scales: {
+                    y: {
+                        title: {
+                          display: true,
+                          text: 'Contamination Percentage',
+                          
+                        },
+                        beginAtZero : true
+                      },
+                    x: {
+                        title: {
+                          display: true,
+                          text: 'Breed',
+                          
+                        }
+                      }
+                }
+            }
+        });
+
+
+        
+        //function to identify SCM contaminated percentage
+        function getBreeds(breed_lst, results) {
+            // Define an array of colors, one for each label
+            var breeds = [];
+            breed1 = 0;
+            breed2 = 0;
+
+            breed1_scm = 0;
+            breed2_scm = 0;
+
+            for (var i = 0; i < breed_lst.length; i++) {
+                if (breed_lst[i] === 'Jersey * Friesian') {  //check the scm status and it displays in red color if it's true
+                    breed1 += 1;
+                    if (results[i] === 'True'){
+                        breed1_scm += 1;
+                    }
+                }
+                else if(breed_lst[i] === 'Friesian') {
+                    breed2 += 1;
+                    if (results[i] === 'True'){
+                        breed2_scm += 1;
+                    }
+                }
+            }
+
+            breeds.push((breed1_scm/breed1)*100);
+            breeds.push((breed2_scm/breed2)*100);
+
+            return breeds;
+        }
+
+
+
+        
+
+    </script>
+{% endblock page_content %}

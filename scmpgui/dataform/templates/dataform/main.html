@@ -5,18 +5,20 @@
 {% endblock load_plugin %}
 
 {% block style_content %}
-        .popover {
-            --bs-popover-max-width: 200px;
-            --bs-popover-border-color: violet;
-            --bs-popover-header-bg: violet;
-            --bs-popover-header-color: white;
-            --bs-popover-body-padding-x: 1rem;
-            --bs-popover-body-padding-y: .5rem;
-        }
+.popover {
+--bs-popover-max-width: 500px;
+--bs-popover-border-color: violet;
+--bs-popover-header-bg: violet;
+--bs-popover-header-color: #dccae9;
+--bs-popover-body-padding-x: 1rem;
+--bs-popover-body-padding-y: .5rem;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        a{
-          text-decoration: none;
-        }
+a{
+color: #563186;
+text-decoration: none;
+}
 {% endblock style_content %}
 
 
@@ -30,7 +32,7 @@
             <div class="form-group col-md-4">
                 <div class="mb-3">
                     <label for="id_num" class="form-label">Identification Number</label>
-                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="And here's some amazing content. It's very engaging. Right?"></a>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="This field represents a unique identifier for individual cattle. It serves as a critical tracking mechanism for managing the health and well-being of each animal in your herd. Use this ID to maintain comprehensive records and monitor the health history of specific cattle."></a>
                     <input type="text" class="form-control" name="id_num" id="id_num" aria-describedby="id_num_help" placeholder="" required>
                     <small id="id_num_help" class="form-text text-muted">Unique cow identifier (e.g., ear tag or registration number).</small>
                 </div>
@@ -40,6 +42,7 @@
             <div class="form-group col-md-4">
                 <div class="mb-3">
                     <label for="sample_num" class="form-label">Sample Number</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Sample Number is a designation assigned to distinguish one milk sample from another, especially when multiple samples are collected from the same cow over time. This parameter aids in precise sample identification, making it easier to analyze and compare milk data accurately."></a>
                     <input type="text" class="form-control" name="sample_num" id="sample_num" aria-describedby="sample_num_help" placeholder="" required>
                     <small id="sample_num_help" class="form-text text-muted">Sequential number for milk sample.</small>
                 </div>
@@ -49,6 +52,7 @@
             <div class="form-group col-md-4">
                 <div class="mb-3">
                     <label for="farm" class="form-label">Farm</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="The Farm parameter denotes the name or identifier of the location where your cattle are situated. It is vital for maintaining comprehensive records and associating data with specific farm sources. This information helps you manage and organize your cattle-related data effectively."></a>
                     <input type="text" class="form-control" name="farm" id="farm" aria-describedby="farm_help" placeholder="" required>
                     <small id="farm_help" class="form-text text-muted">Farm name or identifier.</small>
                 </div>
@@ -61,6 +65,7 @@
         <div class="form-group">
             <div class="mb-3">
                 <label for="breed" class="form-label">Breed</label>
+                <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Breed indicates the specific breed of the cattle being tested. Different cattle breeds may exhibit varying susceptibilities to conditions like mastitis and can produce milk with distinct characteristics. Identifying the breed is crucial for understanding and managing your herd's health and productivity."></a>
                 <input type="text" class="form-control" name="breed" id="breed" aria-describedby="breed_help" placeholder="" required>
                 <small id="breed_help" class="form-text text-muted">Specific cattle breed.</small>
             </div>
@@ -72,6 +77,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="lactation_num" class="form-label">Lactation Number</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="The Lactation Number parameter represents the count of times a cow has given birth and entered a new lactation cycle. It plays a significant role in assessing milk quality and mastitis risk, as milk composition and health can change with each lactation cycle."></a>
                     <input type="number" class="form-control" name="lactation_num" id="lactation_num" aria-describedby="lactation_num_help" placeholder="" required>
                     <small id="lactation_num_help" class="form-text text-muted">Number of lactation cycles.</small>
                 </div>
@@ -81,6 +87,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="dim" class="form-label">Days In Milk</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Days In Milk (DIM) signifies the number of days since a cow calved and began producing milk. This is a critical factor because mastitis risk varies during different stages of lactation. Monitoring DIM helps in understanding and managing the health of your cattle."></a>
                     <input type="number" class="form-control" name="dim" id="dim" aria-describedby="dim_help" placeholder="" required>
                     <small id="dim_help" class="form-text text-muted">Days since calving.</small>
                 </div>
@@ -94,6 +101,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="avg_daily_milk_yield" class="form-label">Avg. 7-day Daily Milk Yield (L)</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="This parameter calculates the average daily milk yield over the past seven days. It is a valuable tool for assessing milk production trends and overall herd productivity. Consistent tracking of this parameter aids in making informed management decisions."></a>
                     <input type="number" class="form-control" name="avg_daily_milk_yield" id="avg_daily_milk_yield" aria-describedby="avg_daily_milk_yield_help" placeholder="" step="0.01" min="0" max="10" required>
                     <small id="avg_daily_milk_yield_help" class="form-text text-muted">Average daily milk yield over the past 7 days.</small>
                 </div>
@@ -103,6 +111,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="test_day_milk_yield" class="form-label">Test Day Milk Yield (L)</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Test Day Milk Yield represents the amount of milk produced by a cow on the specific day of testing. This data point provides an immediate snapshot of individual milk production, helping you identify any deviations from normal output."></a>
                     <input type="number" class="form-control" name="test_day_milk_yield" id="test_day_milk_yield" aria-describedby="test_day_milk_yield_help" placeholder="" step="0.01" required>
                     <small id="test_day_milk_yield_help" class="form-text text-muted">Milk yield on the day of testing.</small>
                 </div>
@@ -115,6 +124,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="fat_percentage" class="form-label">Fat (%)</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="The Fat percentage parameter indicates the fat content in the milk sample. It is a crucial component of milk quality assessment, as variations can signal potential issues such as mastitis or changes in nutritional balance."></a>
                     <input type="number" class="form-control" name="fat_percentage" id="fat_percentage" aria-describedby="fat_percentage_help" placeholder="" step="0.01" required>
                     <small id="fat_percentage_help" class="form-text text-muted">Percentage of fat content in the milk sample.</small>
                 </div>
@@ -124,6 +134,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="snf_percentage" class="form-label">SNF (%) (Solid-Not-Fat)</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Solid-Not-Fat (SNF) represents the percentage of solids in the milk, excluding fat. This category encompasses proteins, lactose, minerals, and other components, contributing to overall milk quality evaluation."></a>
                     <input type="number" class="form-control" name="snf_percentage" id="snf_percentage" aria-describedby="snf_percentage_help" placeholder="" step="0.01" required>
                     <small id="snf_percentage_help" class="form-text text-muted">Percentage of solids in milk that are not fat.</small>
                 </div>
@@ -136,6 +147,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="milk_density" class="form-label">Density (Kg/m³)</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Density quantifies the mass per unit volume of the milk sample, usually measured in kilograms per cubic meter. Monitoring density can offer insights into milk composition and quality."></a>
                     <input type="number" class="form-control" name="milk_density" id="milk_density" aria-describedby="milk_density_help" placeholder="" step="0.01" required>
                     <small id="milk_density_help" class="form-text text-muted">Density of the milk sample in Kg/m³.</small>
                 </div>
@@ -145,6 +157,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="protein_percentage" class="form-label">Protein (%)</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="The Protein percentage parameter signifies the protein content within the milk sample. It is another essential component of milk quality analysis, influencing the nutritional value and suitability of the milk for various purposes."></a>
                     <input type="number" class="form-control" name="protein_percentage" id="protein_percentage" aria-describedby="protein_percentage_help" placeholder="" step="0.01" required>
                     <small id="protein_percentage_help" class="form-text text-muted">Percentage of protein content in the milk sample.</small>
                 </div>
@@ -157,6 +170,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="milk_conductivity" class="form-label">Conductivity (mS/cm)</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Conductivity measures the electrical conductivity of the milk. It can serve as an indicator of mastitis, as infected udders may exhibit higher conductivity due to increased salt content. Monitoring conductivity aids in early detection of potential health issues."></a>
                     <input type="number" class="form-control" name="milk_conductivity" id="milk_conductivity" aria-describedby="milk_conductivity_help" placeholder="" step="0.01" required>
                     <small id="milk_conductivity_help" class="form-text text-muted">Electrical conductivity of the milk.</small>
                 </div>
@@ -166,6 +180,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="milk_ph" class="form-label">pH</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="pH measures the acidity or alkalinity of the milk. Fluctuations in pH levels can be associated with mastitis or other milk quality concerns. This parameter provides valuable insights into the milk's chemical composition."></a>
                     <input type="number" class="form-control" name="milk_ph" id="milk_ph" aria-describedby="milk_ph_help" placeholder="" step="0.01" required>
                     <small id="milk_ph_help" class="form-text text-muted">pH level of the milk sample.</small>
                 </div>
@@ -178,6 +193,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="freezing_point" class="form-label">Freezing Point (⁰C)</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="The Freezing Point parameter indicates the temperature at which the milk sample freezes. Deviations from the expected freezing point can raise red flags, as they may suggest mastitis or other milk quality irregularities."></a>
                     <input type="number" class="form-control" name="freezing_point" id="freezing_point" aria-describedby="freezing_point_help" placeholder="" step="0.01" required>
                     <small id="freezing_point_help" class="form-text text-muted">Temperature at which the milk sample freezes.</small>
                 </div>
@@ -187,6 +203,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="salt_percentage" class="form-label">Salt (%)</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="The Salt percentage parameter represents the salt content in the milk sample. Abnormal salt levels can indicate various milk quality issues, making this parameter important for overall milk assessment."></a>
                     <input type="number" class="form-control" name="salt_percentage" id="salt_percentage" aria-describedby="salt_percentage_help" placeholder="" step="0.01" required>
                     <small id="salt_percentage_help" class="form-text text-muted">Percentage of salt content in the milk sample.</small>
                 </div>
@@ -199,6 +216,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="lactose_percentage" class="form-label">Lactose (%)</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Lactose percentage denotes the presence of lactose, or milk sugar, in the milk sample. This component is crucial for assessing milk quality and suitability for various dairy products."></a>
                     <input type="number" class="form-control" name="lactose_percentage" id="lactose_percentage" aria-describedby="lactose_percentage_help" placeholder="" step="0.01" required>
                     <small id="lactose_percentage_help" class="form-text text-muted">Percentage of lactose (milk sugar) in the milk sample.</small>
                 </div>
@@ -208,6 +226,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="scc" class="form-label">SCC (103 cells/ml)</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Somatic Cell Count (SCC) measures the number of somatic cells, primarily white blood cells, in the milk sample. Elevated SCC is a strong indicator of mastitis and other udder health issues. Regular monitoring of SCC helps in early detection and management of such conditions."></a>
                     <input type="number" class="form-control" name="scc" id="scc" aria-describedby="scc_help" placeholder="" required>
                     <small id="scc_help" class="form-text text-muted">Somatic Cell Count in thousands of cells per milliliter.</small>
                 </div>
@@ -219,6 +238,7 @@
         <div class="form-group">
             <div class="mb-3">
                 <label for="label" class="form-label">Label</label>
+                <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="The Label parameter provides a customizable field for additional notes or labels that can offer context or specific information related to the individual milk sample or the cow being tested. Use this field to record any relevant details to enhance your record-keeping and analysis."></a>
                 <textarea class="form-control" name="label" id="label" rows="3"></textarea>
                 <small id="label_help" class="form-text text-muted">Optional notes or labels for this sample.</small>
             </div>
