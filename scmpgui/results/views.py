@@ -94,7 +94,7 @@ def result_from_record(request,pk):
         'pk' : pk, #after this line you have to add the result also
     }
 
-    print(context['breed'])
+    # print(context['breed'])
 
 
     # Render the template with the context data
