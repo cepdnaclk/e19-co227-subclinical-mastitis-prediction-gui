@@ -26,6 +26,7 @@ urlpatterns = [
     path('home/', include('home.urls')),
     path('data/', include('dataform.urls')),
     path('results/', include('results.urls')),
+    path('huey/', include('hueytask.urls')),
     #! MIND THE ORDER, THIS MUST BE LAST
     path('', RedirectView.as_view(url='home/',permanent=True)),
 ]

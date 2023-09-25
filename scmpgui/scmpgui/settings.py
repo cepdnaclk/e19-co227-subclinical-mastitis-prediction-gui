@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'huey.contrib.djhuey',
     # From here on add custom apps
     'home.apps.HomeConfig', # home page of the project
     #'results'
     'results.apps.ResultsConfig', #the page ehere we display the results of the scm prediction
     'dataform.apps.DataformConfig', # data collection for PModel
+    'hueytask.apps.HueytaskConfig',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +131,22 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+HUEY = {
+    'huey_class': 'huey.SqliteHuey',  # Use SqliteHuey implementation.
+    'name': 'my-huey',  # Huey name (change to your preference).
+    'results': True,  # Store return values of tasks.
+    'store_none': False,  # If a task returns None, do not save it.
+    'immediate': False,  # Run tasks synchronously in DEBUG mode.
+    'utc': True,  # Use UTC for all times internally.
+    'connection': {
+        'filename': BASE_DIR / 'huey.db.sqlite3',  # Path to your SQLite database file.
+        'cache_mb': 64,  # Set the page-cache size in megabytes.
+        'fsync': False,  # Use durable writes (optional, set to True for durability).
+    },
+    'consumer': {
+        'workers': 1,  # Number of worker processes.
+        'worker_type': 'thread',  # Use threads for workers (recommended for SQLite).
+        # ... other consumer options.
+    },
+}
