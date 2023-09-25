@@ -1,5 +1,25 @@
 {% extends "base.html" %}
 
+{% block load_plugin %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+{% endblock load_plugin %}
+
+{% block style_content %}
+        .popover {
+            --bs-popover-max-width: 200px;
+            --bs-popover-border-color: violet;
+            --bs-popover-header-bg: violet;
+            --bs-popover-header-color: white;
+            --bs-popover-body-padding-x: 1rem;
+            --bs-popover-body-padding-y: .5rem;
+        }
+
+        a{
+          text-decoration: none;
+        }
+{% endblock style_content %}
+
+
 {% block page_content %}
 
 <div class="container">
@@ -10,6 +30,7 @@
             <div class="form-group col-md-4">
                 <div class="mb-3">
                     <label for="id_num" class="form-label">Identification Number</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="And here's some amazing content. It's very engaging. Right?"></a>
                     <input type="text" class="form-control" name="id_num" id="id_num" aria-describedby="id_num_help" placeholder="" required>
                     <small id="id_num_help" class="form-text text-muted">Unique cow identifier (e.g., ear tag or registration number).</small>
                 </div>
@@ -73,7 +94,7 @@
             <div class="form-group col-md-6">
                 <div class="mb-3">
                     <label for="avg_daily_milk_yield" class="form-label">Avg. 7-day Daily Milk Yield (L)</label>
-                    <input type="number" class="form-control" name="avg_daily_milk_yield" id="avg_daily_milk_yield" aria-describedby="avg_daily_milk_yield_help" placeholder="" step="0.01" required>
+                    <input type="number" class="form-control" name="avg_daily_milk_yield" id="avg_daily_milk_yield" aria-describedby="avg_daily_milk_yield_help" placeholder="" step="0.01" min="0" max="10" required>
                     <small id="avg_daily_milk_yield_help" class="form-text text-muted">Average daily milk yield over the past 7 days.</small>
                 </div>
             </div>
@@ -212,6 +233,12 @@
 </div>
 
 <script>
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    const popover = new bootstrap.Popover('.popover-dismiss', {
+        trigger: 'focus'
+    })
+
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function() {
         'use strict';
