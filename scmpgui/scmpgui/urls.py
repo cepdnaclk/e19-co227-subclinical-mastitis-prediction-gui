@@ -20,14 +20,17 @@ from django.views.generic import RedirectView
 
 from django.conf import settings
 from django.conf.urls.static import static
+from members.views import register_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
     path('data/', include('dataform.urls')),
     path('results/', include('results.urls')),
+    path('members/', include('django.contrib.auth.urls')),
+    path('members/', include('members.urls')),
     #! MIND THE ORDER, THIS MUST BE LAST
-    path('', RedirectView.as_view(url='home/',permanent=True)),
+    path('', RedirectView.as_view(url='members/',permanent=True)),
 ]
 
 if settings.DEBUG:

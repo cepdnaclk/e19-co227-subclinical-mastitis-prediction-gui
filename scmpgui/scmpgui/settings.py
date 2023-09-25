@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     #'results'
     'results.apps.ResultsConfig', #the page ehere we display the results of the scm prediction
     'dataform.apps.DataformConfig', # data collection for PModel
+    'members.apps.MembersConfig', # For user authentication
 ]
 
 MIDDLEWARE = [
