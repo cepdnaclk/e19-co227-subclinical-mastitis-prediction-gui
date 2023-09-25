@@ -10,6 +10,20 @@
         background-attachment: fixed; /* This fixes the background image in place */
         color: rebeccapurple;
       }
+
+    .btn-primary{
+      background-color: rebeccapurple;
+      border-color: rebeccapurple;
+      color: white;
+    }
+
+    .btn-custom:hover,
+    .btn-custom:focus {
+        background-color: darkorchid; 
+        border-color: darkorchid;
+    }
+
+
 </style>
 
 <div class="container">
@@ -22,5 +36,34 @@
 
 <h1>Welcome!</h1><br>
 <h3>This is the temporary homepage of our project!</h3>
+
+<!--Three Cards-->
+<div class="container">
+  <div class="row">
+      <div class="col-md-4">
+          <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title">Single Input</h5>
+                  <a href="/data" class="btn btn-primary">Go to Single Input</a>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Multiple Input</h5>
+                <a href="/multiple-input" class="btn btn-primary">Go to Multiple Input</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+          <div class="card-body">
+              <h5 class="card-title">Historical Data</h5>
+              <a href="/historical-data" class="btn btn-primary">Go to Historical Data</a>
+            </div>
+          </div>
+      </div>
+</div>
 
 {% endblock page_content %}
