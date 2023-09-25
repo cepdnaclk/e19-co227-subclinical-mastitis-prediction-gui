@@ -225,7 +225,7 @@ text-decoration: none;
             <!-- Sample Input for SCC (Somatic Cell Count) -->
             <div class="form-group col-md-6">
                 <div class="mb-3">
-                    <label for="scc" class="form-label">SCC (103 cells/ml)</label>
+                    <label for="scc" class="form-label">SCC (10<sup>3</sup> cells/ml)</label>
                     <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Somatic Cell Count (SCC) measures the number of somatic cells, primarily white blood cells, in the milk sample. Elevated SCC is a strong indicator of mastitis and other udder health issues. Regular monitoring of SCC helps in early detection and management of such conditions."></a>
                     <input type="number" class="form-control" name="scc" id="scc" aria-describedby="scc_help" placeholder="" required>
                     <small id="scc_help" class="form-text text-muted">Somatic Cell Count in thousands of cells per milliliter.</small>
@@ -258,7 +258,8 @@ text-decoration: none;
     const popover = new bootstrap.Popover('.popover-dismiss', {
         trigger: 'focus'
     })
-
+</script>
+<script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function() {
         'use strict';
