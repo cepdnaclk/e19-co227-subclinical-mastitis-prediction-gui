@@ -3,42 +3,70 @@
 {% block outside_content %}
 
 <style>
-
-    .table {
-        border: 1px solid #dee2e6;
-        border-collapse: collapse;
-        width: 100%;
+    body {
+        color: rebeccapurple; 
     }
-    .btn-primary{
+
+    .center-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; 
+        text-align: center;
+    }
+
+    .btn-primary {
         background-color: rebeccapurple;
         border-color: rebeccapurple;
         color: white;
-      }
-  
-      .btn-custom:hover,
-      .btn-custom:focus {
-          background-color: darkorchid; 
-          border-color: darkorchid;
-      }
+        font-weight: bold;
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: darkorchid;
+        border-color: darkorchid;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        width: 80%;
+        max-width: 400px;
+    }
+
+    /* Additional styles for the form */
+    .form-group {
+        margin-bottom: 20px;
+    }
 </style>
 
-
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">Upload Data Set</h1>
+    <div class="center-container">
+        <h1>Upload Data Set</h1>
         <div class="form-container">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
                     {{ form.as_p }}
                 </div>
-                <div class="text-center">
+                <div>
                     <button type="submit" class="btn btn-primary">Upload</button>
                 </div>
             </form>
         </div>
     </div>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
