@@ -1,0 +1,61 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+
+    {% block load_plugin %}
+        {% comment %} ? Load any extra js or css here {% endcomment %}
+    {% endblock load_plugin %}
+
+    <title>{% block title %}SCMPGUI{% endblock title %}</title>
+</head>
+
+<body>
+    <style>
+    {% block style_content %}
+        {% comment %} ? Any custom styling goes here {% endcomment %}
+    {% endblock style_content %}
+    </style>
+
+    {% block nav_content %}
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #563186;">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">
+                <img src="/static/images/Logo.png" height="40" alt="SCMPGUI">
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="{% url "home" %}" class="nav-item nav-link active text-light">Home</a>
+                    <a href="{% url "dataform" %}" class="nav-item nav-link text-light">Input</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% endblock nav_content %}
+
+    {% block outside_content %}
+        {% comment %} ? Any content that should span whole page goes here. {% endcomment %}
+    {% endblock outside_content %}
+
+    <div class="container p-3">
+        {% block page_content %}{% endblock page_content %}
+    </div>
+
+</body>
+
+</html>

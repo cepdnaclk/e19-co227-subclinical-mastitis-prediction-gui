@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block load_plugin %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+{% endblock load_plugin %}
+
+{% block style_content %}
+        .popover {
+            --bs-popover-max-width: 200px;
+            --bs-popover-border-color: violet;
+            --bs-popover-header-bg: violet;
+            --bs-popover-header-color: white;
+            --bs-popover-body-padding-x: 1rem;
+            --bs-popover-body-padding-y: .5rem;
+        }
+
+        a{
+          text-decoration: none;
+        }
+{% endblock style_content %}
+
+
+{% block page_content %}
+
+<div class="container">
+    <form action="#" method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="row g-3">
+            <!-- Sample Input for Identification Number -->
+            <div class="form-group col-md-4">
+                <div class="mb-3">
+                    <label for="id_num" class="form-label">Identification Number</label>
+                    <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="And here's some amazing content. It's very engaging. Right?"></a>
+                    <input type="text" class="form-control" name="id_num" id="id_num" aria-describedby="id_num_help" placeholder="" required>
+                    <small id="id_num_help" class="form-text text-muted">Unique cow identifier (e.g., ear tag or registration number).</small>
+                </div>
+            </div>
+
+            <!-- Sample Input for Sample Number -->
+            <div class="form-group col-md-4">
+                <div class="mb-3">
+                    <label for="sample_num" class="form-label">Sample Number</label>
+                    <input type="text" class="form-control" name="sample_num" id="sample_num" aria-describedby="sample_num_help" placeholder="" required>
+                    <small id="sample_num_help" class="form-text text-muted">Sequential number for milk sample.</small>
+                </div>
+            </div>
+
+            <!-- Sample Input for Farm -->
+            <div class="form-group col-md-4">
+                <div class="mb-3">
+                    <label for="farm" class="form-label">Farm</label>
+                    <input type="text" class="form-control" name="farm" id="farm" aria-describedby="farm_help" placeholder="" required>
+                    <small id="farm_help" class="form-text text-muted">Farm name or identifier.</small>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Sample Input for Breed -->
+        <div class="form-group">
+            <div class="mb-3">
+                <label for="breed" class="form-label">Breed</label>
+                <input type="text" class="form-control" name="breed" id="breed" aria-describedby="breed_help" placeholder="" required>
+                <small id="breed_help" class="form-text text-muted">Specific cattle breed.</small>
+            </div>
+        </div>
+
+        <div class="row g-3">
+
+            <!-- Sample Input for Lactation Number -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="lactation_num" class="form-label">Lactation Number</label>
+                    <input type="number" class="form-control" name="lactation_num" id="lactation_num" aria-describedby="lactation_num_help" placeholder="" required>
+                    <small id="lactation_num_help" class="form-text text-muted">Number of lactation cycles.</small>
+                </div>
+            </div>
+
+            <!-- Sample Input for Days In Milk -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="dim" class="form-label">Days In Milk</label>
+                    <input type="number" class="form-control" name="dim" id="dim" aria-describedby="dim_help" placeholder="" required>
+                    <small id="dim_help" class="form-text text-muted">Days since calving.</small>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row g-3">
+
+            <!-- Sample Input for Average 7-day Daily Milk Yield -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="avg_daily_milk_yield" class="form-label">Avg. 7-day Daily Milk Yield (L)</label>
+                    <input type="number" class="form-control" name="avg_daily_milk_yield" id="avg_daily_milk_yield" aria-describedby="avg_daily_milk_yield_help" placeholder="" step="0.01" min="0" max="10" required>
+                    <small id="avg_daily_milk_yield_help" class="form-text text-muted">Average daily milk yield over the past 7 days.</small>
+                </div>
+            </div>
+
+            <!-- Sample Input for Test Day Milk Yield -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="test_day_milk_yield" class="form-label">Test Day Milk Yield (L)</label>
+                    <input type="number" class="form-control" name="test_day_milk_yield" id="test_day_milk_yield" aria-describedby="test_day_milk_yield_help" placeholder="" step="0.01" required>
+                    <small id="test_day_milk_yield_help" class="form-text text-muted">Milk yield on the day of testing.</small>
+                </div>
+            </div>
+
+        </div>
+        <div class="row g-3">
+
+            <!-- Sample Input for Fat Percentage -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="fat_percentage" class="form-label">Fat (%)</label>
+                    <input type="number" class="form-control" name="fat_percentage" id="fat_percentage" aria-describedby="fat_percentage_help" placeholder="" step="0.01" required>
+                    <small id="fat_percentage_help" class="form-text text-muted">Percentage of fat content in the milk sample.</small>
+                </div>
+            </div>
+
+            <!-- Sample Input for SNF Percentage (Solid-Not-Fat) -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="snf_percentage" class="form-label">SNF (%) (Solid-Not-Fat)</label>
+                    <input type="number" class="form-control" name="snf_percentage" id="snf_percentage" aria-describedby="snf_percentage_help" placeholder="" step="0.01" required>
+                    <small id="snf_percentage_help" class="form-text text-muted">Percentage of solids in milk that are not fat.</small>
+                </div>
+            </div>
+
+        </div>
+        <div class="row g-3">
+
+            <!-- Sample Input for Milk Density -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="milk_density" class="form-label">Density (Kg/m³)</label>
+                    <input type="number" class="form-control" name="milk_density" id="milk_density" aria-describedby="milk_density_help" placeholder="" step="0.01" required>
+                    <small id="milk_density_help" class="form-text text-muted">Density of the milk sample in Kg/m³.</small>
+                </div>
+            </div>
+
+            <!-- Sample Input for Protein Percentage -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="protein_percentage" class="form-label">Protein (%)</label>
+                    <input type="number" class="form-control" name="protein_percentage" id="protein_percentage" aria-describedby="protein_percentage_help" placeholder="" step="0.01" required>
+                    <small id="protein_percentage_help" class="form-text text-muted">Percentage of protein content in the milk sample.</small>
+                </div>
+            </div>
+
+        </div>
+        <div class="row g-3">
+
+            <!-- Sample Input for Milk Conductivity -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="milk_conductivity" class="form-label">Conductivity (mS/cm)</label>
+                    <input type="number" class="form-control" name="milk_conductivity" id="milk_conductivity" aria-describedby="milk_conductivity_help" placeholder="" step="0.01" required>
+                    <small id="milk_conductivity_help" class="form-text text-muted">Electrical conductivity of the milk.</small>
+                </div>
+            </div>
+
+            <!-- Sample Input for pH -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="milk_ph" class="form-label">pH</label>
+                    <input type="number" class="form-control" name="milk_ph" id="milk_ph" aria-describedby="milk_ph_help" placeholder="" step="0.01" required>
+                    <small id="milk_ph_help" class="form-text text-muted">pH level of the milk sample.</small>
+                </div>
+            </div>
+
+        </div>
+        <div class="row g-3">
+
+            <!-- Sample Input for Freezing Point -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="freezing_point" class="form-label">Freezing Point (⁰C)</label>
+                    <input type="number" class="form-control" name="freezing_point" id="freezing_point" aria-describedby="freezing_point_help" placeholder="" step="0.01" required>
+                    <small id="freezing_point_help" class="form-text text-muted">Temperature at which the milk sample freezes.</small>
+                </div>
+            </div>
+
+            <!-- Sample Input for Salt Percentage -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="salt_percentage" class="form-label">Salt (%)</label>
+                    <input type="number" class="form-control" name="salt_percentage" id="salt_percentage" aria-describedby="salt_percentage_help" placeholder="" step="0.01" required>
+                    <small id="salt_percentage_help" class="form-text text-muted">Percentage of salt content in the milk sample.</small>
+                </div>
+            </div>
+
+        </div>
+        <div class="row g-3">
+
+            <!-- Sample Input for Lactose Percentage -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="lactose_percentage" class="form-label">Lactose (%)</label>
+                    <input type="number" class="form-control" name="lactose_percentage" id="lactose_percentage" aria-describedby="lactose_percentage_help" placeholder="" step="0.01" required>
+                    <small id="lactose_percentage_help" class="form-text text-muted">Percentage of lactose (milk sugar) in the milk sample.</small>
+                </div>
+            </div>
+
+            <!-- Sample Input for SCC (Somatic Cell Count) -->
+            <div class="form-group col-md-6">
+                <div class="mb-3">
+                    <label for="scc" class="form-label">SCC (103 cells/ml)</label>
+                    <input type="number" class="form-control" name="scc" id="scc" aria-describedby="scc_help" placeholder="" required>
+                    <small id="scc_help" class="form-text text-muted">Somatic Cell Count in thousands of cells per milliliter.</small>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sample Input for Label -->
+        <div class="form-group">
+            <div class="mb-3">
+                <label for="label" class="form-label">Label</label>
+                <textarea class="form-control" name="label" id="label" rows="3"></textarea>
+                <small id="label_help" class="form-text text-muted">Optional notes or labels for this sample.</small>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary col-md-2">Process</button>
+        </div>
+
+    </form>
+
+</div>
+
+<script>
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    const popover = new bootstrap.Popover('.popover-dismiss', {
+        trigger: 'focus'
+    })
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+{% endblock page_content %}
