@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path("<int:pk>/", views.result_from_record, name="results_from_record"),
-    path('', views.graph_view, name='results'),
+    # path('', views.graph_view, name='results'),
 ]

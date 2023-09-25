@@ -5,7 +5,7 @@
     <!-- Include Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/graphStyle.css' %}">
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/graphStyle.css' %}"> {% endcomment %}
 </head>
 <body>
     <h1 class = "mainTitle">SCM Status Prediction</h1>
@@ -43,7 +43,7 @@
                 label: 'Identification Number vs Lactation',
                 data: [{% for item in lacnum %}"{{ item }}", {% endfor %}, "{{ user_lacnum }}"],
                 backgroundColor: 'rgba(75, 192, 192, 0.2)', 
-                borderColor: 'rgba(75, 192, 192, 1)',
+                borderColor: 'rgba(75, 192, 192, 0.2)',
                 borderWidth: 1
             },
             {

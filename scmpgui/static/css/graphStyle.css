@@ -21,15 +21,15 @@
 }
 
 .name {
-    text-align: center; /* Center text within the .name div */
+    /* text-align: center; Center text within the .name div */
 }
 
 /* Create a grid layout with two rows */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns */
-    grid-gap: 10px; /* Adjust the gap between grid items as needed */
-    height: 50vh; /* 100% of the viewport height */
+    /* grid-template-columns: repeat(2, 1fr); Two columns */
+    /* grid-gap: 10px; Adjust the gap between grid items as needed */
+    /* height: 50vh; 100% of the viewport height */
 }
 
 /* Style individual grid items (containers) */
@@ -37,6 +37,18 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
+}
+
+/* Style the card within each container */
+.card {
+    /* Define card styles here, e.g., background, border, shadow, etc. */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    /* Set card size, if needed */
+    /* width: 100%; */
 }
 
 /* Set the canvas to occupy the top half of each container */
