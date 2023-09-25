@@ -1,119 +1,125 @@
 {% extends "base.html" %}
 
-{% block outside_content %}
+{% block style_content %}
+    .carousel .carousel-item {
+        height: 350px;
+    }
 
-<style>
-.text-container {
-  background: linear-gradient(to bottom, #ff9900, #ff6600); 
-  padding: 20px; 
-  color: #fff; 
-}
-</style>
+    .carousel-item img {
+        position: absolute;
+        object-fit: cover;
+        min-height: 500px;
+        bottom: -30%;
+    }
 
-<div id="carouselExampleSlidesOnly" class="carousel slide pointer-event" data-bs-ride="carousel" data-bs-pause="none">
-  <div class="carousel-inner">
-      <div class="carousel-item" data-bs-interval="3000">
-          <img src="/static/images/first.png" class="d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect> </img>
-      </div>
-      <div class="carousel-item active" data-bs-interval="3000">
-          <img src="/static/images/second.png" class="d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></img>
-      </div>
-      <div class="carousel-item" data-bs-interval="3000">
-          <img src="/static/images/third.png" class="d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"></rect></img>
-      </div>
-  </div>
-</div>
-
-<style>
-    
-    .btn-primary{
-      background-color: rebeccapurple;
-      border-color: rebeccapurple;
-      color: white;
+    .btn-primary {
+        background-color: rebeccapurple;
+        border-color: rebeccapurple;
+        color: white;
     }
 
     .btn-custom:hover,
     .btn-custom:focus {
-        background-color: darkorchid; 
+        background-color: darkorchid;
         border-color: darkorchid;
     }
+
     .card-container {
-      margin-top: 30px;
-      display: flex;
-      justify-content: space-between;
-  }
+        display: flex;
+        justify-content: space-between;
+    }
 
-  .card {
-      flex: 1;
-      margin-right: 10px;
-      margin-left: 10px;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
-  }
+    .card {
+        flex: 1;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
 
-  .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-  .card-title {
-      font-size: 18px;
-      font-weight: bold;
-      margin: 15px;
-  }
+    .card-title {
+        font-size: 18px;
+        font-weight: bold;
+    }
 
-  .btn-card {
-      background-color: rebeccapurple;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      display: inline-block;
-      transition: background-color 0.2s;
-  }
+    .btn-card {
+        background-color: rebeccapurple;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.2s;
+    }
 
-  .btn-card:hover {
-      background-color: darkorchid;
-  }
+    .btn-card:hover {
+        background-color: darkorchid;
+    }
 </style>
 
-<!--Three Cards-->
-<div class="container" style="margin-top: 30px;">
-  <div class="row">
-      <div class="col-md-4">
-          <div class="card">
-              <div class="card-body">
-                  <h5 class="card-title">Single Input</h5>
-                  <p class="card-text">Update Data by data</p>
-                  <a href="/data" class="btn btn-primary">Go to Single Input</a>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Multiple Input</h5>
-                <p class="card-text">Update Data Set</p>
-                <a href="/csvR" class="btn btn-primary">Go to Multiple Input</a>
+{% endblock style_content %}
+
+{% block outside_content %}
+
+<div class="row">
+    <div id="ImageCarousel" class="carousel slide carousel-fade pointer-event" data-bs-ride="carousel" data-bs-pause="none">
+        <div class="carousel-inner">
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="/static/images/first.png" class="d-block w-100" alt="First slide">
+            </div>
+            <div class="carousel-item active" data-bs-interval="3000">
+                <img src="/static/images/second.png" class="d-block w-100" alt="Second slide">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="/static/images/third.png" class="d-block w-100" alt="Third slide">
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-      <div class="card">
-          <div class="card-body">
-              <h5 class="card-title">Historical Data</h5>
-              <p class="card-text">Data Visualization</p>
-              <a href="/historical-data" class="btn btn-primary">Go to Historical Data</a>
-            </div>
-          </div>
-      </div>
-  </div>
 </div>
 
-
-
 {% endblock outside_content %}
+
+{% block page_content %}
+
+<!--Three Cards-->
+<div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Single Input</h5>
+                        <p class="card-text">Update Data by data</p>
+                        <a href="/data" class="btn btn-primary">Go to Single Input</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Multiple Input</h5>
+                        <p class="card-text">Update Data Set</p>
+                        <a href="/csvR" class="btn btn-primary">Go to Multiple Input</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Historical Data</h5>
+                        <p class="card-text">Data Visualization</p>
+                        <a href="/historical-data" class="btn btn-primary">Go to Historical Data</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock page_content %}
