@@ -1,22 +1,19 @@
-/* Style for the form container (optional) */
 .form-container {
     max-width: 400px;
     margin: 0 auto;
-    padding: 20px; /* Add some padding for spacing */
-    border: 1px solid #ccc; /* Add a border for a container look */
-    border-radius: 10px; /* Round the corners of the container */
-    background-color: #f9f9f9; /* Set a light background color */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    background-color: #f9f9f9; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
 }
 
-/* Style for form labels (optional) */
 label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
 }
 
-/* Style for form input fields */
 input[type="file"] {
     margin-bottom: 10px;
     padding: 5px;
@@ -24,19 +21,17 @@ input[type="file"] {
     width: 100%;
 }
 
-/* Style for the submit button */
 button[type="submit"] {
-    background-color: #6f6f6f; /* Change button background color */
+    background-color: #6f6f6f; 
     color: #fff;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    border-radius: 5px; /* Add some border radius */
-    transition: background-color 0.3s; /* Add a smooth transition */
+    border-radius: 5px; 
+    transition: background-color 0.3s; 
 }
 
 button[type="submit"]:hover {
-    background-color: #404040; /* Change button color on hover */
+    background-color: #404040; 
 }
 
-/* Add additional styles as needed */

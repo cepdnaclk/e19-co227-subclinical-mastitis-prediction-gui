@@ -1,4 +1,3 @@
-# csvR/views.py
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import ExcelFileUploadForm, ExcelRowForm
 from .models import ExcelFile, ExcelRow
@@ -16,7 +15,6 @@ def upload_excel(request):
     return render(request, 'csvR/upload_excel.html', {'form': form})
 
 def edit_row(request, row_id):
-    # Get the row object based on the row_id (replace ExcelRow with your actual model)
     row = get_object_or_404(ExcelRow, id=row_id)
 
     if request.method == 'POST':
