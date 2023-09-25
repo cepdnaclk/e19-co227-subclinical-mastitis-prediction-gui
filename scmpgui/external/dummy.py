@@ -9,6 +9,5 @@ for line in sys.stdin:
     # Output to stdout
     sys.stdout.write(f"Processed: {processed_line}\n")
     sys.stdout.flush()  # Make sure the output is flushed immediately
-print("Wait....")
-sleep(3)
+sleep(5)
 print("Done")
