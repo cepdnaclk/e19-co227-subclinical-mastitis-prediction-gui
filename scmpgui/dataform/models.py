@@ -20,37 +20,37 @@ class Record(models.Model):
     dim = models.PositiveIntegerField()
 
     # 7. avg_daily_milk_yield (Avg(7 days). Daily MY (L))
-    avg_daily_milk_yield = models.DecimalField(max_digits=8, decimal_places=2)
+    avg_daily_milk_yield = models.DecimalField(max_digits=10, decimal_places=2)
 
     # 8. test_day_milk_yield (Test day MY (L))
-    test_day_milk_yield = models.DecimalField(max_digits=8, decimal_places=2)
+    test_day_milk_yield = models.DecimalField(max_digits=10, decimal_places=2)
 
     # 9. fat_percentage (Fat (%))
-    fat_percentage = models.DecimalField(max_digits=4, decimal_places=2)
+    fat_percentage = models.DecimalField(max_digits=10, decimal_places=2)
 
     # 10. snf_percentage (SNF (%) - Solid-Not-Fat)
-    snf_percentage = models.DecimalField(max_digits=4, decimal_places=2)
+    snf_percentage = models.DecimalField(max_digits=10, decimal_places=2)
 
     # 11. milk_density (Density - Kg/m³)
-    milk_density = models.DecimalField(max_digits=6, decimal_places=2)
+    milk_density = models.DecimalField(max_digits=10, decimal_places=2)
 
     # 12. protein_percentage (Protein (%))
-    protein_percentage = models.DecimalField(max_digits=4, decimal_places=2)
+    protein_percentage = models.DecimalField(max_digits=10, decimal_places=2)
 
     # 13. milk_conductivity (Conductivity - mS/cm)
-    milk_conductivity = models.DecimalField(max_digits=4, decimal_places=2)
+    milk_conductivity = models.DecimalField(max_digits=10, decimal_places=2)
 
     # 14. milk_ph (pH)
-    milk_ph = models.DecimalField(max_digits=3, decimal_places=2)
+    milk_ph = models.DecimalField(max_digits=10, decimal_places=2)
 
     # 15. freezing_point (Freezing point - ⁰C)
-    freezing_point = models.DecimalField(max_digits=3, decimal_places=2)
+    freezing_point = models.DecimalField(max_digits=10, decimal_places=2)
 
     # 16. salt_percentage (Salt (%))
-    salt_percentage = models.DecimalField(max_digits=3, decimal_places=2)
+    salt_percentage = models.DecimalField(max_digits=10, decimal_places=2)
 
     # 17. lactose_percentage (Lactose (%))
-    lactose_percentage = models.DecimalField(max_digits=3, decimal_places=2)
+    lactose_percentage = models.DecimalField(max_digits=10, decimal_places=2)
 
     # 18. scc (SCC - Somatic Cell Count, 103 cells/ml)
     scc = models.PositiveIntegerField()
