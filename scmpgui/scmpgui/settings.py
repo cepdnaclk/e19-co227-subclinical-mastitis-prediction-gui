@@ -41,9 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # From here on add custom apps
     'home.apps.HomeConfig', # home page of the project
-    #'results'
-    'results.apps.ResultsConfig', #the page ehere we display the results of the scm prediction
-    'dataform.apps.DataformConfig', # data collection for PModel
+    'results',
+    'dataform',
+    #'results.apps.ResultsConfig' #the page ehere we display the results of the scm prediction
+    'csvR',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# settings.py
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

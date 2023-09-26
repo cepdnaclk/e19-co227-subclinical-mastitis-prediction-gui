@@ -1,26 +1,115 @@
 {% extends "base.html" %}
 
-{% block page_content %}
+{% block style_content %}
+    .carousel .carousel-item {
+        height: 350px;
+    }
 
-<style>
-    body {
-        background-image: url('/static/images/background_alt.png');
-        background-size: cover; /* This ensures the image covers the entire viewport */
-        background-repeat: no-repeat; /* This prevents the image from repeating */
-        background-attachment: fixed; /* This fixes the background image in place */
-        color: rebeccapurple;
-      }
+    .carousel-item img {
+        position: absolute;
+        object-fit: cover;
+        min-height: 500px;
+        bottom: -30%;
+    }
+
+    .btn-primary {
+        background-color: rebeccapurple;
+        border-color: rebeccapurple;
+        color: white;
+    }
+
+    .btn-custom:hover,
+    .btn-custom:focus {
+        background-color: darkorchid;
+        border-color: darkorchid;
+    }
+
+    .card-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .card {
+        flex: 1;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #dccae9;
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    a{
+        text-decoration: none;
+    }
 </style>
 
-<div class="container">
-  <div class="row justify-content-center align-items-center">
-      <div class="col-md-6">
-          <img src="/static/images/front.png" alt="Centered Image" class="img-fluid mx-auto d-block" />
-      </div>
-  </div>
+{% endblock style_content %}
+
+{% block outside_content %}
+
+<div class="row">
+    <div id="ImageCarousel" class="carousel slide carousel-fade pointer-event" data-bs-ride="carousel" data-bs-pause="none">
+        <div class="carousel-inner">
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="/static/images/first.png" class="d-block w-100" alt="First slide">
+            </div>
+            <div class="carousel-item active" data-bs-interval="3000">
+                <img src="/static/images/second.png" class="d-block w-100" alt="Second slide">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="/static/images/third.png" class="d-block w-100" alt="Third slide">
+            </div>
+        </div>
+    </div>
 </div>
 
-<h1>Welcome!</h1><br>
-<h3>This is the temporary homepage of our project!</h3>
+{% endblock outside_content %}
+
+{% block page_content %}
+
+<!--Three Cards-->
+<div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="/data" class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Individual Data Entry</h5>
+                        <p class="card-text">Individual Data Entry mode allows you to input data point by point, making predictions with precision for each unique case. Perfect for real-time analysis and immediate insights</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/csvR" class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Batch Data Import</h5>
+                        <p class="card-text">Batch Data Import mode simplifies the process of analyzing large datasets. Upload your CSV or Excel file, and let our model handle the heavy lifting for comprehensive predictions.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/historical-data" class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Historical Data Visualization</h5>
+                        <p class="card-text">Historical Data Visualization mode empowers you to uncover trends and insights from your existing data. Dive into the past and visualize your data's journey for better decision-making.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 {% endblock page_content %}
