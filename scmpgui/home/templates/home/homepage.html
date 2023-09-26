@@ -33,14 +33,16 @@
         flex: 1;
         background-color: #fff;
         border: 1px solid #ddd;
-        border-radius: 5px;
+        border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s;
+        transition: all 0.2s;
+        cursor: pointer;
     }
 
     .card:hover {
         transform: translateY(-5px);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #dccae9;
     }
 
     .card-title {
@@ -48,18 +50,8 @@
         font-weight: bold;
     }
 
-    .btn-card {
-        background-color: rebeccapurple;
-        color: white;
-        border: none;
-        border-radius: 5px;
+    a{
         text-decoration: none;
-        display: inline-block;
-        transition: background-color 0.2s;
-    }
-
-    .btn-card:hover {
-        background-color: darkorchid;
     }
 </style>
 
@@ -92,34 +84,32 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div class="card">
+                <a href="/data" class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Single Input</h5>
-                        <p class="card-text">Update Data by data</p>
-                        <a href="/data" class="btn btn-primary">Go to Single Input</a>
+                        <h5 class="card-title">Individual Data Entry</h5>
+                        <p class="card-text">Individual Data Entry mode allows you to input data point by point, making predictions with precision for each unique case. Perfect for real-time analysis and immediate insights</p>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-4">
-                <div class="card">
+                <a href="/csvR" class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Multiple Input</h5>
-                        <p class="card-text">Update Data Set</p>
-                        <a href="/csvR" class="btn btn-primary">Go to Multiple Input</a>
+                        <h5 class="card-title">Batch Data Import</h5>
+                        <p class="card-text">Batch Data Import mode simplifies the process of analyzing large datasets. Upload your CSV or Excel file, and let our model handle the heavy lifting for comprehensive predictions.</p>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-4">
-                <div class="card">
+                <a href="/historical-data" class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Historical Data</h5>
-                        <p class="card-text">Data Visualization</p>
-                        <a href="/historical-data" class="btn btn-primary">Go to Historical Data</a>
+                        <h5 class="card-title">Historical Data Visualization</h5>
+                        <p class="card-text">Historical Data Visualization mode empowers you to uncover trends and insights from your existing data. Dive into the past and visualize your data's journey for better decision-making.</p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
 </div>
+
 
 {% endblock page_content %}
