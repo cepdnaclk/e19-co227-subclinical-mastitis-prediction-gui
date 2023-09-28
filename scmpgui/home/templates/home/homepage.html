@@ -9,7 +9,6 @@
         position: absolute;
         object-fit: cover;
         min-height: 500px;
-        bottom: -30%;
     }
 
     .btn-primary {
@@ -37,6 +36,7 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: all 0.2s;
         cursor: pointer;
+        color: rebeccapurple;
     }
 
     .card:hover {
@@ -53,6 +53,15 @@
     a{
         text-decoration: none;
     }
+
+    .carousel-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 350px;
+        transform: translate(-50%, -50%);
+        z-index: 9999; /* Adjust the z-index as needed to ensure it's above the carousel */
+      }
 </style>
 
 {% endblock style_content %}
@@ -63,14 +72,20 @@
     <div id="ImageCarousel" class="carousel slide carousel-fade pointer-event" data-bs-ride="carousel" data-bs-pause="none">
         <div class="carousel-inner">
             <div class="carousel-item" data-bs-interval="3000">
-                <img src="/static/images/first.png" class="d-block w-100" alt="First slide">
+                <img src="/static/images/carousel/1.png" class="d-block w-100" alt="First slide" style="bottom: -40%;">
             </div>
             <div class="carousel-item active" data-bs-interval="3000">
-                <img src="/static/images/second.png" class="d-block w-100" alt="Second slide">
+                <img src="/static/images/carousel/2.png" class="d-block w-100" alt="Second slide" style="bottom: -60%;">
             </div>
             <div class="carousel-item" data-bs-interval="3000">
-                <img src="/static/images/third.png" class="d-block w-100" alt="Third slide">
+                <img src="/static/images/carousel/3.jpg" class="d-block w-100" alt="Third slide" style="bottom: -70%;">
             </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="/static/images/carousel/4.jpg" class="d-block w-100" alt="Fourth slide" style="bottom: -70%;">
+            </div>
+
+        <!-- Project Logo -->
+        <img src="/static/images/front.png" class="carousel-logo">
         </div>
     </div>
 </div>
