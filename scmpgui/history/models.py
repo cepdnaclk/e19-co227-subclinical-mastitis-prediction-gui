@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class HistoricalRecords(models.Model):
@@ -59,6 +60,9 @@ class HistoricalRecords(models.Model):
     # 19. label (Label)
     label = models.TextField(blank=True)
 
+    # 20. Added by (User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
     def to_string(self):
         return (
             f"ID: {self.id_num}\n"
@@ -79,8 +83,9 @@ class HistoricalRecords(models.Model):
             f"Salt Percentage: {self.salt_percentage}\n"
             f"Lactose Percentage: {self.lactose_percentage}\n"
             f"SCC: {self.scc}\n"
-            f"Label: {self.label}"
+            f"Label: {self.label}\n"
+            f"User: {self.user}"
         )
 
     def __str__(self):
-        return f"Record {self.id} - Cow: {self.id_num}, Sample: {self.sample_num}, Farm: {self.farm}"
+        return f"Record {self.id_num} - Cow: {self.id_num}, Sample: {self.sample_num}, Farm: {self.farm}"
