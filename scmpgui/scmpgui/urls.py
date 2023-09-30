@@ -27,6 +27,7 @@ urlpatterns = [
     path('data/', include('dataform.urls')),
     path('result/', include('results.urls')),
     path('csvR/', include('csvR.urls')),
+    path('history/',include('history.urls')),
     path('', RedirectView.as_view(url='home/',permanent=True)),
     
 ]

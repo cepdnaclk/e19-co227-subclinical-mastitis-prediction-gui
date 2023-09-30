@@ -41,10 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # From here on add custom apps
     'home.apps.HomeConfig', # home page of the project
-    'results',
-    'dataform',
-    #'results.apps.ResultsConfig' #the page ehere we display the results of the scm prediction
+    'dataform.apps.DataformConfig', #single from input page
+    'results.apps.ResultsConfig', #the page ehere we display the results of the scm prediction
     'csvR',
+    'history.apps.HistoryConfig',
 ]
 
 MIDDLEWARE = [
