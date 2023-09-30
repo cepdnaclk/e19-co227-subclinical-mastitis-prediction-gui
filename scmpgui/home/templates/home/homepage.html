@@ -2,14 +2,48 @@
 
 {% block style_content %}
     .carousel .carousel-item {
-        height: 350px;
+        height: 400px;
     }
 
     .carousel-item img {
         position: absolute;
         object-fit: cover;
         min-height: 500px;
-        bottom: -30%;
+    }
+
+    .custom-carousel-item .gradient-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    
+    .gradient1 {
+        background: linear-gradient(to top, rgba(255, 215, 0, 0.9) 20%, rgba(255, 215, 0, 0.4) 40%, rgba(255, 215, 0, 0.2) 50%, rgba(255, 215, 0, 0.1) 80%, rgba(0, 0, 0, 0) 100%);
+    }
+    
+    .gradient2 {
+        background: linear-gradient(to top,  rgba(30, 20, 10, 1) 20%, rgba(30, 20, 10, 0.6) 40%, rgba(30, 20, 10, 0.4) 50%, rgba(30, 20, 10, 0.2) 80%, rgba(0, 0, 0, 0) 100%);
+    }
+    
+    .gradient3 {
+        background: linear-gradient(to top, rgba(0, 100, 0, 1) 20%, rgba(0, 100, 0, 0.6) 40%, rgba(0, 100, 0, 0.4) 50%,  rgba(0, 100, 0, 0.2) 80%, rgba(0, 0, 0, 0) 100%);
+    }    
+
+    #ImageCarousel .carousel-inner {
+        transition-duration: 4s !important; 
+    }
+    
+    .carousel-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0); 
+        color: white; 
+        padding: 10px; 
     }
 
     .btn-primary {
@@ -33,16 +67,20 @@
         flex: 1;
         background-color: #fff;
         border: 1px solid #ddd;
-        border-radius: 10px;
+        border-radius: 15px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: all 0.2s;
         cursor: pointer;
+        width: auto;
+        height: auto;
+        margin-top: 20px;
     }
 
     .card:hover {
         transform: translateY(-5px);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         background-color: #dccae9;
+        text-decoration:none;
     }
 
     .card-title {
@@ -53,6 +91,15 @@
     a{
         text-decoration: none;
     }
+    .custom-image1 {
+        bottom: -60%;
+    }
+    .custom-image2 {
+        bottom: -50%;
+    }
+    .custom-image3 {
+        bottom: -10%;
+    }
 </style>
 
 {% endblock style_content %}
@@ -62,14 +109,26 @@
 <div class="row">
     <div id="ImageCarousel" class="carousel slide carousel-fade pointer-event" data-bs-ride="carousel" data-bs-pause="none">
         <div class="carousel-inner">
-            <div class="carousel-item" data-bs-interval="3000">
-                <img src="/static/images/first.png" class="d-block w-100" alt="First slide">
+            <div class="carousel-item active custom-carousel-item" data-bs-interval="5000">
+                <img src="/static/images/first1.png" class="d-block w-100 custom-image1" alt="First slide">
+                <div class="gradient-overlay gradient1"></div>
+                <div class="carousel-caption">
+                    <p>Hello {{request.user}}, We are here to ensure your heard's health. Together, we'll make every milking session a success, ensuring that your passion for dairy farming continues to flourish. Trust in our unwavering dedication to your herd's health and your farm's prosperity.</p>
+                </div>
             </div>
-            <div class="carousel-item active" data-bs-interval="3000">
-                <img src="/static/images/second.png" class="d-block w-100" alt="Second slide">
+            <div class="carousel-item custom-carousel-item" data-bs-interval="5000">
+                <img src="/static/images/second2.png" class="d-block w-100 custom-image2" alt="Second slide">
+                <div class="gradient-overlay gradient2"></div>
+                <div class="carousel-caption">
+                    <p>Hello {{request.user}}, We are here to ensure your heard's health. Together, we'll make every milking session a success, ensuring that your passion for dairy farming continues to flourish. Trust in our unwavering dedication to your herd's health and your farm's prosperity.</p>
+                </div>
             </div>
-            <div class="carousel-item" data-bs-interval="3000">
-                <img src="/static/images/third.png" class="d-block w-100" alt="Third slide">
+            <div class="carousel-item custom-carousel-item" data-bs-interval="5000">
+                <img src="/static/images/third3.png" class="d-block w-100 custom-image3" alt="Third slide">
+                <div class="gradient-overlay gradient3"></div>
+                <div class="carousel-caption">
+                    <p>Hello {{request.user}}, We are here to ensure your heard's health. Together, we'll make every milking session a success, ensuring that your passion for dairy farming continues to flourish. Trust in our unwavering dedication to your herd's health and your farm's prosperity.</p>
+                </div>
             </div>
         </div>
     </div>

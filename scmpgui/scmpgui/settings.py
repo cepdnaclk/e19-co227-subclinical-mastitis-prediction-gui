@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'dataform',
     #'results.apps.ResultsConfig' #the page ehere we display the results of the scm prediction
     'csvR',
+    'members',
 ]
 
 MIDDLEWARE = [

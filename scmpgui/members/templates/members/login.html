@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block nav_content %}
+{% endblock nav_content %}
+
+{% block outside_content %}
+
+<style>
+	body,
+	html {
+		display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-image: url('/static/images/frontpage.png');
+        background-size: cover; 
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
+        background-position: center bottom;
+	}
+
+	.user_card {
+		width: 325px;
+		margin-top: auto;
+		margin-bottom: auto;
+		background: rgba(0, 0, 0, 0.7) !important;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		padding: 20px;
+		box-shadow: none !important;
+		border-radius: 15px;
+	}
+
+	.form_container {
+		margin-top: 20px;
+	}
+
+	#form-title{
+		color: #fff;
+	}
+
+	.login_btn {
+		width: 100%;
+		background: #FF69B4 !important;
+		color: white !important;
+		margin-top: 10px;
+		border-radius: 0.5rem 0.50rem 0.50rem 0.5rem;
+	}
+
+	.login_btn:focus {
+		box-shadow: none !important;
+		outline: 0px !important;
+	}
+
+	.login_btn:hover {
+		background: #FF8CD8 !important;
+	}
+
+	.login_container {
+		padding: 0 2rem;
+	}
+
+	.input-group-text {
+		background: #563186 !important;
+		color: white !important;
+		border: 0 !important;
+		border-radius: 0.50rem 0 0 0.50rem !important;
+	}
+
+	.input_user,
+	.input_pass:focus {
+		box-shadow: none !important;
+		outline: 0px !important;
+	}
+
+	#messages{
+		display: flex;
+		justify-content: center; 
+		align-items: center; 
+		background-color: none !important;
+		padding: 10px;
+		margin-top: 10px;
+	}
+
+	.form-control {
+        background-color: #000000;
+        border: 0.10px solid #fff;
+        color: white;
+        border-radius: 0 0.50rem 0.50rem 0 !important;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+	.form-control:focus {
+		background-color: #000000; 
+		border-color: #fff; 
+		color: white;
+	}
+
+	.form-control:placeholder {
+        color: #fff;
+    }
+
+	.white-text {
+        color: white;
+    }
+
+	.purple-text {
+        color: #563186;
+    }
+
+	.red-text {
+		color: #FF0000;
+	}
+
+	.links a:hover {
+        text-decoration: none; 
+    }
+	
+</style>
+
+<body>
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+
+
+					<h3 id="form-title">LOGIN</h3>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form method="POST" action="">
+						{% csrf_token %}
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" name="username" placeholder="Username..." class="form-control">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+								<input type="password" name="password" placeholder="Password..." class="form-control" >
+						</div>
+
+						<div class="d-flex justify-content-center mt-3 login_container">
+							<input class="btn login_btn" type="submit" value="Login">
+						</div>
+					</form>
+
+				</div>
+				
+				{% for message in messages %}
+				<p id="messages" class="{% if 'success' in message.tags %}white-text{% elif 'error' in message.tags %}red-text{% endif %}">{{ message }}</p>
+				{% endfor %}
+
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						<span class="white-text">Don't have an account?</span> <a href="{% url 'register' %}" class="ml-2"><span class="purple-text">Sign Up</span></a>
+					</div>
+			
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+{% endblock outside_content %}
