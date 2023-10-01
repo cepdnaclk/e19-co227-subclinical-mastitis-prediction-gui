@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block load_plugin %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+{% endblock load_plugin %}
+
+{% block style_content %}
+.popover {
+--bs-popover-max-width: 500px;
+--bs-popover-border-color: violet;
+--bs-popover-header-bg: violet;
+--bs-popover-header-color: #dccae9;
+--bs-popover-body-padding-x: 1rem;
+--bs-popover-body-padding-y: .5rem;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+a{
+color: #563186;
+text-decoration: none;
+}
+{% endblock style_content %}
+
+
+{% block page_content %}
+
+<div class="container">
+    <form action="" method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+
+        {% regroup form by field.group as field_groups %}
+        {% for field_group in field_groups %}
+        <div class="row g-3">
+            {% for field in field_group.list %}
+            {% comment %} <div class="form-group col-md-4"> {% endcomment %}
+                {% comment %} <div class="mb-3"> {% endcomment %}
+                    {% comment %} <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label> {% endcomment %}
+                
+                    {{ field }}
+                    {{ field.errors }}
+
+                    {% comment %} <small class="form-text text-muted">{{ field.help_text }}</small> {% endcomment %}
+                {% comment %} </div> {% endcomment %}
+            {% comment %} </div> {% endcomment %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary col-md-2">Process</button>
+        </div>
+    </form>
+
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('[data-bs-toggle="popover"]').each(function() {
+          $(this).popover();
+        });
+      
+        $('.popover-dismiss').popover({
+          trigger: 'focus'
+        });
+      });      
+</script>
+
+{% endblock page_content %}

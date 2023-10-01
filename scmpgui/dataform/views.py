@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from .models import Record
 from django.urls import reverse
+from .forms import DataForm
 
 # Create your views here.
 
@@ -40,3 +41,20 @@ def form_submission(request):
         # ...
         return JsonResponse({'success': True})
     return JsonResponse({'success': False})
+
+def AutoFormView(request):
+    if request.method == "POST":
+        form = DataForm(request.POST)
+        # print("Invalid Form!")
+        # print(request.POST)
+        
+        if form.is_valid():
+            return HttpResponse("Sumbmitted successfully!")
+        else:
+            for field_name, field in form.fields.items():
+                print(f"----------->ERRROR @ {field_name} : {form[field_name].errors}")
+        
+    else:
+        form = DataForm()
+
+    return render(request,"dataform/auto.html", {"form": form})
