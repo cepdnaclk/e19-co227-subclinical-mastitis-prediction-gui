@@ -14,7 +14,7 @@
         align-items: center;
         height: 100vh;
         margin: 0;
-        background-image: url('/static/images/frontpage.png');
+        background-image: url('/static/images/frontpage13.png');
         background-size: cover; 
         background-repeat: no-repeat; 
         background-attachment: fixed; 
@@ -22,9 +22,10 @@
 	}
 
 	.user_card {
-		width: 325px;
+		width: 350px;
 		margin-top: auto;
 		margin-bottom: auto;
+		margin-left: 600px !important;
 		background: rgba(0, 0, 0, 0.7) !important;
 		position: relative;
 		display: flex;
@@ -32,7 +33,7 @@
 		flex-direction: column;
 		padding: 20px;
 		box-shadow: none !important;
-		border-radius: 15px;
+		border-radius: 25px;
 	}
 
 	.form_container {
@@ -45,19 +46,20 @@
 
 	.login_btn {
 		width: 100%;
-		background: #FF69B4 !important;
+		background: rgba(0, 0, 0, 0) !important;
 		color: white !important;
 		margin-top: 10px;
-		border-radius: 0.5rem 0.50rem 0.50rem 0.5rem;
+		border: 1px solid #fff !important;
+		border-radius: 1rem 1rem 1rem 1rem;
 	}
 
 	.login_btn:focus {
 		box-shadow: none !important;
-		outline: 0px !important;
+		outline: 1px solid #fff !important;
 	}
 
 	.login_btn:hover {
-		background: #FF8CD8 !important;
+		background-color: rgba(255, 255, 255, 0.4) !important; 
 	}
 
 	.login_container {
@@ -67,8 +69,8 @@
 	.input-group-text {
 		background: #563186 !important;
 		color: white !important;
-		border: 0 !important;
-		border-radius: 0.50rem 0 0 0.50rem !important;
+		border: 1px solid #fff;
+		border-radius: 1rem 0 0 1rem !important;
 	}
 
 	.input_user,
@@ -88,9 +90,9 @@
 
 	.form-control {
         background-color: #000000;
-        border: 0.10px solid #fff;
+        border: 1px solid #fff;
         color: white;
-        border-radius: 0 0.50rem 0.50rem 0 !important;
+        border-radius: 0 1rem 1rem 0 !important;
         padding: 10px;
         margin-bottom: 10px;
     }
@@ -120,6 +122,40 @@
 	.links a:hover {
         text-decoration: none; 
     }
+
+	registerbutton {
+        display: block;
+		justify-content: center !important;
+        margin: 10px;
+        padding: 5px;
+		align-text: center !important;
+        border: 2px solid rgba(255, 255, 255, 0.9);        ;
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0); 
+        color: rgba(255, 255, 255, 1); 
+        font-size: 16px; 
+        cursor: pointer;
+        width: 275px;
+        border-radius: 3rem 3rem 3rem 3rem;
+		text-align: center !important;
+    }
+
+	registerbutton:hover {
+        background-color: rgba(255, 255, 255, 0.4); 
+    }
+
+	.left-half {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 50%; 
+		float: left;
+		margin-left: 30px !important; 
+		padding: 20px; 
+		font-size: 20px; 
+		color: white;
+		text-align: left !important;
+	}
 	
 </style>
 
@@ -151,6 +187,7 @@
 						<div class="d-flex justify-content-center mt-3 login_container">
 							<input class="btn login_btn" type="submit" value="Login">
 						</div>
+						<p class='white-text'>______________________________</p>
 					</form>
 
 				</div>
@@ -159,15 +196,18 @@
 				<p id="messages" class="{% if 'success' in message.tags %}white-text{% elif 'error' in message.tags %}red-text{% endif %}">{{ message }}</p>
 				{% endfor %}
 
-				<div class="mt-4">
-					<div class="d-flex justify-content-center links">
-						<span class="white-text">Don't have an account?</span> <a href="{% url 'register' %}" class="ml-2"><span class="purple-text">Sign Up</span></a>
-					</div>
-			
+				<div class="d-flex justify-content-center mt-3 login_container">
+					<registerbutton onclick="window.location.href = '{% url 'register' %}';">Create New Account</registerbutton>
 				</div>
+				
 			</div>
 		</div>
 	</div>
+
+	<div class="left-half">
+        <p>Welcome to the future of dairy farming. We offer you this tool which predicts subclinical mastitis with the power of data analytics, ensuring the health and productivity of your precious herd. Join us to embrace the power of science and conquer the challenges of the farming world for a future of sustainable success. Click on Create New Account to join with us.</p>
+    </div>
+
 </body>
 
 {% endblock outside_content %}

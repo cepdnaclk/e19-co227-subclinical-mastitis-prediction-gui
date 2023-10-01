@@ -63,16 +63,20 @@
         justify-content: space-between;
     }
 
+    .card-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .card {
         flex: 1;
         background-color: #fff;
         border: 1px solid #ddd;
-        border-radius: 15px;
+        border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: all 0.2s;
         cursor: pointer;
-        width: auto;
-        height: auto;
+        color: rebeccapurple;
         margin-top: 20px;
     }
 
@@ -80,7 +84,6 @@
         transform: translateY(-5px);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         background-color: #dccae9;
-        text-decoration:none;
     }
 
     .card-title {
@@ -89,8 +92,9 @@
     }
 
     a{
-        text-decoration: none;
+        text-decoration: none !important;
     }
+
     .custom-image1 {
         bottom: -60%;
     }
