@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block nav_content %}
+{% endblock nav_content %}
+
+{% block outside_content %}
+
+<style>
+	body,
+	html {
+		display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-image: url('/static/images/frontpage13.png');
+        background-size: cover; 
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
+        background-position: center bottom;
+	}
+
+	.user_card {
+		width: 350px;
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-left: 600px !important;
+		background: rgba(0, 0, 0, 0.7) !important;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		padding: 20px;
+		box-shadow: none !important;
+		border-radius: 25px;
+	}
+
+	.form_container {
+		margin-top: 20px;
+	}
+
+	#form-title{
+		color: #fff;
+	}
+
+	.login_container {
+		padding: 0 2rem;
+	}
+
+	.login_btn {
+		width: 100%;
+		background: rgba(0, 0, 0, 0) !important;
+		color: white !important;
+		margin-top: 10px !important;
+		border: 1px solid #fff !important;
+		border-radius: 1rem 1rem 1rem 1rem !important;
+		padding: 0 !important;
+	}
+
+	.login_btn:focus {
+		box-shadow: none !important;
+		outline: 1px solid #fff !important;
+	}
+
+	.login_btn:hover {
+		background-color: rgba(255, 255, 255, 0.4) !important; 
+	}
+
+	.input-group-text {
+		background:#563186 !important;
+		color: white !important;
+		border: 1px solid #fff;
+		border-radius: 1rem 0 0 1rem !important;
+	}
+
+	.input_user,
+	.input_pass:focus {
+		box-shadow: none !important;
+		outline: 0px !important;
+	}
+
+	#messages{
+		display: flex;
+		justify-content: center; 
+		align-items: center; 
+		background-color: none !important;
+		padding: 10px;
+		margin-top: 10px;
+	}
+
+	.form-control {
+        background-color: #000000;
+        border: 1px solid #fff;
+        color: white;
+        border-radius: 0 1rem 1rem 0;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+	.form-control:focus {
+		background-color: #000000; 
+		border-color: #fff; 
+		color: white;
+	}
+
+	.form-control:placeholder {
+        color: #fff;
+    }
+
+	.white-text {
+        color: white;
+    }
+
+	.purple-text {
+        color: #563186;
+    }
+
+	.red-text {
+		color: #FF0000;
+	}
+    
+    .links a:hover {
+        text-decoration: none; 
+    }
+
+    .left-half {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 50%; 
+		float: left;
+		margin-left: 30px !important; 
+		padding: 20px; 
+		font-size: 20px; 
+		color: white;
+		text-align: left !important;
+	}
+
+</style>
+
+<body>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-center">
+                    <h3 id="form-title">REGISTER</h3>
+                </div>
+                <div class="d-flex justify-content-center form_container">
+
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            {{form.username}}
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+                            </div>
+                            {{form.email}}
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            {{form.password1}}
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            {{form.password2}}
+                        </div>
+
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <input class="btn login_btn" type="submit" value="Register">
+                        </div>
+                    </form>
+                </div>
+
+                {% for message in messages %}
+					<p id="messages" class="{% if 'success' in message.tags %}white-text{% elif 'error' in message.tags %}red-text{% endif %}">{{ message }}</p>
+                {% endfor %}
+
+                <div class="mt-4">
+                    <div class="d-flex justify-content-center links">
+                        <span class="white-text">Already have an account?</span> <a href="{% url 'login' %}" class="ml-2"><span class="purple-text">Login</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="left-half">
+        <p>Welcome to the future of dairy farming. We offer you this tool which predicts subclinical mastitis with the power of data analytics, ensuring the health and productivity of your precious herd. Join us to embrace the power of science and conquer the challenges of the farming world for a future of sustainable success. Click on Create New Account to join with us.</p>
+    </div>
+
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder='Username..';
+        form_fields[2].placeholder='Email..';
+        form_fields[3].placeholder='Enter password...';
+        form_fields[4].placeholder='Re-enter Password...';
+
+
+        for (var field in form_fields){ 
+            form_fields[field].className += ' form-control'
+        }
+    </script>
+</body>
+
+{% endblock outside_content %}
+
+
