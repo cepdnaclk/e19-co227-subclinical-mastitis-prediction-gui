@@ -14,11 +14,10 @@
         align-items: center;
         height: 100vh;
         margin: 0;
-        background-image: url('/static/images/frontpage13.png');
+        background-image: url('/static/images/background_alt.png');
         background-size: cover; 
         background-repeat: no-repeat; 
         background-attachment: fixed; 
-        background-position: center bottom;
 	}
 
 	.user_card {
@@ -26,13 +25,13 @@
 		margin-top: auto;
 		margin-bottom: auto;
 		margin-left: 600px !important;
-		background: rgba(0, 0, 0, 0.7) !important;
+		background: rgba(44, 27, 71, 0.7) !important;
 		position: relative;
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
 		padding: 20px;
-		box-shadow: none !important;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		border-radius: 25px;
 	}
 
@@ -145,16 +144,29 @@
     }
 
 	.left-half {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		position: absolute;
-		top: 50%;
+		top: 0;
 		left: 0;
+		height: 100vh;
 		width: 50%; 
 		float: left;
 		margin-left: 30px !important; 
 		padding: 20px; 
-		font-size: 20px; 
-		color: white;
-		text-align: left !important;
+		color: rebeccapurple;
+	}
+
+	.indiv{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.logo{
+		height: 200px;
 	}
 	
 </style>
@@ -166,7 +178,7 @@
 				<div class="d-flex justify-content-center">
 
 
-					<h3 id="form-title">LOGIN</h3>
+					<h3 id="form-title">Log In</h3>
 				</div>
 				<div class="d-flex justify-content-center form_container">
 					<form method="POST" action="">
@@ -187,7 +199,7 @@
 						<div class="d-flex justify-content-center mt-3 login_container">
 							<input class="btn login_btn" type="submit" value="Login">
 						</div>
-						<p class='white-text'>______________________________</p>
+						<p class='white-text text-center'>______________________________________</p>
 					</form>
 
 				</div>
@@ -205,8 +217,11 @@
 	</div>
 
 	<div class="left-half">
-        <p>Welcome to the future of dairy farming. We offer you this tool which predicts subclinical mastitis with the power of data analytics, ensuring the health and productivity of your precious herd. Join us to embrace the power of science and conquer the challenges of the farming world for a future of sustainable success. Click on Create New Account to join with us.</p>
-    </div>
+		<div class="indiv">
+			<img src="/static/images/logo_h.png" class="logo">
+			<h3 class="text-center">Welcome to the future of dairy farming, predicting subclinical mastitis for herd health and sustainable success through scientific advancements.</h3>
+		</div>
+	</div>
 
 </body>
 
