@@ -31,18 +31,19 @@
     <script>
         {% comment %} graph 1 {% endcomment %}
         var inumData = {
-            labels: [{% for item in dim %}"{{ item }}", {% endfor %}],
+            labels: [{% for item in sample_num %}"{{ item.0 }}", {% endfor %}],
             datasets: [{
                 label: 'SCM Free Cows',
-                data: [{% for item in yeild %}"{{ item }}", {% endfor %}],
+                data: [{% for item in ph %}"{{ item.0 }}", {% endfor %}],
                 backgroundColor: 'rgba(75, 192, 192, 0.2)', 
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1,
+                pointRadius: 5,
                 backgroundColor: getPointColors([{% for item in all_results %}"{{ item }}", {% endfor %}]),
                 {% comment %} borderColor: getPointColors([{% for item in all_results %}"{{ item }}", {% endfor %}]) {% endcomment %}
             },
             {
-                label : 'SCM Cows',
+                label : 'SCM Contaminated Cows',
                 backgroundColor: 'rgba(255, 0, 0, 1)'
         }]
         };
@@ -80,20 +81,25 @@
                     y: {
                         title: {
                           display: true,
-                          text: 'Average Daily Milk Yeild',
+                          text: 'Ph variation',
                           
-                        },
-                        beginAtZero : true
+                        }
                       },
                     x: {
+                        ticks: {
+                                stepSize: 1
+                        },
                         title: {
                           display: true,
-                          text: 'Days in Milk',
+                          text: 'Sample Number',
                           
                         },
-                        beginAtZero : true
+                        beginAtZero : true,
+                        
                       }
-                }
+                },
+                {% comment %} to remove the hover effect {% endcomment %}
+                events: [] 
             }
         });
 
@@ -108,14 +114,14 @@
             labels: ['Jersey * Friesian', 'Friesian'],
             datasets: [{
                 label: 'Total Herd',
-                data: fullHerd([{% for item in breed %}"{{ item }}", {% endfor %}]),
+                data: fullHerd([{% for item in breed_new %}"{{ item.0 }}", {% endfor %}]),
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1
             },
             {
                 label: 'Contaminated Cows',
-                data: getBreeds([{% for item in breed %}"{{ item }}", {% endfor %}],[{% for item in all_results %}"{{ item }}", {% endfor %}]),
+                data: getBreeds([{% for item in breed_new %}"{{ item.0 }}", {% endfor %}],[{% for item in all_results %}"{{ item }}", {% endfor %}]),
                 backgroundColor: 'rgba(255, 0, 0, 0.5)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1
