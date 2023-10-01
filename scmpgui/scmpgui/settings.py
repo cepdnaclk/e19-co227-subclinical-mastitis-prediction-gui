@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     # From here on add custom apps
     'home.apps.HomeConfig', # home page of the project
     'dataform.apps.DataformConfig', #single from input page
-    'results.apps.ResultsConfig', #the page ehere we display the results of the scm prediction
-    'csvR',
+    'results.apps.ResultsConfig', #the page wehere we display the results of the scm prediction
+    'multiple.apps.MultipleConfig',
     'history.apps.HistoryConfig',
 ]
 
