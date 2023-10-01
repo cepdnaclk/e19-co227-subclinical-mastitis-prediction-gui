@@ -60,6 +60,24 @@
         border-color: darkorchid;
     }
 
+    .btn-danger {
+        background-color: rebeccapurple;
+        border-color: rebeccapurple;
+        color: white;
+        font-weight: bold;
+        padding: 10px 20px;
+        margin-top: 20px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-danger:hover,
+    .btn-danger:focus {
+        background-color: darkorchid;
+        border-color: darkorchid;
+    }
+
+
     h1 {
         font-size: 28px;
         margin-bottom: 20px;
@@ -83,7 +101,7 @@
                         {% for column in df.columns %}
                         <th>{{ column }}</th>
                         {% endfor %}
-                        <th>Action</th>
+                        <th>Action</th> 
                     </tr>
                 </thead>
                 <tbody>
@@ -92,14 +110,11 @@
                         {% for cell in row %}
                         <td>{{ cell }}</td>
                         {% endfor %}
+                        <td>
+                            <a href="/data/" class="btn btn-danger">Edit</a> 
+                        </td>
                     </tr>
                     {% endfor %}
-
-                    {% if row.id %}
-                    <td>
-                        <a href="{% url 'edit_row' row.id %}" class="btn edit-button">Edit</a>
-                    </td>
-                    {% endif %}
                 </tbody>
             </table>
         </div>
