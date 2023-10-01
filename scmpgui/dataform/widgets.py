@@ -12,7 +12,6 @@ class CustomInputWidget(forms.Widget):
 
     def render(self, name, value, attrs=None, renderer=None):
         input_html = ""
-        validity = ''
 
         value_exist = f"value={value}" if value else ""
 
@@ -23,15 +22,15 @@ class CustomInputWidget(forms.Widget):
 
         if self.input_type == 'text':
             input_html = f"""
-                <input type="text" class="form-control {validity}" name="{name}" id="{name}" aria-describedby="{name}_help" placeholder="{self.placeholder}" {value_exist} required>
+                <input type="text" class="form-control" name="{name}" id="{name}" aria-describedby="{name}_help" placeholder="{self.placeholder}" {value_exist} required>
             """
         elif self.input_type == 'number':
             input_html = f"""
-                <input type="number" class="form-control {validity}" name="{name}" id="{name}" aria-describedby="{name}_help" placeholder="{self.placeholder}" step="0.01" {value_exist} required>
+                <input type="number" class="form-control" name="{name}" id="{name}" aria-describedby="{name}_help" placeholder="{self.placeholder}" {value_exist} required>
             """
         elif self.input_type == 'textarea':
             input_html = f"""
-                <textarea class="form-control {validity}" name="{name}" id="{name}" rows="3" placeholder="{self.placeholder}" >{value_exist}</textarea>
+                <textarea class="form-control" name="{name}" id="{name}" rows="3" placeholder="{self.placeholder}" >{value_exist}</textarea>
             """
 
         return f"""
@@ -40,7 +39,7 @@ class CustomInputWidget(forms.Widget):
                     <label for="{name}" class="form-label">{self.label}</label>
                     <a tabindex="0" class="fas fa-question-circle fa-xs" role="button" data-bs-trigger="focus" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="{self.pop_text}"></a>
                     {input_html}
-                    <small id="{name}_help" class="form-text text-muted">...</small>
+                    <small id="{name}_help" class="form-text text-danger"></small>
                 </div>
             </div>
         """
