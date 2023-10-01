@@ -31,6 +31,7 @@ urlpatterns = [
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
     #! MIND THE ORDER, THIS MUST BE LAST
+    path('history/',include('history.urls')),
     path('', RedirectView.as_view(url='members/',permanent=True)),
 ]
 

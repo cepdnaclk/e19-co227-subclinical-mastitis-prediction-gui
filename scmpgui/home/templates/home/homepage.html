@@ -77,7 +77,6 @@
         transition: all 0.2s;
         cursor: pointer;
         color: rebeccapurple;
-        margin-top: 20px;
     }
 
     .card:hover {
@@ -112,8 +111,7 @@
         height: 350px;
         transform: translate(-50%, -50%);
         z-index: 9999; /* Adjust the z-index as needed to ensure it's above the carousel */
-    }
-
+      }
 </style>
 
 {% endblock style_content %}
@@ -174,7 +172,7 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="/historical-data" class="card">
+                <a href="{% url "history_main" %}" class="card">
                     <div class="card-body">
                         <h5 class="card-title">Historical Data Visualization</h5>
                         <p class="card-text">Historical Data Visualization mode empowers you to uncover trends and insights from your existing data. Dive into the past and visualize your data's journey for better decision-making.</p>

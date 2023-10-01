@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block load_plugin %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+{% endblock load_plugin %}
+
+{% block style_content %}
+.popover {
+--bs-popover-max-width: 500px;
+--bs-popover-border-color: violet;
+--bs-popover-header-bg: violet;
+--bs-popover-header-color: #dccae9;
+--bs-popover-body-padding-x: 1rem;
+--bs-popover-body-padding-y: .5rem;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+a{
+color: #563186;
+text-decoration: none;
+}
+{% endblock style_content %}
+
+
+{% block page_content %}
+
+<div class="container">
+    <form action="" method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+
+        {% regroup form by field.group as field_groups %}
+        {% for field_group in field_groups %}
+        <div class="row g-3">
+            {% for field in field_group.list %}
+
+                    {{ field }}
+
+                    <script>
+                        // HTML-encoded JSON string
+                        var encodedJson = '{{ field.errors.as_json }}';
+                        
+                        // Decode HTML entities
+                        var decodedJson = $("<div/>").html(encodedJson).text();
+                        
+                        // Parse JSON
+                        var errorList = JSON.parse(decodedJson);
+                        
+                        // Check if errorList is empty
+                        if (errorList.length === 0) {
+                            // Handle the case where errorList is empty
+                            console.log("No errors found.");
+                        } else {
+                            // Find the input element by its ID
+                            var inputElement = $("#{{ field.name }}");
+                            
+                            // Add the "is-invalid" class to its class attribute
+                            inputElement.addClass("is-invalid");
+
+                            // Initialize a variable to store error messages
+                            var errorMessages = "";
+                        
+                            // Loop through the errorList and concatenate error messages
+                            $.each(errorList, function(index, error) {
+                                var message = error.message;
+                                var code = error.code;
+                        
+                                // Concatenate error messages
+                                errorMessages += message + "\n";
+                            });
+                            $("#{{ field.name }}_help").text(errorMessages);
+                        }
+
+                    </script>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary col-md-2">Process</button>
+        </div>
+    </form>
+
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('[data-bs-toggle="popover"]').each(function() {
+          $(this).popover();
+        });
+      
+        $('.popover-dismiss').popover({
+          trigger: 'focus'
+        });
+      });      
+</script>
+
+{% endblock page_content %}
