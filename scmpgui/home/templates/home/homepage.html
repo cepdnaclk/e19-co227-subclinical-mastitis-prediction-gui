@@ -1,49 +1,20 @@
 {% extends "base.html" %}
 
 {% block style_content %}
+    body{
+        background: linear-gradient(to top, #bba8eb 0%, #e9e4f9 25%);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
     .carousel .carousel-item {
-        height: 400px;
+        height: 350px;
     }
 
     .carousel-item img {
         position: absolute;
         object-fit: cover;
         min-height: 500px;
-    }
-
-    .custom-carousel-item .gradient-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
-    
-    .gradient1 {
-        background: linear-gradient(to top, rgba(255, 215, 0, 0.7) 20%, rgba(255, 215, 0, 0) 40%, rgba(255, 215, 0, 0) 50%, rgba(255, 215, 0, 0) 80%, rgba(0, 0, 0, 0) 100%);
-    }
-    
-    .gradient2 {
-        background: linear-gradient(to top,  rgba(30, 20, 10, 1) 20%, rgba(30, 20, 10, 0.6) 40%, rgba(30, 20, 10, 0.4) 50%, rgba(30, 20, 10, 0.2) 80%, rgba(0, 0, 0, 0) 100%);
-    }
-    
-    .gradient3 {
-        background: linear-gradient(to top, rgba(0, 100, 0, 1) 20%, rgba(0, 100, 0, 0.6) 40%, rgba(0, 100, 0, 0.4) 50%,  rgba(0, 100, 0, 0.2) 80%, rgba(0, 0, 0, 0) 100%);
-    }    
-
-    #ImageCarousel .carousel-inner {
-        transition-duration: 4s !important; 
-    }
-    
-    .carousel-caption {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0); 
-        color: white; 
-        padding: 10px; 
     }
 
     .btn-primary {
@@ -56,11 +27,6 @@
     .btn-custom:focus {
         background-color: darkorchid;
         border-color: darkorchid;
-    }
-
-    .card-container {
-        display: flex;
-        justify-content: space-between;
     }
 
     .card-container {
@@ -82,7 +48,8 @@
     .card:hover {
         transform: translateY(-5px);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        background-color: #dccae9;
+        background-color: #cbb1eb;
+        color: rebeccapurple;
     }
 
     .card-title {
@@ -94,16 +61,6 @@
         text-decoration: none !important;
     }
 
-    .custom-image1 {
-        bottom: -60%;
-    }
-    .custom-image2 {
-        bottom: -50%;
-    }
-    .custom-image3 {
-        bottom: -10%;
-    }
-
     .carousel-logo {
         position: absolute;
         top: 50%;
@@ -112,7 +69,10 @@
         transform: translate(-50%, -50%);
         z-index: 9999; /* Adjust the z-index as needed to ensure it's above the carousel */
       }
-</style>
+
+    .ImageCarousel{
+		box-shadow: 0 4px 8px 10px rgba(0, 0, 0, 0.8);
+    }
 
 {% endblock style_content %}
 
@@ -121,22 +81,21 @@
 <div class="row">
     <div id="ImageCarousel" class="carousel slide carousel-fade pointer-event" data-bs-ride="carousel" data-bs-pause="none">
         <div class="carousel-inner">
-            <div class="carousel-item active custom-carousel-item" data-bs-interval="5000">
-                <img src="/static/images/first1.png" class="d-block w-100 custom-image1" alt="First slide">
-                <div class="carousel-caption">
-                </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="/static/images/carousel/1.png" class="d-block w-100" alt="First slide" style="bottom: -40%;">
             </div>
-            <div class="carousel-item custom-carousel-item" data-bs-interval="5000">
-                <img src="/static/images/second2.png" class="d-block w-100 custom-image2" alt="Second slide">
-                <div class="carousel-caption">
-                </div>
+            <div class="carousel-item active" data-bs-interval="3000">
+                <img src="/static/images/carousel/2.png" class="d-block w-100" alt="Second slide" style="bottom: -60%;">
             </div>
-            <div class="carousel-item custom-carousel-item" data-bs-interval="5000">
-                <img src="/static/images/third3.png" class="d-block w-100 custom-image3" alt="Third slide">
-                <div class="carousel-caption">
-                </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="/static/images/carousel/3.jpg" class="d-block w-100" alt="Third slide" style="bottom: -70%;">
             </div>
-            <img src="/static/images/front.png" class="carousel-logo">
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="/static/images/carousel/4.jpg" class="d-block w-100" alt="Fourth slide" style="bottom: -70%;">
+            </div>
+
+        <!-- Project Logo -->
+        <img src="/static/images/front.png" class="carousel-logo">
         </div>
     </div>
 </div>
@@ -146,7 +105,7 @@
 {% block page_content %}
 
 <!--Three Cards-->
-<div class="row">
+<div class="row mt-4">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
