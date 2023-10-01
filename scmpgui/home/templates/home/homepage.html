@@ -104,6 +104,16 @@
     .custom-image3 {
         bottom: -10%;
     }
+
+    .carousel-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 350px;
+        transform: translate(-50%, -50%);
+        z-index: 9999; /* Adjust the z-index as needed to ensure it's above the carousel */
+    }
+
 </style>
 
 {% endblock style_content %}
@@ -134,6 +144,7 @@
                     <p>Hello {{request.user}}, We are here to ensure your heard's health. Together, we'll make every milking session a success, ensuring that your passion for dairy farming continues to flourish. Trust in our unwavering dedication to your herd's health and your farm's prosperity.</p>
                 </div>
             </div>
+            <img src="/static/images/front.png" class="carousel-logo">
         </div>
     </div>
 </div>
