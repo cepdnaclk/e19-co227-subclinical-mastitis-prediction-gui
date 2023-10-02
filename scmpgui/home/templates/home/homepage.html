@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block nav_items %}
+    <a href="{% url "dataform" %}" class="nav-item nav-link text-light">Individual Entry</a>
+    <a href="{% url "upload_excel" %}" class="nav-item nav-link text-light">Batch Process</a>
+    <a href="{% url "history_main" %}" class="nav-item nav-link text-light">Visualize History</a>
+{% endblock nav_items %}
+
 {% block style_content %}
     body{
         background: linear-gradient(to top, #bba8eb 0%, #e9e4f9 25%);

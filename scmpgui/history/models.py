@@ -55,10 +55,10 @@ class HistoricalRecords(models.Model):
     lactose_percentage = models.DecimalField(max_digits=10, decimal_places=2)
 
     # 18. scc (SCC - Somatic Cell Count, 103 cells/ml)
-    scc = models.PositiveIntegerField()
+    scc = models.PositiveIntegerField(blank=True,null=True)
 
     # 19. label (Label)
-    label = models.TextField(blank=True)
+    label = models.TextField()
 
     # 20. Added by (User)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)

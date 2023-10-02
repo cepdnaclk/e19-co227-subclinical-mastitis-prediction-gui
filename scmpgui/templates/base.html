@@ -43,8 +43,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav">
-                    <a href="{% url "home" %}" class="nav-item nav-link active text-light">Home</a>
-                    <a href="{% url "dataform" %}" class="nav-item nav-link text-light">Individual Entry</a>
+                    {% block nav_items %}
+                        <a href="{% url "home" %}" class="nav-item nav-link active text-light">Home</a>
+                        <a href="{% url "dataform" %}" class="nav-item nav-link text-light">Individual Entry</a>
+                        <a href="{% url "upload_excel" %}" class="nav-item nav-link text-light">Batch Process</a>
+                        <a href="{% url "history_main" %}" class="nav-item nav-link text-light">Visualize History</a>
+                    {% endblock nav_items %}
                 </div>
                 <div class="navbar-nav ms-auto"> 
                     
@@ -54,6 +58,15 @@
         </div>
     </nav>
     {% endblock nav_content %}
+
+    <style>
+        .navbar .navbar-nav .nav-item{
+            padding: 0 0.7em;
+        }
+        .navbar .navbar-nav .nav-item:not(:last-child){
+            border-right: 2px solid #351e53;
+        }
+    </style>
 
     {% block outside_content %}
         {% comment %} ? Any content that should span whole page goes here. {% endcomment %}
