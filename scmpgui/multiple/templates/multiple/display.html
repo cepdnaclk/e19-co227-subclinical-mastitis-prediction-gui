@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block outside_content %}
+
+<style>
+    body {
+        color: rebeccapurple;
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+    }
+
+</style>
+
+<body>
+    <div class="add_buttons">
+
+        <div class="button-group">
+          <a href="{% url 'display_dataset' %}" class="btn btn-primary btn-md btn-trim" role="button"> Laptops</a>
+        </div>
+    
+    </div>
+
+    <div>
+        <h4>Currently Viewing {{ header }}</h4>
+    </div>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>id_num</td>
+                <td>sample_num</td>
+                <td>farm</td>
+                <td>breed</td>
+                <td>lactation_num</td>
+                <td>dim</td>
+                <td>avg_daily_milk_yield</td>
+                <td>test_day_milk_yield</td>
+                <td>fat_percentage</td>
+                <td>snf_percentage</td>
+                <td>milk_density</td>
+                <td>protein_percentage</td>
+                <td>milk_conductivity</td>
+                <td>milk_ph</td>
+                <td>freezing_point</td>
+                <td>salt_percentage</td>
+                <td>lactose_percentage</td>
+                <td>scc</td>
+                <td>label</td>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for item in items %}
+      
+            <tr>
+              <td>{{ item.id_num }}
+              <td>{{ item.sample_num }}</td>
+              <td>{{ item.farm }} </td>
+              <td>{{ item.breed }}</td>
+              <td>{{ item.lactation_num }}</td>
+              <td>{{ item.dim }}
+              <td>{{ item.avg_daily_milk_yield }}</td>
+              <td>{{ item.test_day_milk_yield }}</td>
+              <td>{{ item.fat_percentage }}</td>
+              <td>{{ item.snf_percentage }}</td>
+              <td>{{ item.milk_density }}
+              <td>{{ item.protein_percentage }}</td>
+              <td>{{ item.milk_conductivity }} </td>
+              <td>{{ item.milk_ph }}</td>
+              <td>{{ item.freezing_point }}</td>
+              <td>{{ item.salt_percentage }}
+              <td>{{ item.lactose_percentage }}</td>
+              <td>{{ item.scc }} </td>
+              <td>{{ item.label }}</td>
+            </tr>
+      
+            {% endfor %}
+          </tbody>
+    </table>
+</body>
+
+</html>
+
+{% endblock outside_content %}

@@ -1,6 +1,8 @@
 from django.shortcuts import  render
 from .forms import ExcelFileUploadForm
 import pandas as pd
+from .models import *
+from .forms import *
 
 #function for uplaod multiple data set
 def upload_excel(request):
@@ -13,3 +15,15 @@ def upload_excel(request):
     else:
         form = ExcelFileUploadForm()
     return render(request, 'multiple/upload_excel.html', {'form': form})
+
+def index(request):
+    return render(request, 'multiple/display.html')
+
+def display_dataset(request):
+    items = Batchdataset.objects.all()
+    context = {
+        'items': items,
+        'header': 'Dataset',
+    }
+    return render(request, 'multiple/display.html', context)
+
