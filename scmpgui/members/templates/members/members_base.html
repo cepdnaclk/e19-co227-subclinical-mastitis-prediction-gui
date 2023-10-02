@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block nav_content %}
+{% comment %} ! No navbar here ! {% endcomment %}
+{% endblock nav_content %}
+
+{% block page_content %}
+{% endblock page_content %}
+
+{% block style_content %}
+body {
+display: flex;
+height: 100vh;
+background-image: url('/static/images/background_alt.png');
+background-size: cover;
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+.user_card {
+background: rgba(44, 27, 71, 0.7) !important;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+border-radius: 25px;
+transition: all 0.3s ease;
+}
+
+#form-title {
+	color: #fff;
+}
+
+.btn {
+	background: rgba(0, 0, 0, 0) !important;
+	color: white !important;
+	border: 1px solid #fff !important;
+	border-radius: 1rem 1rem 1rem 1rem !important;
+}
+
+.btn:focus {
+	box-shadow: none !important;
+	outline: 1px solid #fff !important;
+}
+
+.btn:hover {
+	background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.input-group-text {
+	background: #563186 !important;
+	color: white !important;
+	border: 1px solid #fff;
+	border-radius: 1rem 0 0 1rem !important;
+}
+
+.input_user,
+.input_pass:focus {
+	box-shadow: none !important;
+	outline: 0px !important;
+}
+
+#messages {
+	background-color: none !important;
+}
+
+.form-control {
+	background-color: #000000;
+	border: 1px solid #fff;
+	color: white;
+	border-radius: 0 1rem 1rem 0;
+}
+
+.form-control:focus {
+	background-color: #000000;
+	border-color: #fff;
+	color: white;
+}
+
+.form-control:placeholder {
+	color: #fff;
+}
+{% endblock style_content %}
+
+{% block independent %}
+
+<div class="container-fluid">
+    <div class="row align-items-md-center h-100">
+        <div class="col-md-7 col-12 d-flex justify-content-center align-items-center">
+            <div class="col-8 text-center">
+                <img src="/static/images/logo_h.png" class="img-fluid">
+                <h3 class="text-center" style="color:#563186;">Welcome to the future of dairy farming, predicting subclinical mastitis for herd health and sustainable success through scientific advancements.</h3>
+            </div>
+        </div>
+        <div class="col-md-5 col-12 d-flex justify-content-md-left justify-content-sm-center align-items-center">
+            <div class="col-8">
+                <div class="user_card text-center">
+                    {% block card_content %}
+                    <h1>Card goes here!</h1>
+                    {% endblock card_content %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock independent %}

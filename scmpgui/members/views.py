@@ -9,10 +9,6 @@ from .templates.forms import CreatUserForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
-def initial_page(request):
-    return render(request, 'members/initial.html')
-
 def register_page(request):
 
     if request.user.is_authenticated:
@@ -27,7 +23,7 @@ def register_page(request):
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Account Created Successfully!', extra_tags='success')
-                return redirect('login')
+                return redirect('members_login')
             else:
                 messages.info(request, 'There was an error signing up!', extra_tags='error')
 
@@ -58,6 +54,6 @@ def login_page(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('login')
+    return redirect('members_login')
 
 

@@ -28,10 +28,10 @@ urlpatterns = [
     path('data/', include('dataform.urls')),
     path('result/', include('results.urls')),
     path('csvR/', include('csvR.urls')),
-    path('members/', include('django.contrib.auth.urls')),
+    # path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
-    #! MIND THE ORDER, THIS MUST BE LAST
     path('history/',include('history.urls')),
+    #! MIND THE ORDER, THIS MUST BE LAST
     path('', RedirectView.as_view(url='members/',permanent=True)),
 ]
 
