@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig', # home page of the project
     'dataform.apps.DataformConfig', #single from input page
     'results.apps.ResultsConfig', #the page ehere we display the results of the scm prediction
-    'csvR',
+    'multiple.apps.MultipleConfig', #the page ehere we display the results of the scm prediction
     'members',
     'history.apps.HistoryConfig',
 ]
