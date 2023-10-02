@@ -82,7 +82,7 @@ class DataForm(forms.Form):
 
     avg_daily_milk_yield = forms.DecimalField(
         required=True,
-        validators=[DecimalValidator(max_digits=5,decimal_places=2),MinValueValidator(limit_value=0)],
+        validators=[DecimalValidator(max_digits=10,decimal_places=3),MinValueValidator(limit_value=0)],
         widget=CustomInputWidget(
             input_type='number',
             width='6',
@@ -95,7 +95,7 @@ class DataForm(forms.Form):
 
     test_day_milk_yield = forms.DecimalField(
         required=True,
-        validators=[DecimalValidator(max_digits=5,decimal_places=2),MinValueValidator(limit_value=0)],
+        validators=[DecimalValidator(max_digits=10,decimal_places=3),MinValueValidator(limit_value=0)],
         widget=CustomInputWidget(
             input_type='number',
             width='6',
@@ -108,7 +108,7 @@ class DataForm(forms.Form):
 
     fat_percentage = forms.DecimalField(
         required=True,
-        validators=[DecimalValidator(max_digits=5,decimal_places=2),MinValueValidator(limit_value=0)],
+        validators=[DecimalValidator(max_digits=10,decimal_places=3),MinValueValidator(limit_value=0)],
         widget=CustomInputWidget(
             input_type='number',
             width='6',
@@ -121,7 +121,7 @@ class DataForm(forms.Form):
 
     snf_percentage = forms.DecimalField(
         required=True,
-        validators=[DecimalValidator(max_digits=5,decimal_places=2),MinValueValidator(limit_value=0)],
+        validators=[DecimalValidator(max_digits=10,decimal_places=3),MinValueValidator(limit_value=0)],
         widget=CustomInputWidget(
             input_type='number',
             width='6',
@@ -134,7 +134,7 @@ class DataForm(forms.Form):
 
     milk_density = forms.DecimalField(
         required=True,
-        validators=[DecimalValidator(max_digits=5,decimal_places=2),MinValueValidator(limit_value=0)],
+        validators=[DecimalValidator(max_digits=10,decimal_places=3),MinValueValidator(limit_value=0)],
         widget=CustomInputWidget(
             input_type='number',
             width='6',
@@ -147,7 +147,7 @@ class DataForm(forms.Form):
 
     protein_percentage = forms.DecimalField(
         required=True,
-        validators=[DecimalValidator(max_digits=5,decimal_places=2),MinValueValidator(limit_value=0)],
+        validators=[DecimalValidator(max_digits=10,decimal_places=3),MinValueValidator(limit_value=0)],
         widget=CustomInputWidget(
             input_type='number',
             width='6',
@@ -160,7 +160,7 @@ class DataForm(forms.Form):
 
     milk_conductivity = forms.DecimalField(
         required=True,
-        validators=[DecimalValidator(max_digits=5,decimal_places=2),MinValueValidator(limit_value=0)],
+        validators=[DecimalValidator(max_digits=10,decimal_places=3),MinValueValidator(limit_value=0)],
         widget=CustomInputWidget(
             input_type='number',
             width='6',
@@ -173,7 +173,7 @@ class DataForm(forms.Form):
 
     milk_ph = forms.DecimalField(
         required=True,
-        validators=[DecimalValidator(max_digits=5,decimal_places=2),phRange],
+        validators=[DecimalValidator(max_digits=10,decimal_places=3),phRange],
         widget=CustomInputWidget(
             input_type='number',
             width='6',
@@ -186,7 +186,7 @@ class DataForm(forms.Form):
 
     freezing_point = forms.DecimalField(
         required=True,
-        validators=[DecimalValidator(max_digits=5,decimal_places=2),MinValueValidator(limit_value=0)],
+        validators=[DecimalValidator(max_digits=10,decimal_places=3)],
         widget=CustomInputWidget(
             input_type='number',
             width='6',
@@ -199,7 +199,7 @@ class DataForm(forms.Form):
 
     salt_percentage = forms.DecimalField(
         required=True,
-        validators=[DecimalValidator(max_digits=5,decimal_places=2),MinValueValidator(limit_value=0)],
+        validators=[DecimalValidator(max_digits=10,decimal_places=3),MinValueValidator(limit_value=0)],
         widget=CustomInputWidget(
             input_type='number',
             width='6',
@@ -212,7 +212,7 @@ class DataForm(forms.Form):
 
     lactose_percentage = forms.DecimalField(
         required=True,
-        validators=[DecimalValidator(max_digits=5,decimal_places=2),MinValueValidator(limit_value=0)],
+        validators=[DecimalValidator(max_digits=10,decimal_places=3),MinValueValidator(limit_value=0)],
         widget=CustomInputWidget(
             input_type='number',
             width='6',
