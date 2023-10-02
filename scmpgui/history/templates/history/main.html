@@ -1,8 +1,222 @@
 {% extends "base.html" %}
 
+{% block nav_items %}
+    <a href="{% url "home" %}" class="nav-item nav-link active text-light">Home</a>
+    <a href="{% url "dataform" %}" class="nav-item nav-link text-light">Individual Entry</a>
+    <a href="{% url "upload_excel" %}" class="nav-item nav-link text-light">Batch Process</a>
+{% endblock nav_items %}
+
 {% block page_content %}
-<div class="container-fluid">
-        <h1 class="text-center">Implement Historical Data View Here!</h1>
-</div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/graphStyle.css' %}">
+
+        <h1 class = "mainTitle">Historical Data Analysis</h1>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 p-3">
+                <div class="card">
+                    <h1>Days In Milk vs Average daily Milk Yield</h1>
+                    <canvas id="Canvas2"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 p-3">
+                <div class="card">
+                    <h1>Percentage of SCM Contaminated Cows</h1>
+                    <canvas id="Canvas1"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        {% comment %} graph 1 {% endcomment %}
+        var inumData = {
+            labels: [{% for item in sample_num %}"{{ item.0 }}", {% endfor %}],
+            datasets: [{
+                label: 'SCM Free Cows',
+                data: [{% for item in ph %}"{{ item.0 }}", {% endfor %}],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', 
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                pointRadius: 5,
+                backgroundColor: getPointColors([{% for item in all_results %}"{{ item }}", {% endfor %}]),
+                {% comment %} borderColor: getPointColors([{% for item in all_results %}"{{ item }}", {% endfor %}]) {% endcomment %}
+            },
+            {
+                label : 'SCM Contaminated Cows',
+                backgroundColor: 'rgba(255, 0, 0, 1)'
+        }]
+        };
+
+        {% comment %} inumData.labels.push("{{ user_dim }}"); {% endcomment %}
+        {% comment %} inumData.datasets[0].data.push("{{ user_yeild }}"); {% endcomment %}
+
+
+        //function to identify cattles with sub clinical mastitis
+        function getPointColors(results) {
+            // Define an array of colors, one for each label
+            var colors = [];
+            for (var i = 0; i < results.length; i++) {
+                if (results[i] === 'True') {  //check the scm status and it displays in red color if it's true
+                    // Set a different color for the user_inum data point
+                    colors.push('rgba(255, 0, 0, 1)'); // Red color
+                }
+                else {
+                    // Use the default color for other data points
+                    colors.push('rgba(75, 192, 192, 0.2)'); // Default color
+                }
+            }
+            return colors;
+        }
+
+        
+
+
+
+        var inumChart = new Chart(document.getElementById('Canvas1'), {
+            type: 'scatter',
+            data: inumData,
+            options: {
+                scales: {
+                    y: {
+                        title: {
+                          display: true,
+                          text: 'Ph variation',
+                          
+                        }
+                      },
+                    x: {
+                        ticks: {
+                                stepSize: 1
+                        },
+                        title: {
+                          display: true,
+                          text: 'Sample Number',
+                          
+                        },
+                        beginAtZero : true,
+                        
+                      }
+                },
+                {% comment %} to remove the hover effect {% endcomment %}
+                events: [] 
+            }
+        });
+
+
+        
+
+        
+
+
+        {% comment %} graph 2 {% endcomment %}
+        var inumData = {
+            labels: ['Jersey * Friesian', 'Friesian'],
+            datasets: [{
+                label: 'Total Herd',
+                data: fullHerd([{% for item in breed_new %}"{{ item.0 }}", {% endfor %}]),
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Contaminated Cows',
+                data: getBreeds([{% for item in breed_new %}"{{ item.0 }}", {% endfor %}],[{% for item in all_results %}"{{ item }}", {% endfor %}]),
+                backgroundColor: 'rgba(255, 0, 0, 0.5)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        var inumChart = new Chart(document.getElementById('Canvas2'), {
+            type: 'bar',
+            data: inumData,
+            options: {
+                scales: {
+                    y: {
+                        title: {
+                          display: true,
+                          text: 'Number of Cows',
+                          
+                        },
+                        beginAtZero : true
+                      },
+                    x: {
+                        title: {
+                          display: true,
+                          text: 'Breed',
+                          
+                        }
+                      }
+                }
+            }
+        });
+
+
+        
+        //function to identify SCM contaminated percentage
+        function getBreeds(breed_lst, results) {
+            // Define an array of colors, one for each label
+            var breeds = [];
+            breed1 = 0;
+            breed2 = 0;
+
+            breed1_scm = 0;
+            breed2_scm = 0;
+
+            for (var i = 0; i < breed_lst.length; i++) {
+                if (breed_lst[i] === 'Jersey * Friesian') {  //check the scm status and it displays in red color if it's true
+                    breed1 += 1;
+                    if (results[i] === 'True'){
+                        breed1_scm += 1;
+                    }
+                }
+                else if(breed_lst[i] === 'Friesian') {
+                    breed2 += 1;
+                    if (results[i] === 'True'){
+                        breed2_scm += 1;
+                    }
+                }
+            }
+
+            breeds.push(breed1_scm);
+            breeds.push(breed2_scm);
+
+            return breeds;
+        }
+
+        //function to identify full size of breed
+        function fullHerd(breed_lst) {
+                // Define an array of colors, one for each label
+                var breeds = [];
+                breed1 = 0;
+                breed2 = 0;
+    
+                for (var i = 0; i < breed_lst.length; i++) {
+                    if (breed_lst[i] === 'Jersey * Friesian') {  
+                        breed1 += 1;
+                    }
+                    else if(breed_lst[i] === 'Friesian') {
+                        breed2 += 1;
+                    }
+                }
+    
+                breeds.push((breed1));
+                breeds.push((breed2));
+    
+                return breeds;
+            }
+
+
+
+        
+
+    </script>
 
 {% endblock page_content %}

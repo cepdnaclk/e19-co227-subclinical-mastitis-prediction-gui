@@ -1,86 +1,17 @@
 # results/views.py
-import pandas as pd
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import ResultData
 from dataform.models import Record
+from history.models import HistoricalRecords
+from django.contrib.auth.decorators import login_required
 
-# def graph_view(request):
-#     df = pd.read_excel('results\sampleInput.xlsx')
-#     df_1 = pd.read_excel('results\sampleOutput.xlsx')
-#     #print(df)
-#     inum = df.iloc[:, 0].tolist()
-#     lacnum = df.iloc[:, 4].tolist()
-#     fat = df.iloc[:, 8].tolist()
-#     snf = df.iloc[:, 9].tolist()
-#     density = df.iloc[:, 10].tolist()
-
-#     cow_id = df_1.iloc[2, 0].tolist()
-#     cow_result = df_1.iloc[2, 1].tolist()
-#     #print(inum, lacnum)
-#     #return HttpResponse(df)
-#     # Create a context dictionary to pass the lists to the template
-
-
-#     context = {
-#         'inum': inum,
-#         'lacnum': lacnum,
-#         'fat': fat,
-#         'snf': snf,
-#         'density': density,
-#         'cow_id': cow_id,
-#         'cow_result': cow_result
-#     }
-
-#     # Render the template with the context data
-#     return render(request, 'graph.html', context)
-
+@login_required
 def result_from_record(request,pk):
     record = Record.objects.get(pk=pk)
-    
-    """ extracted_data = {
-        'field1_value': record.sample_num,
-        'field2_value': record.lactation_num,
-    } """
-
-    #print(extracted_data)
-
-    #return extracted_data
-
-    df = pd.read_excel('results\sampleInput.xlsx')
-    df_1 = pd.read_excel('results\sampleOutput.xlsx')
-    #print(df)
-    inum = df.iloc[:, 0].tolist()
-    breed = df.iloc[:, 3].tolist()
-    lacnum = df.iloc[:, 4].tolist()
-    dim = df.iloc[:, 5].tolist()
-    yeild = df.iloc[:, 6].tolist()
-    fat = df.iloc[:, 8].tolist()
-    snf = df.iloc[:, 9].tolist()
-    density = df.iloc[:, 10].tolist()
-
-    cow_id = df_1.iloc[2, 0].tolist()
-    cow_result = df_1.iloc[2, 1].tolist()
-
-    all_results = df_1.iloc[:, 1].tolist()
-
-    #print(inum, lacnum)
-    #return HttpResponse(df)
-    # Create a context dictionary to pass the lists to the template
-
 
     context = {
-        'inum': inum,
-        'breed': breed,
-        'lacnum': lacnum,
-        'fat': fat,
-        'snf': snf,
-        'density': density,
-        #'cow_id': cow_id,
-        'cow_result': cow_result,
-        'dim': dim,
-        'yeild': yeild,
-
+        'cow_result': record.label,
+        'user_sample' : record.sample_num,
         'user_inum' : record.id_num,
         'user_breed': record.breed,
         'user_lacnum' : record.lactation_num,
@@ -96,21 +27,47 @@ def result_from_record(request,pk):
         'user_salt' : record.salt_percentage,
         'user_lactose' : record.lactose_percentage,
         'user_scc' : record.scc,
-        
-        'all_results' : all_results,
 
         'pk' : pk, #after this line you have to add the result also
     }
 
-    # print(context['breed'])
-
-
-    # Render the template with the context data
     return render(request, 'tst.html', context)
-    
-# from django.http import HttpResponse
-# from django.template import loader
 
-# def graph_view(request):
-#  template = loader.get_template('graph.html')
-#  return HttpResponse(template.render())
+@login_required
+def save_record(request,pk):
+    try:
+        # Step 1: Get the Record object by primary key (pk)
+        record = Record.objects.get(pk=pk)
+        
+        # Step 2: Extract data from the Record object
+        data_to_transfer = {
+            'id_num': record.id_num,
+            'sample_num': record.sample_num,
+            'farm': record.farm,
+            'breed': record.breed,
+            'lactation_num': record.lactation_num,
+            'dim': record.dim,
+            'avg_daily_milk_yield': record.avg_daily_milk_yield,
+            'test_day_milk_yield': record.test_day_milk_yield,
+            'fat_percentage': record.fat_percentage,
+            'snf_percentage': record.snf_percentage,
+            'milk_density': record.milk_density,
+            'protein_percentage': record.protein_percentage,
+            'milk_conductivity': record.milk_conductivity,
+            'milk_ph': record.milk_ph,
+            'freezing_point': record.freezing_point,
+            'salt_percentage': record.salt_percentage,
+            'lactose_percentage': record.lactose_percentage,
+            'scc': record.scc,  # Include this line if scc is present in Record
+            'label': "1" if record.label == "True" else "0",  # Include this line if label is present in Record
+            'user': request.user,  # Add the currently logged-in user
+        }
+    
+        # Step 3: Create a new HistoricalRecords object with the extracted data
+        HistoricalRecords.objects.create(**data_to_transfer)
+
+        return redirect("home")
+
+    except Record.DoesNotExist:
+        # Handle the case where the Record object with the given pk does not exist
+        pass

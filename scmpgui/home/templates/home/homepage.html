@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 
+{% block nav_items %}
+    <a href="{% url "dataform" %}" class="nav-item nav-link text-light">Individual Entry</a>
+    <a href="{% url "upload_excel" %}" class="nav-item nav-link text-light">Batch Process</a>
+    <a href="{% url "history_main" %}" class="nav-item nav-link text-light">Visualize History</a>
+{% endblock nav_items %}
+
 {% block style_content %}
+    body{
+        background: linear-gradient(to top, #bba8eb 0%, #e9e4f9 25%);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
     .carousel .carousel-item {
         height: 350px;
     }
@@ -42,7 +54,8 @@
     .card:hover {
         transform: translateY(-5px);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        background-color: #dccae9;
+        background-color: #cbb1eb;
+        color: rebeccapurple;
     }
 
     .card-title {
@@ -51,7 +64,7 @@
     }
 
     a{
-        text-decoration: none;
+        text-decoration: none !important;
     }
 
     .carousel-logo {
@@ -62,7 +75,10 @@
         transform: translate(-50%, -50%);
         z-index: 9999; /* Adjust the z-index as needed to ensure it's above the carousel */
       }
-</style>
+
+    .ImageCarousel{
+		box-shadow: 0 4px 8px 10px rgba(0, 0, 0, 0.8);
+    }
 
 {% endblock style_content %}
 
@@ -72,16 +88,22 @@
     <div id="ImageCarousel" class="carousel slide carousel-fade pointer-event" data-bs-ride="carousel" data-bs-pause="none">
         <div class="carousel-inner">
             <div class="carousel-item" data-bs-interval="3000">
-                <img src="/static/images/carousel/1.png" class="d-block w-100" alt="First slide" style="bottom: -40%;">
+                <img src="/static/images/carousel/min/1.jpg" class="d-block w-100" alt="First slide" style="bottom: -40%;">
             </div>
             <div class="carousel-item active" data-bs-interval="3000">
-                <img src="/static/images/carousel/2.png" class="d-block w-100" alt="Second slide" style="bottom: -60%;">
+                <img src="/static/images/carousel/min/2.jpg" class="d-block w-100" alt="Second slide" style="bottom: -60%;">
             </div>
             <div class="carousel-item" data-bs-interval="3000">
-                <img src="/static/images/carousel/3.jpg" class="d-block w-100" alt="Third slide" style="bottom: -70%;">
+                <img src="/static/images/carousel/min/3.jpg" class="d-block w-100" alt="Third slide" style="bottom: -70%;">
             </div>
             <div class="carousel-item" data-bs-interval="3000">
-                <img src="/static/images/carousel/4.jpg" class="d-block w-100" alt="Fourth slide" style="bottom: -70%;">
+                <img src="/static/images/carousel/min/4.jpg" class="d-block w-100" alt="Fourth slide" style="bottom: -70%;">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="/static/images/carousel/min/5.jpg" class="d-block w-100" alt="Fifth slide" style="bottom: -30%;">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="/static/images/carousel/min/6.jpg" class="d-block w-100" alt="Sixth slide" style="bottom: -20%;">
             </div>
 
         <!-- Project Logo -->
@@ -95,7 +117,7 @@
 {% block page_content %}
 
 <!--Three Cards-->
-<div class="row">
+<div class="row mt-4">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
