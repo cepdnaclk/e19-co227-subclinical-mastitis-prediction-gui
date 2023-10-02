@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block nav_items %}
+    <a href="{% url "home" %}" class="nav-item nav-link active text-light">Home</a>
+    <a href="{% url "dataform" %}" class="nav-item nav-link text-light">Individual Entry</a>
+    <a href="{% url "upload_excel" %}" class="nav-item nav-link text-light">Batch Process</a>
+{% endblock nav_items %}
+
 {% block page_content %}
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         {% load static %}

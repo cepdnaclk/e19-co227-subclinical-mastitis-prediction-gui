@@ -46,7 +46,7 @@ def DataFormView(request):
                 label=scm_status,
             )
             detail_url = reverse('results_from_record', args=[record.pk])
-            print(detail_url)
+            # print(detail_url)
             return redirect(detail_url)
         
     else:

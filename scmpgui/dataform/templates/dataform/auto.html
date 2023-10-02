@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block nav_items %}
+    <a href="{% url "home" %}" class="nav-item nav-link active text-light">Home</a>
+    <a href="{% url "upload_excel" %}" class="nav-item nav-link text-light">Batch Process</a>
+    <a href="{% url "history_main" %}" class="nav-item nav-link text-light">Visualize History</a>
+{% endblock nav_items %}
+
 {% block style_content %}
 .popover {
 --bs-popover-max-width: 500px;

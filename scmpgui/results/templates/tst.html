@@ -1,32 +1,37 @@
 {% extends "base.html" %}
 
 {% block page_content %}
-    {% comment %} <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> {% endcomment %}
-    {% comment %} {% load static %} {% endcomment %}
-    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/graphStyle.css' %}"> {% endcomment %}
 
-    
-    <h1 class="text-primary mt-3 text-center">Prediction Report for {{ user_inum }}</h1>
-    <hr class="border border-primary" />
-    <div class="container p-4">
-            <div class="list-group text-center">
-                <div class="list-group-item list-group-item-{% if cow_result == 'True' %}danger{% else %}success{% endif %}"><h2>SCM Status: {{ cow_result }}</h2>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Sample Number: {{ user_sample }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Breed: {{ user_breed }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Lactation Number: {{ user_lacnum }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Days In Milk: {{ user_dim }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Avg. 7-day Daily Milk Yield (L): {{ user_yeild }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Test Day Milk Yield (L): {{ user_fat }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Fat(%): {{ user_snf }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">SNF(%): {{ user_density }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Density (Kg/m3): {{ user_protein }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Protein(%): {{ user_conductivity }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Conductivity (mS/cm): {{ user_ph }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">pH: {{ user_freezing }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Freezing Point (°C): {{ user_salt }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Lactose(%): {{ user_lactose }}</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">SCC (103 cells/ml): {{ user_scc }}</a>
-                </div>
-                </div>
+<h1 class="text-primary mt-3 text-center">Prediction Report for {{ user_inum }}</h1>
+<hr class="border border-primary" />
+<div class="row text-center mt-3">
+    <div class="col">
+        <a href="{% url "result_save_record" pk=pk %}" class="btn btn-primary"><i class="fas fa-save fa-lg" style="margin-right:10px;"></i>Save This Report to Database</a>
     </div>
+    <div class="col">
+        <a href="{% url "home" %}" class="btn btn-warning"><i class="fas fa-undo fa-lg" style="margin-right:10px;"></i>Return to Home Without Saving</a>
+    </div>
+</div>
+<div class="container p-4">
+    <div class="list-group text-center">
+        <div class="list-group-item list-group-item-{% if cow_result == 'True' %}danger{% else %}success{% endif %}">
+            <h2>SCM Status: {{ cow_result }}</h2>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Sample Number: {{ user_sample }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Breed: {{ user_breed }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Lactation Number: {{ user_lacnum }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Days In Milk: {{ user_dim }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Avg. 7-day Daily Milk Yield (L): {{ user_yeild }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Test Day Milk Yield (L): {{ user_fat }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Fat(%): {{ user_snf }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">SNF(%): {{ user_density }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Density (Kg/m3): {{ user_protein }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Protein(%): {{ user_conductivity }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Conductivity (mS/cm): {{ user_ph }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">pH: {{ user_freezing }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Freezing Point (°C): {{ user_salt }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Lactose(%): {{ user_lactose }}</a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-light">SCC (103 cells/ml): {{ user_scc }}</a>
+        </div>
+    </div>
+</div>
 {% endblock page_content %}
