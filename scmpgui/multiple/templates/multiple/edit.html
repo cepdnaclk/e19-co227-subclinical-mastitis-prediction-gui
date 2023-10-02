@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block outside_content %}
+
+<style>
+    body {
+        color: rebeccapurple;
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+    }
+
+</style>
+
+<body>
+    <div class="container">
+        <form method="POST">
+          <br>
+          {% csrf_token %}    
+
+          {% for field in form %}
+          <div class="form-group row">
+            <label for="id_{{ field.name }}" class="col-2 col-form-label">{{ field.label }}</label>
+            <div class="col-10">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+    
+          <div class="form-group row">
+            <div class="offset-sm-2 col-sm-6">
+              <button type="submit" class="btn btn-primary">Add Data</button>
+            </div>
+          </div>
+
+        </form>
+    </div>
+    
+</body>
+
+</html>
+
+{% endblock outside_content %}

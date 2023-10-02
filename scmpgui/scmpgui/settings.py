@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'multiple.apps.MultipleConfig', #the page ehere we display the results of the scm prediction
     'members',
     'history.apps.HistoryConfig',
+    'import_export',
 ]
 
 MIDDLEWARE = [

@@ -15,7 +15,8 @@
     <div class="add_buttons">
 
         <div class="button-group">
-          <a href="{% url 'display_dataset' %}" class="btn btn-primary btn-md btn-trim" role="button"> Laptops</a>
+          <a href="{% url 'display_dataset' %}" class="btn btn-primary btn-md btn-trim" role="button">Worksheet Data</a>
+          <a href="{% url 'add_data' %}" class="btn btn-warning btn-sm btn-pad" role="button"> Add Data</a>
         </div>
     
     </div>
@@ -27,6 +28,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
+                <td>No</td>
                 <td>id_num</td>
                 <td>sample_num</td>
                 <td>farm</td>
@@ -53,7 +55,8 @@
             {% for item in items %}
       
             <tr>
-              <td>{{ item.id_num }}
+              <td>{{ item.pk }}
+              <td>{{ item.id_num }}</td>
               <td>{{ item.sample_num }}</td>
               <td>{{ item.farm }} </td>
               <td>{{ item.breed }}</td>
@@ -72,6 +75,13 @@
               <td>{{ item.lactose_percentage }}</td>
               <td>{{ item.scc }} </td>
               <td>{{ item.label }}</td>
+              {% if header|lower == "dataset" %}
+              <td>
+                <a href="{% url 'edit_data' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Edit</a>
+                <a href="{% url 'delete_data' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
+              </td>
+              {% endif %}
+
             </tr>
       
             {% endfor %}
