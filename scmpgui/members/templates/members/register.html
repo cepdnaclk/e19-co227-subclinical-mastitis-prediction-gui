@@ -1,232 +1,74 @@
-{% extends "base.html" %}
+{% extends "members/members_base.html" %}
 
-{% block nav_content %}
-{% endblock nav_content %}
+{% block card_content %}
 
-{% block outside_content %}
+<div class="d-flex flex-column justify-content-center p-4">
 
-<style>
-	body,
-	html {
-		display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-image: url('/static/images/background_alt.png');
-        background-size: cover; 
-        background-repeat: no-repeat; 
-        background-attachment: fixed; 
-	}
+    <h3 class="mb-4 text-light">Create Account</h3>
 
-	.user_card {
-		width: 350px;
-		margin-top: auto;
-		margin-bottom: auto;
-		margin-left: 600px !important;
-		background: rgba(44, 27, 71, 0.7) !important;
-		position: relative;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		padding: 20px;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-		border-radius: 25px;
-	}
-
-	.form_container {
-		margin-top: 20px;
-	}
-
-	#form-title{
-		color: #fff;
-	}
-
-	.login_container {
-		padding: 0 2rem;
-	}
-
-	.login_btn {
-		width: 100%;
-		background: rgba(0, 0, 0, 0) !important;
-		color: white !important;
-		margin-top: 10px !important;
-		border: 1px solid #fff !important;
-		border-radius: 1rem 1rem 1rem 1rem !important;
-		padding: 0 !important;
-	}
-
-	.login_btn:focus {
-		box-shadow: none !important;
-		outline: 1px solid #fff !important;
-	}
-
-	.login_btn:hover {
-		background-color: rgba(255, 255, 255, 0.4) !important; 
-	}
-
-	.input-group-text {
-		background:#563186 !important;
-		color: white !important;
-		border: 1px solid #fff;
-		border-radius: 1rem 0 0 1rem !important;
-	}
-
-	.input_user,
-	.input_pass:focus {
-		box-shadow: none !important;
-		outline: 0px !important;
-	}
-
-	#messages{
-		display: flex;
-		justify-content: center; 
-		align-items: center; 
-		background-color: none !important;
-		padding: 10px;
-		margin-top: 10px;
-	}
-
-	.form-control {
-        background-color: #000000;
-        border: 1px solid #fff;
-        color: white;
-        border-radius: 0 1rem 1rem 0;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
-
-	.form-control:focus {
-		background-color: #000000; 
-		border-color: #fff; 
-		color: white;
-	}
-
-	.form-control:placeholder {
-        color: #fff;
-    }
-
-	.white-text {
-        color: white;
-    }
-
-	.purple-text {
-        color: #563186;
-    }
-
-	.red-text {
-		color: #FF0000;
-	}
-    
-    .links a:hover {
-        text-decoration: none; 
-    }
-
-	.left-half {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 100vh;
-		width: 50%; 
-		float: left;
-		margin-left: 30px !important; 
-		padding: 20px; 
-		color: rebeccapurple;
-	}
-
-	.indiv{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-	}
-
-	.logo{
-		height: 200px;
-	}
-
-</style>
-
-<body>
-    <div class="container h-100">
-        <div class="d-flex justify-content-center h-100">
-            <div class="user_card">
-                <div class="d-flex justify-content-center">
-                    <h3 id="form-title">REGISTER</h3>
-                </div>
-                <div class="d-flex justify-content-center form_container">
-
-                    <form method="POST" action="">
-                        {% csrf_token %}
-                        <div class="input-group mb-3">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            </div>
-                            {{form.username}}
-                        </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
-                            </div>
-                            {{form.email}}
-                        </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
-                            </div>
-                            {{form.password1}}
-                        </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
-                            </div>
-                            {{form.password2}}
-                        </div>
-
-                        <div class="d-flex justify-content-center mt-3 login_container">
-                            <input class="btn login_btn" type="submit" value="Register">
-                        </div>
-                    </form>
-                </div>
-
-                {% for message in messages %}
-					<p id="messages" class="{% if 'success' in message.tags %}white-text{% elif 'error' in message.tags %}red-text{% endif %}">{{ message }}</p>
-                {% endfor %}
-
-                <div class="mt-4">
-                    <div class="d-flex justify-content-center links">
-                        <span class="white-text">Already have an account?</span> <a href="{% url 'login' %}" class="ml-2"><span class="purple-text">Login</span></a>
-                    </div>
-                </div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="input-group mb-2">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
+            {{form.username}}
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+            </div>
+            {{form.email}}
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            {{form.password1}}
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            {{form.password2}}
+        </div>
+
+        <input class="btn w-50 m-2" type="submit" value="Register">
+    </form>
+    <hr class="bg-white my-3">
+    <span class="text-white-50">Already have an account? <a href="{% url 'members_login' %}" class="text-white">Login</a></span> 
+</div>
+
+{% for message in messages %}
+
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="myToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex flex-row justify-content-between align-items-center">
+            <div class="toast-body">
+                <span>{{ message }}</span>
+            </div>
+            <button type="button" class="btn-close mx-2" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
+</div>
 
-	<div class="left-half">
-		<div class="indiv">
-			<img src="/static/images/logo_h.png" class="logo">
-			<h3 class="text-center">Welcome to the future of dairy farming, predicting subclinical mastitis for herd health and sustainable success through scientific advancements.</h3>
-		</div>
-	</div>
+<script>
+    const myToast = new bootstrap.Toast(document.getElementById("myToast"));
+    myToast.show();
+</script>
 
-    <script>
-        var form_fields = document.getElementsByTagName('input')
-        form_fields[1].placeholder='Username..';
-        form_fields[2].placeholder='Email..';
-        form_fields[3].placeholder='Enter password...';
-        form_fields[4].placeholder='Re-enter Password...';
+{% endfor %}
 
-
-        for (var field in form_fields){ 
-            form_fields[field].className += ' form-control'
-        }
-    </script>
-</body>
-
-{% endblock outside_content %}
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Username..';
+    form_fields[2].placeholder = 'Email..';
+    form_fields[3].placeholder = 'Enter password...';
+    form_fields[4].placeholder = 'Re-enter Password...';
 
 
+    for (var field in form_fields) {
+        form_fields[field].className += ' form-control'
+    }
+</script>
+{% endblock card_content %}
