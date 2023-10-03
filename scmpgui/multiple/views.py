@@ -8,41 +8,37 @@ from .resources import *
 from tablib import *
 
 
+from django.contrib import messages
+
+#function for import multiple dataets
 def dataset_upload(request):
     if request.method == 'POST':
         Batchdataset_resource = BatchdatasetResource()
         dataset = Dataset()
-        new_dataset = request.FILES['myfile']
-
-        imported_data = dataset.load(new_dataset.read(), format='xlsx')
-        for data in imported_data:
-            value = Batchdataset(
-                data[0],
-                data[1],
-                data[2],
-                data[3],
-                data[4],
-                data[5],
-                data[6],
-                data[7],
-                data[8],
-                data[9],
-                data[10],
-                data[11],
-                data[12],
-                data[13],
-                data[14],
-                data[15],
-                data[16],
-                data[17],
-                data[18],
-                data[19]
-            )
-            value.save()
+        new_dataset = request.FILES.get('myfile')
+        
+        if not new_dataset:
+            messages.error(request, 'Please select a file to upload.')
+        elif not new_dataset.name.endswith(('.xlsx', '.xls')):
+            messages.error(request, 'Invalid file type. Please upload an Excel file.')
+        else:
+            try:
+                imported_data = dataset.load(new_dataset.read(), format='xlsx')
+                for data in imported_data:
+                    value = Batchdataset(
+                        data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8],
+                        data[9], data[10], data[11], data[12], data[13], data[14], data[15], data[16],
+                        data[17], data[18], data[19]
+                    )
+                    value.save()
+                messages.success(request, 'File uploaded successfully.')
+            except Exception as e:
+                messages.error(request, f'Error importing data: {str(e)}')
+    
     return render(request, 'multiple/upload_excel.html')
 
 
-#function for uplaod multiple data set
+#function for upload multiple datasets
 def upload_excel(request):
     if request.method == 'POST':
         form = ExcelFileUploadForm(request.POST, request.FILES)
@@ -71,7 +67,7 @@ def add_item(request, cls):
 
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('display_dataset')
 
     else:
         form = cls()
@@ -88,7 +84,7 @@ def edit_item(request, pk, model, cls):
         form = cls(request.POST, instance=item)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('display_dataset')
     else:
         form = cls(instance=item)
 
@@ -108,5 +104,7 @@ def delete_data(request, pk):
         'items': items,
     }
 
-    return render(request, template, context)
+    return redirect('display_dataset')
+
+    #return render(request, template, context)
 

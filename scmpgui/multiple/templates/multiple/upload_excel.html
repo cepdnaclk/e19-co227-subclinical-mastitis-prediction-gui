@@ -1,21 +1,33 @@
 {% extends "base.html" %}
 
 {% block outside_content %}
-
-<style>
-    body {
-        color: rebeccapurple; 
-    }
-</style>
-
 <body>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="myfile">
-        <button type="submit">Upload</button>
-      </form>
+    <div class="container mt-5">
+        <!-- Add this block to display error messages with a red background -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="myfile" class="form-label">Choose a File</label>
+                <input type="file" name="myfile" class="form-control" id="myfile">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+
+        <a href="/multiple/display_dataset" class="card">
+            <div class="card-body">
+                <h5 class="card-title">Batch Data Process</h5>
+                <p class="card-text">Batch Data Process model simplifies the process of analyzing large datasets. Uploaded datsets can be edited,deleted ,also new data set can be added. Finally updated dataset can be moved across the prediction model and get the result and let our model handle the heavy lifting for comprehensive predictions.</p>
+            </div>
+        </a>
+        
+    </div>
 </body>
-
-</html>
-
 {% endblock outside_content %}
