@@ -6,8 +6,6 @@ from .forms import *
 from django.http import HttpResponse
 from .resources import *
 from tablib import *
-
-
 from django.contrib import messages
 
 #function for import multiple dataets
@@ -20,7 +18,7 @@ def dataset_upload(request):
         if not new_dataset:
             messages.error(request, 'Please select a file to upload.')
         elif not new_dataset.name.endswith(('.xlsx', '.xls')):
-            messages.error(request, 'Invalid file type. Please upload an Excel file.')
+            messages.error(request, 'Invalid file type. Please upload an valid Excel file.')
         else:
             try:
                 imported_data = dataset.load(new_dataset.read(), format='xlsx')
@@ -31,24 +29,11 @@ def dataset_upload(request):
                         data[17], data[18], data[19]
                     )
                     value.save()
-                messages.success(request, 'File uploaded successfully.')
+                messages.success(request, 'Excel File uploaded successfully.')
             except Exception as e:
                 messages.error(request, f'Error importing data: {str(e)}')
     
-    return render(request, 'multiple/upload_excel.html')
-
-
-#function for upload multiple datasets
-def upload_excel(request):
-    if request.method == 'POST':
-        form = ExcelFileUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            excel_file = form.save()
-            df = pd.read_excel(excel_file.file)
-            return render(request, 'multiple/display_worksheet.html', {'df': df})
-    else:
-        form = ExcelFileUploadForm()
-    return render(request, 'multiple/upload_excel.html', {'form': form})
+    return render(request, 'multiple/upload.html')
 
 #basic function
 def index(request):
@@ -59,26 +44,29 @@ def display_dataset(request):
     items = Batchdataset.objects.all()
     context = {
         'items': items,
-        'header': 'Dataset',
+        'header': 'Dataset',#this is viewed in the page
     }
     return render(request, 'multiple/display.html', context)
 
+#main functon for add any item
 def add_item(request, cls):
     if request.method == "POST":
         form = cls(request.POST)
 
         if form.is_valid():
             form.save()
-            return redirect('display_dataset')
+            return redirect('multiple_display_dataset')
 
     else:
         form = cls()
         return render(request, 'multiple/form.html', {'form' : form})
 
-
+#function for add any dataset
 def add_data(request):
     return add_item(request, DataForm)
 
+
+#main function for edit any item
 def edit_item(request, pk, model, cls):
     item = get_object_or_404(model, pk=pk)
 
@@ -86,15 +74,17 @@ def edit_item(request, pk, model, cls):
         form = cls(request.POST, instance=item)
         if form.is_valid():
             form.save()
-            return redirect('display_dataset')
+            return redirect('multiple_display_dataset')
     else:
         form = cls(instance=item)
 
         return render(request, 'multiple/edit.html', {'form': form})
-
+    
+#function for edit any dataset
 def edit_data(request, pk):
     return edit_item(request, pk, Batchdataset, DataForm)
 
+#function for delet any dataset
 def delete_data(request, pk):
 
     template = 'multiple/display.html'
@@ -106,7 +96,7 @@ def delete_data(request, pk):
         'items': items,
     }
 
-    return redirect('display_dataset')
+    return redirect('multiple_display_dataset')
 
     #return render(request, template, context)
 

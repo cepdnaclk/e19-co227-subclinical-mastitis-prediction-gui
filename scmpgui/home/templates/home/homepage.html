@@ -2,7 +2,7 @@
 
 {% block nav_items %}
     <a href="{% url "dataform" %}" class="nav-item nav-link text-light">Individual Entry</a>
-    <a href="{% url "dataset_upload" %}" class="nav-item nav-link text-light">Batch Process</a>
+    <a href="{% url "multiple_dataset_upload" %}" class="nav-item nav-link text-light">Batch Process</a>
     <a href="{% url "history_main" %}" class="nav-item nav-link text-light">Visualize History</a>
 {% endblock nav_items %}
 
@@ -129,7 +129,7 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="/multiple/dataset_upload" class="card">
+                <a href="{% url "multiple_dataset_upload" %}" class="card">
                     <div class="card-body">
                         <h5 class="card-title">Batch Data Import</h5>
                         <p class="card-text">Batch Data Import mode simplifies the process of analyzing large datasets. Upload your CSV or Excel file, and let our model handle the heavy lifting for comprehensive predictions.</p>

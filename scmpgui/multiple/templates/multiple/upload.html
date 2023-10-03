@@ -2,18 +2,19 @@
 
 {% block style_content %}
 
+
 .form-label {
     font-size: 25px;
     color: rebeccapurple; 
     margin-top:10px;
     margin-bottom: 20px;
 }
-
 .form-control {
     border: 1px solid rebeccapurple; 
     border-radius: 8px;
     text-color:rebeccapurple;
 }
+
 
 .btn-primary {
     background-color: rebeccapurple;
@@ -27,17 +28,17 @@
     font-size: 20px; 
 
 }
-
 .btn-primary:hover,
 .btn-primary:focus {
     background-color: darkorchid;
     border-color: darkorchid;
 }
+
+
 .card-container {
     display: flex;
     justify-content: space-between;
 }
-
 .card {
     flex: 1;
     background-color: #fff;
@@ -48,43 +49,28 @@
     cursor: pointer;
     color: rebeccapurple;
 }
-
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #cbb1eb;
     color: rebeccapurple;
 }
-
 .card-title {
     font-size: 20px;
     font-weight: bold;
     font-color: rebeccapurple;
 }
-
 a{
     text-decoration: none !important;
 }
 
-.carousel-logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 350px;
-    transform: translate(-50%, -50%);
-    z-index: 9999; 
-  }
-
-.ImageCarousel {
-    box-shadow: 0 4px 8px 10px rgba(0, 0, 0, 0.8);
-}
 
 {% endblock style_content %}
 
 {% block outside_content %}
-<body>
+
+
     <div class="container mt-5">
-        <!-- Add this block to display error messages with a red background -->
         {% if messages %}
             {% for message in messages %}
                 <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% endif %}">
@@ -92,6 +78,7 @@ a{
                 </div>
             {% endfor %}
         {% endif %}
+
 
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -102,14 +89,14 @@ a{
             <button type="submit" class="btn btn-primary">Import</button>
         </form>
 
-        <a href="/multiple/display_dataset" class="card">
+
+        <a href="{% url 'multiple_display_dataset' %}" class="card">
             <div class="card-body">
                 <h5 class="card-title">Batch Data Process</h5>
                 <p class="card-text">Batch Data Process model simplifies the process of analyzing large datasets. Uploaded datsets can be edited,deleted ,also new data set can be added. Finally updated dataset can be moved across the prediction model and get the result and let our model handle the heavy lifting for comprehensive predictions.</p>
             </div>
         </a>
-        
     </div>
-</body>
+
 
 {% endblock outside_content %}

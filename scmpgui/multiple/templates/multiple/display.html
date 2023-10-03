@@ -2,6 +2,7 @@
 
 {% block style_content %}
 
+
 .btn-primary {
   background-color: rebeccapurple;
   border-color: rebeccapurple;
@@ -11,14 +12,13 @@
   cursor: pointer;
   font-size: 20px; 
   margin:20px;
-
 }
-
 .btn-primary:hover,
 .btn-primary:focus {
     background-color: darkorchid;
     border-color: darkorchid;
 }
+
 
 h2{
   font-weight: bold;
@@ -26,42 +26,42 @@ h2{
   margin:10px;
 }
 
+
 .container-fluid {
   overflow-x: auto; 
   margin:0px;
 }
-
 table.table {
   border-collapse: collapse;
   width: 100%;
 }
-
 table.table th,
 table.table td {
   border: 1px solid #dee2e6;
   padding: 10px;
   text-align: center;
 }
-
 .table-striped  thead {
     font-weight: bold; 
 }
+
 
 .btn-warning{
   margin-bottom:3px;
 }
 
+
 {% endblock style_content %}
 
 {% block outside_content %}
-<body
 
     <div class="add_buttons">
         <div class="button-group">
-          <a href="{% url 'add_data' %}"class="btn btn-primary" role="button"> Add Data</a>
+          <a href="{% url 'multiple_add_data' %}"class="btn btn-primary" role="button">Add new dataset</a>
           <h2>Currently Processing {{ header }}</h2>
         </div>
     </div>
+
 
     <div class="container-fluid">
       <table class="table table-striped table-bordered border-primary ">
@@ -90,19 +90,17 @@ table.table td {
               <td>label</td>
           </tr>
       </thead>
+
+
       <tbody>
-  
           {% for item in items %}
-    
           <tr>
             {% if header|lower == "dataset" %}
-
             <td>
-              <a href="{% url 'edit_data' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Edit</a>
+              <a href="{% url 'multiple_edit_data' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Edit</a>
               <br>
-              <a href="{% url 'delete_data' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > Del</a>
+              <a href="{% url 'multiple_delete_data' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > Del</a>
             </td>
-
             {% endif %}
             <td>{{ item.pk }}
             <td>{{ item.id_num }}</td>
@@ -125,14 +123,10 @@ table.table td {
             <td>{{ item.scc }} </td>
             <td>{{ item.label }}</td>
           </tr>
-    
           {% endfor %}
         </tbody>
       </table>
     </div>
     
-</body>
-
-</html>
 
 {% endblock outside_content %}

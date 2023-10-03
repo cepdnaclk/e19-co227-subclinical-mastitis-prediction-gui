@@ -1,10 +1,11 @@
 from django.db import models
 
-#model for multiple input
+#not useful, this model can save the imported xl sheet in media/uploads
 class ExcelFile(models.Model):
     file = models.FileField(upload_to='uploads/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
+#model for create fields for storing data of importing dataset
 class Batchdataset(models.Model):
     # 1. id_num (Identification No)
     id_num = models.CharField(max_length=50, unique=True)

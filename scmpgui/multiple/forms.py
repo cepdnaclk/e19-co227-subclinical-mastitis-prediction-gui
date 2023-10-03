@@ -1,12 +1,13 @@
 from django import forms
 from .models import *
 
-#form for multiple input
+#not useful
 class ExcelFileUploadForm(forms.ModelForm):
     class Meta:
         model = ExcelFile
         fields = ['file']
 
+#form for add and edit data
 class DataForm(forms.ModelForm):
     class Meta:
         model = Batchdataset
