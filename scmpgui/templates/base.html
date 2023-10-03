@@ -32,49 +32,54 @@
     {% endblock style_content %}
     </style>
 
-    {% block nav_content %}
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #563186;">
-        <div class="container-fluid">
-            <a href="#" class="navbar-brand">
-                <img src="/static/images/Logo.png" height="40" alt="SCMPGUI">
-            </a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav">
-                    {% block nav_items %}
-                        <a href="{% url "home" %}" class="nav-item nav-link active text-light">Home</a>
-                        <a href="{% url "dataform" %}" class="nav-item nav-link text-light">Individual Entry</a>
-                        <a href="{% url "upload_excel" %}" class="nav-item nav-link text-light">Batch Process</a>
-                        <a href="{% url "history_main" %}" class="nav-item nav-link text-light">Visualize History</a>
-                    {% endblock nav_items %}
-                </div>
-                <div class="navbar-nav ms-auto"> 
-                    
-                    <a href="{% url "logout" %}" class="nav-item nav-link text-light">Logout  <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+    {% block independent %}
+
+        {% block nav_content %}
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #563186;">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand">
+                    <img src="/static/images/Logo.png" height="40" alt="SCMPGUI">
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        {% block nav_items %}
+                            <a href="{% url "home" %}" class="nav-item nav-link active text-light">Home</a>
+                            <a href="{% url "dataform" %}" class="nav-item nav-link text-light">Individual Entry</a>
+                            <a href="{% url "upload_excel" %}" class="nav-item nav-link text-light">Batch Process</a>
+                            <a href="{% url "history_main" %}" class="nav-item nav-link text-light">Visualize History</a>
+                        {% endblock nav_items %}
+                    </div>
+                    <div class="navbar-nav ms-auto"> 
+                        
+                        <a href="{% url "members_logout" %}" class="nav-item nav-link text-light">Logout  <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                    </div>
                 </div>
             </div>
+        </nav>
+        
+        <style>
+            .navbar .navbar-nav .nav-item{
+                padding: 0 0.7em;
+            }
+            .navbar .navbar-nav .nav-item:not(:last-child){
+                border-right: 2px solid #351e53;
+            }
+        </style>
+        {% endblock nav_content %}
+
+        {% block outside_content %}
+            {% comment %} ? Any content that should span whole page goes here. {% endcomment %}
+        {% endblock outside_content %}
+
+        <div class="container p-3">
+            {% block page_content %}
+            {% endblock page_content %}
         </div>
-    </nav>
-    {% endblock nav_content %}
 
-    <style>
-        .navbar .navbar-nav .nav-item{
-            padding: 0 0.7em;
-        }
-        .navbar .navbar-nav .nav-item:not(:last-child){
-            border-right: 2px solid #351e53;
-        }
-    </style>
-
-    {% block outside_content %}
-        {% comment %} ? Any content that should span whole page goes here. {% endcomment %}
-    {% endblock outside_content %}
-
-    <div class="container p-3">
-        {% block page_content %}{% endblock page_content %}
-    </div>
+    {% endblock independent %}
 
 </body>
 
