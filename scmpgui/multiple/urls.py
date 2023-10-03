@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path("upload/", views.upload_excel, name='upload_excel'),
+    path("dataset_upload/", views.dataset_upload, name='dataset_upload'),
     path("index/", views.index, name='index'),
     path("display_dataset/", views.display_dataset, name='display_dataset'),
     path("add_data/", views.add_data, name='add_data'),

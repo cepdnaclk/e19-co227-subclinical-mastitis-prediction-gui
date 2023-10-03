@@ -12,6 +12,12 @@
 </style>
 
 <body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile">
+        <button type="submit">Upload</button>
+      </form>
+      
     <div class="add_buttons">
 
         <div class="button-group">
@@ -28,7 +34,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <td>No</td>
+                <td>id</td>
                 <td>id_num</td>
                 <td>sample_num</td>
                 <td>farm</td>
