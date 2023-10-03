@@ -50,9 +50,11 @@ def upload_excel(request):
         form = ExcelFileUploadForm()
     return render(request, 'multiple/upload_excel.html', {'form': form})
 
+#basic function
 def index(request):
     return render(request, 'multiple/display.html')
 
+#function for display datasets
 def display_dataset(request):
     items = Batchdataset.objects.all()
     context = {

@@ -1,5 +1,86 @@
 {% extends "base.html" %}
 
+{% block style_content %}
+
+.form-label {
+    font-size: 25px;
+    color: rebeccapurple; 
+    margin-top:10px;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    border: 1px solid rebeccapurple; 
+    border-radius: 8px;
+    text-color:rebeccapurple;
+}
+
+.btn-primary {
+    background-color: rebeccapurple;
+    border-color: rebeccapurple;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px; 
+    margin-bottom: 60px;
+    font-size: 20px; 
+
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: darkorchid;
+    border-color: darkorchid;
+}
+.card-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    flex: 1;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+    cursor: pointer;
+    color: rebeccapurple;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #cbb1eb;
+    color: rebeccapurple;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    font-color: rebeccapurple;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.carousel-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 350px;
+    transform: translate(-50%, -50%);
+    z-index: 9999; 
+  }
+
+.ImageCarousel {
+    box-shadow: 0 4px 8px 10px rgba(0, 0, 0, 0.8);
+}
+
+{% endblock style_content %}
+
 {% block outside_content %}
 <body>
     <div class="container mt-5">
@@ -18,7 +99,7 @@
                 <label for="myfile" class="form-label">Choose a File</label>
                 <input type="file" name="myfile" class="form-control" id="myfile">
             </div>
-            <button type="submit" class="btn btn-primary">Upload</button>
+            <button type="submit" class="btn btn-primary">Import</button>
         </form>
 
         <a href="/multiple/display_dataset" class="card">
@@ -30,4 +111,5 @@
         
     </div>
 </body>
+
 {% endblock outside_content %}
