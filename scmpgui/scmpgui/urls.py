@@ -27,7 +27,7 @@ urlpatterns = [
     path('home/', include('home.urls')),
     path('data/', include('dataform.urls')),
     path('result/', include('results.urls')),
-    path('csvR/', include('csvR.urls')),
+    path('multiple/', include('multiple.urls')),
     # path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
     path('history/',include('history.urls')),

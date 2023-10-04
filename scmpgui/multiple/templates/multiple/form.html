@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block style_content %}
+
+
+.btn-primary {
+  background-color: rebeccapurple;
+  border-color: rebeccapurple;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 20px; 
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: darkorchid;
+    border-color: darkorchid;
+}
+
+{% endblock style_content %}
+
+{% block outside_content %}
+
+
+    <div class="container">
+        <form method="POST">
+          <br>
+          {% csrf_token %}    
+          {% for field in form %}
+          <div class="form-group row">
+            <label for="id_{{ field.name }}" class="col-2 col-form-label">{{ field.label }}</label>
+            <div class="col-10">
+              {{ field }}
+            </div>
+          </div>
+          {% endfor %}
+    
+
+          <div class="form-group row">
+            <div class="offset-sm-2 col-sm-6">
+              <button type="submit" class="btn btn-primary">Add Data</button>
+              <a href="{% url 'multiple_display_dataset' %}" class="btn btn-primary">Back</a>
+            </div>
+          </div>
+        </form>
+    </div>
+
+    
+{% endblock outside_content %}
