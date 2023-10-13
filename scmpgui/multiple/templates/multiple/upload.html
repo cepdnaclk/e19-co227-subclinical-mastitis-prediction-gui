@@ -1,20 +1,17 @@
 {% extends "base.html" %}
 
 {% block style_content %}
-
-
 .form-label {
     font-size: 25px;
-    color: rebeccapurple; 
-    margin-top:10px;
+    color: rebeccapurple;
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 .form-control {
-    border: 1px solid rebeccapurple; 
+    border: 1px solid rebeccapurple;
     border-radius: 8px;
-    text-color:rebeccapurple;
+    color: rebeccapurple;
 }
-
 
 .btn-primary {
     background-color: rebeccapurple;
@@ -23,22 +20,22 @@
     padding: 10px 30px;
     border-radius: 10px;
     cursor: pointer;
-    margin-top: 20px; 
-    margin-bottom: 60px;
-    font-size: 20px; 
-
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
 }
+
 .btn-primary:hover,
 .btn-primary:focus {
     background-color: darkorchid;
     border-color: darkorchid;
 }
 
-
 .card-container {
     display: flex;
     justify-content: space-between;
 }
+
 .card {
     flex: 1;
     background-color: #fff;
@@ -49,54 +46,51 @@
     cursor: pointer;
     color: rebeccapurple;
 }
+
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #cbb1eb;
     color: rebeccapurple;
 }
+
 .card-title {
     font-size: 20px;
     font-weight: bold;
-    font-color: rebeccapurple;
+    color: rebeccapurple;
 }
-a{
+
+a {
     text-decoration: none !important;
 }
 
+.centered-button {
+    text-align: center;
+}
 
 {% endblock style_content %}
 
 {% block outside_content %}
-
-
-    <div class="container mt-5">
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% endif %}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-
-
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="myfile" class="form-label">Choose a File</label>
-                <input type="file" name="myfile" class="form-control" id="myfile">
+<div class="container mt-5">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% endif %}">
+                {{ message }}
             </div>
-            <button type="submit" class="btn btn-primary">Import</button>
-        </form>
+        {% endfor %}
+    {% endif %}
 
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="myfile" class="form-label">Choose a File</label>
+            <input type="file" name="myfile" class="form-control" id="myfile">
+        </div>
+        <button type="submit" class="btn btn-primary">Import</button>
+    </form>
 
-        <a href="{% url 'multiple_display_dataset' %}" class="card">
-            <div class="card-body">
-                <h5 class="card-title">Batch Data Process</h5>
-                <p class="card-text">Batch Data Process model simplifies the process of analyzing large datasets. Uploaded datsets can be edited,deleted ,also new data set can be added. Finally updated dataset can be moved across the prediction model and get the result and let our model handle the heavy lifting for comprehensive predictions.</p>
-            </div>
-        </a>
+    <div class="centered-button">
+        <a href="{% url 'multiple_display_dataset' %}" class="btn btn-primary">To Batch Process</a>
     </div>
-
-
+</div>
 {% endblock outside_content %}

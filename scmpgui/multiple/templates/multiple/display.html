@@ -1,17 +1,15 @@
 {% extends "base.html" %}
 
 {% block style_content %}
-
-
 .btn-primary {
-  background-color: rebeccapurple;
-  border-color: rebeccapurple;
-  color: white;
-  padding: 10px 30px;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 20px; 
-  margin:20px;
+    background-color: rebeccapurple;
+    border-color: rebeccapurple;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 20px;
 }
 .btn-primary:hover,
 .btn-primary:focus {
@@ -19,114 +17,110 @@
     border-color: darkorchid;
 }
 
-
-h2{
-  font-weight: bold;
-  color: rebeccapurple;
-  margin:10px;
+h2 {
+    font-weight: bold;
+    color: rebeccapurple;
+    margin: 10px;
+    text-align: center; /* Center the title */
 }
-
 
 .container-fluid {
-  overflow-x: auto; 
-  margin:0px;
+    overflow-x: auto;
+    margin: 0px;
 }
 table.table {
-  border-collapse: collapse;
-  width: 100%;
+    border-collapse: collapse;
+    width: 100%;
 }
 table.table th,
 table.table td {
-  border: 1px solid #dee2e6;
-  padding: 10px;
-  text-align: center;
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    text-align: center;
 }
-.table-striped  thead {
-    font-weight: bold; 
-}
-
-
-.btn-warning{
-  margin-bottom:3px;
+.table-striped thead {
+    font-weight: bold;
 }
 
+.btn-warning {
+    margin-bottom: 3px;
+}
+
+.center-content {
+    text-align: center; /* Center the content */
+}
 
 {% endblock style_content %}
 
 {% block outside_content %}
-
-    <div class="add_buttons">
-        <div class="button-group">
-          <a href="{% url 'multiple_add_data' %}"class="btn btn-primary" role="button">Add new dataset</a>
-          <h2>Currently Processing {{ header }}</h2>
-        </div>
+<div class="add_buttons">
+    <div class="button-group center-content">
+        <a href="{% url 'multiple_add_data' %}" class="btn btn-primary" role="button">Process</a>
+        <h2>Currently Processing {{ header }}</h2>
     </div>
+</div>
 
+<div class="container-fluid">
+    <table class="table table-striped table-bordered border-primary ">
+        <thead class="table-light">
+            <tr>
+                <td>Action</td>
+                <td>id_num</td>
+                <td>sample_num</td>
+                <td>farm</td>
+                <td>breed</td>
+                <td>lactation_num</td>
+                <td>dim</td>
+                <td>avg_daily_milk_yield</td>
+                <td>test_day_milk_yield</td>
+                <td>fat_percentage</td>
+                <td>snf_percentage</td>
+                <td>milk_density</td>
+                <td>protein_percentage</td>
+                <td>milk_conductivity</td>
+                <td>milk_ph</td>
+                <td>freezing_point</td>
+                <td>salt_percentage</td>
+                <td>lactose_percentage</td>
+                <td>scc</td>
+                <td>label</td>
+            </tr>
+        </thead>
 
-    <div class="container-fluid">
-      <table class="table table-striped table-bordered border-primary ">
-        <thead class = "table-light ">
-          <tr>
-              <td>Action</td>
-              <td>id</td>
-              <td>id_num</td>
-              <td>sample_num</td>
-              <td>farm</td>
-              <td>breed</td>
-              <td>lactation_num</td>
-              <td>dim</td>
-              <td>avg_daily_milk_yield</td>
-              <td>test_day_milk_yield</td>
-              <td>fat_percentage</td>
-              <td>snf_percentage</td>
-              <td>milk_density</td>
-              <td>protein_percentage</td>
-              <td>milk_conductivity</td>
-              <td>milk_ph</td>
-              <td>freezing_point</td>
-              <td>salt_percentage</td>
-              <td>lactose_percentage</td>
-              <td>scc</td>
-              <td>label</td>
-          </tr>
-      </thead>
-
-
-      <tbody>
-          {% for item in items %}
-          <tr>
-            {% if header|lower == "dataset" %}
-            <td>
-              <a href="{% url 'multiple_edit_data' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Edit</a>
-              <br>
-              <a href="{% url 'multiple_delete_data' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > Del</a>
-            </td>
-            {% endif %}
-            <td>{{ item.pk }}
-            <td>{{ item.id_num }}</td>
-            <td>{{ item.sample_num }}</td>
-            <td>{{ item.farm }} </td>
-            <td>{{ item.breed }}</td>
-            <td>{{ item.lactation_num }}</td>
-            <td>{{ item.dim }}
-            <td>{{ item.avg_daily_milk_yield }}</td>
-            <td>{{ item.test_day_milk_yield }}</td>
-            <td>{{ item.fat_percentage }}</td>
-            <td>{{ item.snf_percentage }}</td>
-            <td>{{ item.milk_density }}
-            <td>{{ item.protein_percentage }}</td>
-            <td>{{ item.milk_conductivity }} </td>
-            <td>{{ item.milk_ph }}</td>
-            <td>{{ item.freezing_point }}</td>
-            <td>{{ item.salt_percentage }}
-            <td>{{ item.lactose_percentage }}</td>
-            <td>{{ item.scc }} </td>
-            <td>{{ item.label }}</td>
-          </tr>
-          {% endfor %}
+        <tbody>
+            {% for item in items %}
+            <tr>
+                {% if header|lower == "dataset" %}
+                <td>
+                    <a href="{% url 'multiple_edit_data' item.pk %}" class="btn btn-warning btn-sm" role="button"
+                        aria-pressed="true">Edit</a>
+                    <br>
+                    <a href="{% url 'multiple_delete_data' item.pk%}" class="btn btn-danger btn-sm" role="button"
+                        aria-pressed="true">Del</a>
+                </td>
+                {% endif %}
+                <td>{{ item.id_num }}</td>
+                <td>{{ item.sample_num }}</td>
+                <td>{{ item.farm }} </td>
+                <td>{{ item.breed }}</td>
+                <td>{{ item.lactation_num }}</td>
+                <td>{{ item.dim }} </td>
+                <td>{{ item.avg_daily_milk_yield }}</td>
+                <td>{{ item.test_day_milk_yield }}</td>
+                <td>{{ item.fat_percentage }}</td>
+                <td>{{ item.snf_percentage }}</td>
+                <td>{{ item.milk_density }} </td>
+                <td>{{ item.protein_percentage }}</td>
+                <td>{{ item.milk_conductivity }} </td>
+                <td>{{ item.milk_ph }}</td>
+                <td>{{ item.freezing_point }}</td>
+                <td>{{ item.salt_percentage }} </td>
+                <td>{{ item.lactose_percentage }}</td>
+                <td>{{ item.scc }} </td>
+                <td>{{ item.label }}</td>
+            </tr>
+            {% endfor %}
         </tbody>
-      </table>
-    </div>
-    
-
+    </table>
+</div>
 {% endblock outside_content %}
