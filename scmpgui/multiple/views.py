@@ -47,6 +47,15 @@ def display_dataset(request):
         'header': 'Dataset',#this is viewed in the page
     }
     return render(request, 'multiple/display.html', context)
+def display_result(request):
+    items = Batchdataset.objects.all()
+    context = {
+        'items': items,
+    }
+    return render(request, 'multiple/result.html', context)
+
+
+
 
 #main functon for add any item
 def add_item(request, cls):
@@ -100,3 +109,36 @@ def delete_data(request, pk):
 
     #return render(request, template, context)
 
+
+def delete_all_data(request):
+    template = 'multiple/display.html'
+    
+    # Delete all datasets in the Batchdataset table
+    Batchdataset.objects.all().delete()
+
+    # After deleting all datasets, you can choose to return to the same page or another page
+    return redirect('multiple_dataset_upload')  # Redirect to the appropriate URL
+
+    # You can also return a response message if needed
+    # return HttpResponse("All datasets have been deleted.")
+
+    # You can also render a template with a context if needed
+    # items = Batchdataset.objects.all()
+    # context = {
+    #     'items': items,
+    # }
+    #return render(request, template, context)
+
+
+def export_to_xlsx(request):
+    items = Batchdataset.objects.all()
+
+    # Select only the desired columns
+    data = items.values('id_num', 'sample_num', 'scc','label')
+
+    df = pd.DataFrame(data)
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="result_data.xlsx"'
+    df.to_excel(response, index=False)
+
+    return response

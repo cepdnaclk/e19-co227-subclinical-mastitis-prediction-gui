@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block style_content %}
+<style>
+    h2 {
+        font-weight: bold;
+        color: rebeccapurple;
+        text-align: center;
+        margin: 10px;
+    }
+
+    table.table thead th {
+        background-color: rebeccapurple;
+        color: white;
+    }
+
+    table.table tbody tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+
+    table.table tbody td {
+        font-weight: bold;
+    }
+
+    .result-sheet-container {
+        text-align: center;
+    }
+</style>
+{% endblock style_content %}
+
+{% block outside_content %}
+<div class="container result-sheet-container">
+    <h2>Result Sheet</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID Number</th>
+                <th>Sample Number</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.id_num }}</td>
+                <td>{{ item.sample_num }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="export-button">
+        <a href="{% url 'multiple_export_to_xlsx' %}" class="btn btn-primary" role="button">Export as XLSX</a>
+    </div>
+
+</div>
+{% endblock outside_content %}

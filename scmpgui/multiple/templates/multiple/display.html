@@ -55,7 +55,8 @@ table.table td {
 {% block outside_content %}
 <div class="add_buttons">
     <div class="button-group center-content">
-        <a href="{% url 'multiple_add_data' %}" class="btn btn-primary" role="button">Process</a>
+        <a href="{% url 'multiple_display_result' %}" class="btn btn-primary" role="button">Process</a>
+        <a href="{% url 'multiple_delete_all_data' %}" class="btn btn-primary" role="button">Cancel</a> <!-- Add your Cancel button here -->
         <h2>Currently Processing {{ header }}</h2>
     </div>
 </div>
