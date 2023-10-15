@@ -7,6 +7,8 @@ from django.http import HttpResponse
 from .resources import *
 from tablib import *
 from django.contrib import messages
+from tabulate import tabulate
+
 
 #function for import multiple dataets
 def dataset_upload(request):
@@ -48,11 +50,20 @@ def display_dataset(request):
         'header': 'Dataset',#this is viewed in the page
     }
     return render(request, 'multiple/display.html', context)
+
+
+#function for display results
 def display_result(request):
     items = Batchdataset.objects.all()
     context = {
         'items': items,
     }
+    model_fields = [field.name for field in Batchdataset._meta.fields]
+    data = [[getattr(item, field) for field in model_fields] for item in items]
+    headers = model_fields
+    table = tabulate(data, headers, tablefmt="fancy_grid")
+    print(table)
+
     return render(request, 'multiple/result.html', context)
 
 
@@ -114,17 +125,12 @@ def delete_all_data(request):
     
     Batchdataset.objects.all().delete()
     return redirect('multiple_dataset_upload') 
-    # items = Batchdataset.objects.all()
-    # context = {
-    #     'items': items,
-    # }
-    #return render(request, template, context)
 
 
 def export_dataset(request):
     items = Batchdataset.objects.all()
 
-    data = items.values('id_num', 'sample_num', 'scc','label')
+    data = items.values('id_num', 'sample_num', 'label')
     df = pd.DataFrame(data)
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="result_data.xlsx"'
