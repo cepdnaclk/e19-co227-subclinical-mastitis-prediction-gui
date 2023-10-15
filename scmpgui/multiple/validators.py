@@ -23,9 +23,28 @@ def CowBreeds(value):
         else:
             return value
 
-
 def empty_space(value):
     if value and not value.isspace():
         return value
     else:
         return False
+
+def validate_digits(value):
+    val = float(value)
+
+    if 0 <= val < 10 ** 10:
+        decimal_part = val - int(val)
+        if decimal_part == 0 or (decimal_part * 1000).is_integer():
+            return value
+        
+    return False
+
+def validate_freezing_point(value):
+    val = float(value)
+
+    if val < 10**10:
+        decimal_part = val - int(val)
+        if decimal_part == 0 or (decimal_part * 1000).is_integer():
+            return value
+        
+    return False
