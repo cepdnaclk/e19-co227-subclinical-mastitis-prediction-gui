@@ -95,10 +95,10 @@ table.table td {
             <tr>
                 {% if header|lower == "dataset" %}
                 <td>
-                    <a href="{% url 'multiple_edit_data' item.pk %}" class="btn btn-warning btn-sm" role="button"
+                    <a href="{% url 'multiple_edit_data' item.sample_num %}" class="btn btn-warning btn-sm" role="button"
                         aria-pressed="true">Edit</a>
                     <br>
-                    <a href="{% url 'multiple_delete_data' item.pk%}" class="btn btn-danger btn-sm" role="button"
+                    <a href="{% url 'multiple_delete_data' item.sample_num %}" class="btn btn-danger btn-sm" role="button"
                         aria-pressed="true">Del</a>
                 </td>
                 {% endif %}
