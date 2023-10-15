@@ -7,6 +7,8 @@ from django.http import HttpResponse
 from .resources import *
 from tablib import *
 from django.contrib import messages
+from tabulate import tabulate
+
 
 #function for import multiple dataets
 def dataset_upload(request):
@@ -25,8 +27,7 @@ def dataset_upload(request):
                 for data in imported_data:
                     value = Batchdataset(
                         data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8],
-                        data[9], data[10], data[11], data[12], data[13], data[14], data[15], data[16],
-                        data[17], data[18], data[19]
+                        data[9], data[10], data[11], data[12], data[13], data[14], data[15], data[16]
                     )
                     value.save()
                 messages.success(request, 'Excel File uploaded successfully.')
@@ -49,11 +50,20 @@ def display_dataset(request):
         'header': 'Dataset',#this is viewed in the page
     }
     return render(request, 'multiple/display.html', context)
+
+
+#function for display results
 def display_result(request):
     items = Batchdataset.objects.all()
     context = {
         'items': items,
     }
+    model_fields = [field.name for field in Batchdataset._meta.fields]
+    data = [[getattr(item, field) for field in model_fields] for item in items]
+    headers = model_fields
+    table = tabulate(data, headers, tablefmt="fancy_grid")
+    print(table)
+
     return render(request, 'multiple/result.html', context)
 
 
@@ -98,7 +108,7 @@ def edit_data(request, pk):
 def delete_data(request, pk):
 
     template = 'multiple/display.html'
-    Batchdataset.objects.filter(id=pk).delete()
+    Batchdataset.objects.filter(pk=pk).delete()
 
     items = Batchdataset.objects.all()
 
@@ -115,17 +125,12 @@ def delete_all_data(request):
     
     Batchdataset.objects.all().delete()
     return redirect('multiple_dataset_upload') 
-    # items = Batchdataset.objects.all()
-    # context = {
-    #     'items': items,
-    # }
-    #return render(request, template, context)
 
 
 def export_dataset(request):
     items = Batchdataset.objects.all()
 
-    data = items.values('id_num', 'sample_num', 'scc','label')
+    data = items.values('id_num', 'sample_num', 'label')
     df = pd.DataFrame(data)
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="result_data.xlsx"'
