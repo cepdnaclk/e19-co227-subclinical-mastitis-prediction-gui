@@ -66,10 +66,10 @@ table {
                     <tr>
                         <td>
                             <div class="d-flex flex-column align-items-center">
-                                <a href="{% url 'multiple_edit_data' item.pk %}" class="btn btn-warning btn-sm mb-2" role="button" aria-pressed="true">
+                                <a href="{% url 'multiple_edit_data' item.sample_num %}" class="btn btn-warning btn-sm mb-2" role="button" aria-pressed="true">
                                     <i class="fas fa-edit fa-lg"></i>
                                 </a>
-                                <a href="{% url 'multiple_delete_data' item.pk %}" class="btn btn-danger btn-sm" role="button" aria-pressed="true">
+                                <a href="{% url 'multiple_delete_data' item.sample_num  %}" class="btn btn-danger btn-sm" role="button" aria-pressed="true">
                                     <i class="fas fa-trash fa-lg"></i>
                                 </a>
                             </div>
