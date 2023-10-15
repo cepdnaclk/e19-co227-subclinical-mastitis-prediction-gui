@@ -58,10 +58,7 @@ class Batchdataset(models.Model):
     # 17. lactose_percentage (Lactose (%))
     lactose_percentage = models.DecimalField(max_digits=10, decimal_places=3)
 
-    # 18. scc (SCC - Somatic Cell Count, 103 cells/ml)
-    scc = models.PositiveIntegerField(blank=True,null=True)
-
-    # 19. label (Label)
+    # 18. label (Label)
     label = models.CharField(max_length=10,blank=True,null=True)
 
     def to_string(self):
@@ -83,7 +80,6 @@ class Batchdataset(models.Model):
             f"Freezing Point: {self.freezing_point}\n"
             f"Salt Percentage: {self.salt_percentage}\n"
             f"Lactose Percentage: {self.lactose_percentage}\n"
-            f"SCC: {self.scc}\n"
             f"Label: {self.label}"
         )
 

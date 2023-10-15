@@ -25,8 +25,7 @@ def dataset_upload(request):
                 for data in imported_data:
                     value = Batchdataset(
                         data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8],
-                        data[9], data[10], data[11], data[12], data[13], data[14], data[15], data[16],
-                        data[17], data[18], data[19]
+                        data[9], data[10], data[11], data[12], data[13], data[14], data[15], data[16]
                     )
                     value.save()
                 messages.success(request, 'Excel File uploaded successfully.')
@@ -125,7 +124,7 @@ def delete_all_data(request):
 def export_dataset(request):
     items = Batchdataset.objects.all()
 
-    data = items.values('id_num', 'sample_num', 'scc','label')
+    data = items.values('id_num','sample_num','label')
     df = pd.DataFrame(data)
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="result_data.xlsx"'
