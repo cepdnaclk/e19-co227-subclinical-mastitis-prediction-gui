@@ -10,6 +10,6 @@ urlpatterns = [
     path("edit_data/<int:pk>/", views.edit_data, name='multiple_edit_data'),
     path("delete_data/<int:pk>/", views.delete_data, name='multiple_delete_data'),
     path('delete_all_data/', views.delete_all_data, name='multiple_delete_all_data'),
-    path('export-to-xlsx/', views.export_to_xlsx, name='multiple_export_to_xlsx'),
+    path('export_dataset/', views.export_dataset, name='multiple_export_dataset'),
 
 ]

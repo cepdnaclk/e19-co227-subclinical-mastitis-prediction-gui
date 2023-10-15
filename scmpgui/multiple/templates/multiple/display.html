@@ -17,12 +17,14 @@
     border-color: darkorchid;
 }
 
+
 h2 {
     font-weight: bold;
     color: rebeccapurple;
     margin: 10px;
     text-align: center; /* Center the title */
 }
+
 
 .container-fluid {
     overflow-x: auto;
@@ -42,9 +44,11 @@ table.table td {
     font-weight: bold;
 }
 
+
 .btn-warning {
     margin-bottom: 3px;
 }
+
 
 .center-content {
     text-align: center; /* Center the content */
@@ -56,7 +60,7 @@ table.table td {
 <div class="add_buttons">
     <div class="button-group center-content">
         <a href="{% url 'multiple_display_result' %}" class="btn btn-primary" role="button">Process</a>
-        <a href="{% url 'multiple_delete_all_data' %}" class="btn btn-primary" role="button">Cancel</a> <!-- Add your Cancel button here -->
+        <a href="{% url 'multiple_delete_all_data' %}" class="btn btn-primary" role="button">Cancel</a>
         <h2>Currently Processing {{ header }}</h2>
     </div>
 </div>
