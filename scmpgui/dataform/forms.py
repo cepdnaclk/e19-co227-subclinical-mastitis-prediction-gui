@@ -44,7 +44,7 @@ class DataForm(forms.Form):
     farm.group = 1
 
     breed = forms.CharField(
-        max_length=50,
+        max_length=100,
         required=True,
         validators=[CowBreeds],
         widget=CustomInputWidget(
