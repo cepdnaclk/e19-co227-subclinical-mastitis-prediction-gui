@@ -22,3 +22,10 @@ def CowBreeds(value):
             return False
         else:
             return value
+
+
+def empty_space(value):
+    if value and not value.isspace():
+        return value
+    else:
+        return False

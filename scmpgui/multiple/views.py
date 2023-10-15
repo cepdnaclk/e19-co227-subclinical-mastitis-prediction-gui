@@ -59,11 +59,7 @@ def display_result(request):
     context = {
         'items': items,
     }
-    model_fields = [field.name for field in Batchdataset._meta.fields]
-    data = [[getattr(item, field) for field in model_fields] for item in items]
-    headers = model_fields
-    table = tabulate(data, headers, tablefmt="fancy_grid")
-    print(table)
+    print(items)
 
     return render(request, 'multiple/result.html', context)
 
