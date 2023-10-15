@@ -2,77 +2,65 @@
 
 {% block style_content %}
 
-    .btn-primary {
-        background-color: rebeccapurple;
-        border-color: rebeccapurple;
-        color: white;
-        padding: 10px 30px;
-        border-radius: 10px;
-        cursor: pointer;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 20px;
+.table-container {
+    max-width: 100%; /* Adjust the maximum width as needed */
+    max-height: 65vh;
+    overflow: auto; /* Enable horizontal scrollbar */
     }
-    .btn-primary:hover,
-    .btn-primary:focus {
-        background-color: darkorchid;
-        border-color: darkorchid;
-    }
-
-
-    h2 {
-        font-weight: bold;
-        color: rebeccapurple;
-        text-align: center;
-        margin: 10px;
-    }
-
-
-    table.table thead th {
-        background-color: rebeccapurple;
-        color: white;
-    }
-    table.table tbody tr:nth-child(odd) {
-        background-color: #f2f2f2;
-    }
-    table.table tbody td {
-        font-weight: bold;
-    }
-
-
-    .result-sheet-container {
-        text-align: center;
-    }
+    
+    table {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+    
+    .fixed-table-header th { /* header cell */
+        position: sticky;
+        top: 0;
+        background-color: #F9F8F8;
+        border-bottom: 1px solid #EB9486;
+      }
+    
     
 {% endblock style_content %}
 
 {% block outside_content %}
-<div class="container result-sheet-container">
-    <h2>Result Sheet</h2>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID Number</th>
-                <th>Sample Number</th>
-                <th>Result</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in items %}
-            <tr>
-                <td>{{ item.id_num }}</td>
-                <td>{{ item.sample_num }}</td>
-                <td>{{ item.label }}</td>
+<div class="container fluid">
+    <h2 class="text-primary mt-3 text-center">Result Sheet</h2>
+    <hr class="border border-primary" />
 
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 
-    <div class="export-button">
-        <a href="{% url 'multiple_export_dataset' %}" class="btn btn-primary" role="button">Export as XLSX</a>
-        <a href="{% url 'multiple_display_dataset' %}" class="btn btn-primary">Back</a>
+    <div class="container-fluid pt-3">
+        <div class="table-container">
+            <table class="table table-bordered">
+                <thead class="fixed-table-header">
+                    <tr>
+                        <th>ID Number</th>
+                        <th>Sample Number</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ item.id_num }}</td>
+                        <td>{{ item.sample_num }}</td>
+                        <td>{{ item.label }}</td>
+        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
     </div>
 
-</div>
+    <div class="row text-center mt-3">
+        <div class="col">
+            <a href="{% url 'multiple_export_dataset' %}" class="btn btn-primary"><i class="fas fa-gears fa-lg" style="margin-right:10px;"></i>Export as XLSX</a>
+        </div>
+        <div class="col">
+            <a href="{% url 'multiple_display_dataset' %}" class="btn btn-primary"><i class="fas fa-undo fa-lg" style="margin-right:10px;"></i>Back</a>
+        </div>
+    </div>
+    
 {% endblock outside_content %}
