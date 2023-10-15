@@ -35,9 +35,11 @@ def dataset_upload(request):
     
     return render(request, 'multiple/upload.html')
 
+
 #basic function
 def index(request):
     return render(request, 'multiple/display.html')
+
 
 #function for display datasets
 def display_dataset(request):
@@ -47,6 +49,13 @@ def display_dataset(request):
         'header': 'Dataset',#this is viewed in the page
     }
     return render(request, 'multiple/display.html', context)
+def display_result(request):
+    items = Batchdataset.objects.all()
+    context = {
+        'items': items,
+    }
+    return render(request, 'multiple/result.html', context)
+
 
 #main functon for add any item
 def add_item(request, cls):
@@ -84,6 +93,7 @@ def edit_item(request, pk, model, cls):
 def edit_data(request, pk):
     return edit_item(request, pk, Batchdataset, DataForm)
 
+
 #function for delet any dataset
 def delete_data(request, pk):
 
@@ -100,3 +110,25 @@ def delete_data(request, pk):
 
     #return render(request, template, context)
 
+def delete_all_data(request):
+    template = 'multiple/display.html'
+    
+    Batchdataset.objects.all().delete()
+    return redirect('multiple_dataset_upload') 
+    # items = Batchdataset.objects.all()
+    # context = {
+    #     'items': items,
+    # }
+    #return render(request, template, context)
+
+
+def export_dataset(request):
+    items = Batchdataset.objects.all()
+
+    data = items.values('id_num', 'sample_num', 'scc','label')
+    df = pd.DataFrame(data)
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="result_data.xlsx"'
+    df.to_excel(response, index=False)
+
+    return response

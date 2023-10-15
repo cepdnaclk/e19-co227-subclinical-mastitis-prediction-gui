@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block style_content %}
+
+    .btn-primary {
+        background-color: rebeccapurple;
+        border-color: rebeccapurple;
+        color: white;
+        padding: 10px 30px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: darkorchid;
+        border-color: darkorchid;
+    }
+
+
+    h2 {
+        font-weight: bold;
+        color: rebeccapurple;
+        text-align: center;
+        margin: 10px;
+    }
+
+
+    table.table thead th {
+        background-color: rebeccapurple;
+        color: white;
+    }
+    table.table tbody tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+    table.table tbody td {
+        font-weight: bold;
+    }
+
+
+    .result-sheet-container {
+        text-align: center;
+    }
+    
+{% endblock style_content %}
+
+{% block outside_content %}
+<div class="container result-sheet-container">
+    <h2>Result Sheet</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID Number</th>
+                <th>Sample Number</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.id_num }}</td>
+                <td>{{ item.sample_num }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="export-button">
+        <a href="{% url 'multiple_export_dataset' %}" class="btn btn-primary" role="button">Export as XLSX</a>
+        <a href="{% url 'multiple_display_dataset' %}" class="btn btn-primary">Back</a>
+    </div>
+
+</div>
+{% endblock outside_content %}
