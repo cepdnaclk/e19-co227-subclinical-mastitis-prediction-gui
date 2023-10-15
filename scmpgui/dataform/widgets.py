@@ -13,7 +13,7 @@ class CustomInputWidget(forms.Widget):
     def render(self, name, value, attrs=None, renderer=None):
         input_html = ""
 
-        value_exist = f"value={value}" if value else ""
+        value_exist = f"value='{value}'" if value else ""
 
         if self.attrs:
             for attr_name, attr_value in self.attrs.items():
