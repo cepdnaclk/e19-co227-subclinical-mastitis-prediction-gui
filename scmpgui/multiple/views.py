@@ -2,7 +2,6 @@ from pyexpat.errors import messages
 from django.shortcuts import get_object_or_404, redirect, render
 import pandas as pd
 from .models import *
-# from .forms import *
 from django.http import HttpResponse
 from .resources import *
 from tablib import *
@@ -46,6 +45,7 @@ def index(request):
 #function for display datasets
 def display_dataset(request):
     items = Batchdataset.objects.all()
+
     context = {
         'items': items,
         'header': 'Dataset',#this is viewed in the page
@@ -56,14 +56,17 @@ def display_dataset(request):
 #function for display results
 def display_result(request):
     items = Batchdataset.objects.all()
+
+    #Vlidation
+    for item in items:
+        
+
+        item.invalid = False
+
     context = {
         'items': items,
     }
-    model_fields = [field.name for field in Batchdataset._meta.fields]
-    data = [[getattr(item, field) for field in model_fields] for item in items]
-    headers = model_fields
-    table = tabulate(data, headers, tablefmt="fancy_grid")
-    print(table)
+    print(items)
 
     return render(request, 'multiple/result.html', context)
 

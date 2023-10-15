@@ -61,6 +61,9 @@ class Batchdataset(models.Model):
     # 18. label (Label)
     label = models.CharField(max_length=10,blank=True,null=True)
 
+    # 19. Row valid state
+    invalid = models.BooleanField(default=False)
+
     def to_string(self):
         return (
             f"ID: {self.id_num}\n"
@@ -81,6 +84,7 @@ class Batchdataset(models.Model):
             f"Salt Percentage: {self.salt_percentage}\n"
             f"Lactose Percentage: {self.lactose_percentage}\n"
             f"Label: {self.label}"
+            f"Invalid: {self.invalid}"
         )
 
     def __str__(self):
