@@ -107,7 +107,13 @@ Now you're ready to collaborate on our project. If you encounter any issues or h
 
 ### User Authentication
 
-The reason for including a user authentication for this application is to, iif a large farm has a very large heard that’s hard to maintain by a one farmer alone, The large heard can devided into several groups and each group can be assigned to a one different farmer for maintainn. User authentication provide functionality that these each farmer can manage their group of the heard individually.  
+The reason for implementing user authentication in this application is to safeguard valuable farm data from exposure.
+
+The registration process has been streamlined; you only need to provide a username, email, and password in order to register. Subsequently, you can log in using your username and password.
+
+<!-- Two images side by side of register and login form -->
+
+Users are unable to proceed beyond the login page without first logging in, and if not log out, will be automatically redirected to the home page. There is no need to log in every time when using the application.
 
 ## Links
 
