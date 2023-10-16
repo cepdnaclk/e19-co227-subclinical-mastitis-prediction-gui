@@ -1,16 +1,16 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-from history.models import HistoricalRecords
+from dataform.models import Record
 import json
 
 class TestViews(TestCase):
 
     def setUp(self):
         self.client = Client()
-        self.list_url = reverse('history_main')
+        self.list_url = reverse('dataform')
 
     def test_project_list_GET(self):
-        response = self.client.get(reverse('history_main'))
+        response = self.client.get(reverse('dataform'))
 
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'history/main.html')
+        self.assertTemplateUsed(response, 'dataform/auto.html')
