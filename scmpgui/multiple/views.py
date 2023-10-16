@@ -219,12 +219,11 @@ def delete_all_data(request):
 def export_dataset(request):
     items = Batchdataset.objects.all()
 
-    data = items.values('id_num', 'sample_num', 'label')
+    data = items.values('id_num', 'label')
     df = pd.DataFrame(data)
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="result_data.xlsx"'
     df.to_excel(response, index=False)
-
     return response
 
 def download_template_excel(request):
