@@ -1,4 +1,4 @@
-def StrictNumeric(value):
+def StrictNumeric(value):#done
     if value == False:
         return False
     val = str(value)
@@ -7,13 +7,13 @@ def StrictNumeric(value):
     else:
         return False
 
-def phRange(value, min_ph=0, max_ph=14):
+def phRange(value, min_ph=0, max_ph=14):#done
     if min_ph <= value <= max_ph:
         return value
     else:
         return False
     
-def CowBreeds(value):
+def CowBreeds(value):#done
     cow_breeds = ["*","Angus", "Hereford", "Holstein", "Jersey", "Guernsey", "Limousin", "Charolais", "Simmental", "TexasLonghorn", "Brahman", "Highland", "Shorthorn", "Galloway", "Wagyu", "BelgianBlue", "Dexter", "Chianina", "MurrayGrey", "Piedmontese", "RedPoll", "SantaGertrudis", "MaineAnjou", "Salers", "Normande", "Tarentaise", "Friesian"]    
     words = value.lower().split()
     
@@ -23,14 +23,14 @@ def CowBreeds(value):
         else:
             return value
 
-def empty_space(value):
-    if value and not value.isspace():
+def is_empty(value):#done
+    if value and not value.isspace() and value !="None":
         return value
     else:
         return False
 
-def validate_digits(value):
-    val = float(value)
+def validate_digits(value):#done
+    val = str(value)
 
     if 0 <= val < 10 ** 10:
         decimal_part = val - int(val)
@@ -39,7 +39,7 @@ def validate_digits(value):
         
     return False
 
-def validate_freezing_point(value):
+def validate_freezing_point(value):#done
     val = float(value)
 
     if val < 10**10:
@@ -48,3 +48,13 @@ def validate_freezing_point(value):
             return value
         
     return False
+
+
+if __name__ == "__main__":
+    while True:
+        n = str(input("Enter a value or type 'EXIT' to exit: "))
+        if n == "EXIT":
+            exit()
+        else:
+            result = validate_digits(n)
+            print(f"{n} --> {result}")
