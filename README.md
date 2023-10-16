@@ -129,6 +129,24 @@ Each value entered by the user undergoes validation, and if a user enters a valu
 
 <!-- An image of error occured data entry form -->
 
+### Batch data Import
+
+Users can import data in batches from . XLSX files. This feature is developed for large farms with a large cattle group. The system checks for valid files and informs the user if a file is invalid. 
+
+<!-- An image of batch data import page -->
+
+Then the user can see a preview of the dataset. Batch data import also provides the functionality for editing and save the data of any cow in the dataset if needed. Then user can also process the changed dataset.
+
+<!-- An image of preview -->
+
+Users can get the sub-clinical mastitis state of all the cows in the dataset at once by clicking on the "Process" button.
+
+<!-- Image of batch process result -->
+
+### Historical Data Visualization and Analysis
+
+
+
 ## Links
 
 - [Project Repository](https://github.com/cepdnaclk/e19-co227-subclinical-mastitis-prediction-gui)
