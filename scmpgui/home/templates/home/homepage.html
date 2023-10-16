@@ -80,10 +80,15 @@
 		box-shadow: 0 4px 8px 10px rgba(0, 0, 0, 0.8);
     }
 
+    .CarouselWrap{
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
 {% endblock style_content %}
 
 {% block outside_content %}
-
+<div class="CarouselWrap">
 <div class="row">
     <div id="ImageCarousel" class="carousel slide carousel-fade pointer-event" data-bs-ride="carousel" data-bs-pause="none">
         <div class="carousel-inner">
@@ -110,6 +115,7 @@
         <img src="/static/images/front.png" class="carousel-logo">
         </div>
     </div>
+</div>
 </div>
 
 {% endblock outside_content %}
