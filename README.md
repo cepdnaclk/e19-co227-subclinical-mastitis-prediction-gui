@@ -145,7 +145,11 @@ Users can get the sub-clinical mastitis state of all the cows in the dataset at 
 
 ### Historical Data Visualization and Analysis
 
+Users are provided with the ability to save the subclinical mastitis (SCM) status, along with other relevant parameters, directly from the result page. The historical data input page will then display graphs depicting 'Percentage of SCM-contaminated cows' and 'Days in Milk vs Average Daily Milk Yield' using the saved data. This feature enables farmers to gain a comprehensive understanding of the health status of their entire herd or a specific group within their herd. A user can view this historical data visualization by clicking on the "Historical Data Visualization" card.
 
+<!-- two side by side images of historical data visualization -->
+
+### SCM Status Report
 
 ## Links
 
