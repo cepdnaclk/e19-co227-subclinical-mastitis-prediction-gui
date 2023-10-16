@@ -43,12 +43,12 @@ background-color: #ffc8c8; /* Your desired background color */
         <span class="text-danger mb-2">There are erroneous data in the dataset. Please edit or remove them before processing.</span>
         {% else %}
         <div class="col">
-            <a href="{% url 'multiple_display_result' %}" class="btn btn-primary" {{ bt_state }}><i class="fas fa-gears fa-lg" style="margin-right:10px;"></i>Process Dataset</a>
+            <a href="{% url 'multiple_display_result' %}" class="btn btn-primary"><i class="fas fa-gears fa-lg" style="margin-right:10px;"></i>Process Dataset</a>
         </div>
         {% endif %}
 
         <div class="col">
-            <a href="{% url 'multiple_delete_all_data' %}" class="btn btn-warning"><i class="fas fa-undo fa-lg" style="margin-right:10px;"></i>Return Home and Discard</a>
+            <a href="{% url 'multiple_delete_all_data' %}" class="btn btn-warning"><i class="fas fa-undo fa-lg" style="margin-right:10px;"></i>Discard and Upload Another File</a>
         </div>
 
     </div>

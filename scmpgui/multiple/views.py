@@ -1,44 +1,76 @@
-from pyexpat.errors import messages
 from django.shortcuts import get_object_or_404, redirect, render
 import pandas as pd
-from .models import *
+from .models import Batchdataset
 from django.http import HttpResponse
-from .resources import *
-from tablib import *
+from tablib import Dataset
 from django.contrib import messages
 from dataform.forms import DataForm
 from .validators import *
+from external.model_helper import PredictPickle
 
 #function for import multiple dataets
 def dataset_upload(request):
     if request.method == 'POST':
-        Batchdataset_resource = BatchdatasetResource()
         dataset = Dataset()
-        new_dataset = request.FILES.get('myfile')
+        file = request.FILES.get('myfile')
         
-        if not new_dataset:
+        if not file:
             messages.error(request, 'Please select a file to upload.')
-        elif not new_dataset.name.endswith(('.xlsx', '.xls')):
+        elif not file.name.endswith(('.xlsx', '.xls')):
             messages.error(request, 'Invalid file type. Please upload an valid Excel file.')
         else:
             try:
-                imported_data = dataset.load(new_dataset.read(), format='xlsx')
-                for data in imported_data:
-                    value = Batchdataset(
-                        data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8],
-                        data[9], data[10], data[11], data[12], data[13], data[14], data[15], data[16]
-                    )
-                    value.save()
-                messages.success(request, 'Excel File uploaded successfully.')
+                dataset.load(file.read(), format='xlsx')
+                
+                required_headers = ['Identification No', 'Sample No', 'Lac. No.', 'DIM( Days In Milk)', 'Avg(7 days). Daily MY( L )', 'Test day MY (L )', 'Fat (%)', 'SNF (%)', 'Density ( Kg/ m3', 'Protein (%)', 'Conductivity (mS/cm)', 'pH', 'Freezing point (⁰C)', 'Salt (%)', 'Lactose (%)']
+
+                # Check for required headers
+                if all(header in dataset.headers for header in required_headers):
+
+                    field_mapping = {
+                        'id_num': 'Identification No',
+                        'sample_num': 'Sample No',
+                        'farm': 'Farm',
+                        'breed': 'Breed',
+                        'lactation_num': 'Lac. No.',
+                        'dim': 'DIM( Days In Milk)',
+                        'avg_daily_milk_yield': 'Avg(7 days). Daily MY( L )',
+                        'test_day_milk_yield': 'Test day MY (L )',
+                        'fat_percentage': 'Fat (%)',
+                        'snf_percentage': 'SNF (%)',
+                        'milk_density': 'Density ( Kg/ m3',
+                        'protein_percentage': 'Protein (%)',
+                        'milk_conductivity': 'Conductivity (mS/cm)',
+                        'milk_ph': 'pH',
+                        'freezing_point': 'Freezing point (⁰C)',
+                        'salt_percentage': 'Salt (%)',
+                        'lactose_percentage': 'Lactose (%)',
+                    }
+                    
+                    for data in dataset:
+                        # Create a dictionary to store the field-value pairs
+                        field_data = {}
+                        
+                        # Populate the dictionary using the mapping
+                        for field, column in field_mapping.items():
+                                index = dataset.headers.index(column)  # Find the index of the column in the dataset
+                                field_data[field] = data[index]
+                    
+                        # Create a new Batchdataset object and save it
+                        new_row = Batchdataset(**field_data)
+                        new_row.save()
+
+                    return redirect(display_dataset)
+                else:
+                    messages.error(request, "The dataset doesn't match the given template.")
+                
             except Exception as e:
-                messages.error(request, f'Error importing data: {str(e)}')
+                error_type = type(e).__name__
+                messages.error(request, f'Error importing data: {error_type}: {str(e)}')
+    else:
+        Batchdataset.objects.all().delete()
     
     return render(request, 'multiple/upload.html')
-
-
-#basic function
-def index(request):
-    return render(request, 'multiple/display.html')
 
 
 #function for display datasets
@@ -49,7 +81,6 @@ def display_dataset(request):
     overall_invalid = False
 
     for item in items:
-        print(item.sample_num,item.avg_daily_milk_yield==None)
 
         validity = [
             StrictNumeric(item.id_num),
@@ -82,31 +113,27 @@ def display_dataset(request):
 def display_result(request):
     items = Batchdataset.objects.all()
 
+    for item in items:
+        scm_status = PredictPickle(lactation_num=item.lactation_num,
+                                        dim=item.dim,
+                                        avg_daily_milk_yield=item.avg_daily_milk_yield,
+                                        test_day_milk_yield=item.test_day_milk_yield,
+                                        fat_percentage=item.fat_percentage,
+                                        snf_percentage=item.snf_percentage,
+                                        milk_density=item.milk_density,
+                                        protein_percentage=item.protein_percentage,
+                                        milk_conductivity=item.milk_conductivity,
+                                        milk_ph=item.milk_ph,
+                                        freezing_point=item.freezing_point,
+                                        salt_percentage=item.salt_percentage,
+                                        lactose_percentage=item.lactose_percentage)
+        item.label = scm_status
+
     context = {
         'items': items,
     }
-    print(items)
 
     return render(request, 'multiple/result.html', context)
-
-
-#main functon for add any item
-def add_item(request, cls):
-    if request.method == "POST":
-        form = cls(request.POST)
-
-        if form.is_valid():
-            form.save()
-            return redirect('multiple_display_dataset')
-
-    else:
-        form = cls()
-        return render(request, 'multiple/form.html', {'form' : form})
-
-#function for add any dataset
-def add_data(request):
-    return add_item(request, DataForm)
-
     
 #function for edit any dataset
 def edit_data(request, pk):
@@ -164,27 +191,16 @@ def edit_data(request, pk):
         }
         form = DataForm(initial=initial_data)
 
-    return render(request,"dataform/auto.html", {"form": form})
+    return render(request,"multiple/form_extend.html", {"form": form})
 
 
 #function for delet any dataset
 def delete_data(request, pk):
 
-    template = 'multiple/display.html'
     Batchdataset.objects.filter(pk=pk).delete()
-
-    items = Batchdataset.objects.all()
-
-    context = {
-        'items': items,
-    }
-
     return redirect('multiple_display_dataset')
 
-    #return render(request, template, context)
-
 def delete_all_data(request):
-    template = 'multiple/display.html'
     
     Batchdataset.objects.all().delete()
     return redirect('multiple_dataset_upload') 
@@ -197,6 +213,20 @@ def export_dataset(request):
     df = pd.DataFrame(data)
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="result_data.xlsx"'
+    df.to_excel(response, index=False)
+
+    return response
+
+def download_template_excel(request):
+    # Define the required headers
+    required_headers = ['Identification No', 'Sample No', 'Lac. No.', 'DIM( Days In Milk)', 'Avg(7 days). Daily MY( L )', 'Test day MY (L )', 'Fat (%)', 'SNF (%)', 'Density ( Kg/ m3', 'Protein (%)', 'Conductivity (mS/cm)', 'pH', 'Freezing point (⁰C)', 'Salt (%)', 'Lactose (%)']
+
+    # Create a Pandas DataFrame with only the headers
+    df = pd.DataFrame(columns=required_headers)
+
+    # Create the HTTP response for the download
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="custom_excel.xlsx"'
     df.to_excel(response, index=False)
 
     return response
