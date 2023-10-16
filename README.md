@@ -111,7 +111,12 @@ The reason for implementing user authentication in this application is to safegu
 
 The registration process has been streamlined; you only need to provide a username, email, and password in order to register. Subsequently, you can log in using your username and password.
 
-![banner](./docs/images/banner.png)
+<!-- two side by side images of register and login forms -->
+<div style="display: flex; justify-content: center;">
+    <img src="./docs/images/login.png" alt="Image 1" style="margin-right: 10px;">
+    <img src="./docs/images/register.png" alt="Image 2" style="margin-left: 10px;">
+</div>
+
 
 Users are unable to proceed beyond the login page without first logging in, and if not log out, will be automatically redirected to the home page. There is no need to log in every time when using the application.
 
