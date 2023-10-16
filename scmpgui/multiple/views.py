@@ -7,8 +7,7 @@ from .resources import *
 from tablib import *
 from django.contrib import messages
 from dataform.forms import DataForm
-from django.utils.safestring import mark_safe
-
+from .validators import *
 
 #function for import multiple dataets
 def dataset_upload(request):
@@ -46,7 +45,33 @@ def index(request):
 def display_dataset(request):
     items = Batchdataset.objects.all()
 
+    #Validation
+    overall_invalid = False
+
+    for item in items:
+        print(item.sample_num,item.avg_daily_milk_yield==None)
+
+        validity = [
+            StrictNumeric(item.id_num),
+            StrictNumeric(item.sample_num),
+            #TODO farm
+            CowBreeds(item.breed),
+            StrictNumeric(item.lactation_num),
+            StrictNumeric(item.dim),
+            #TODO Rest of the fields
+        ]
+
+        if any(i is False for i in validity):
+            item.invalid = True
+            overall_invalid = True if overall_invalid is False else overall_invalid
+    
+    if overall_invalid:
+        bt_state = "disabled"
+    else:
+        bt_state = ""
+
     context = {
+        'bt_state' : bt_state,
         'items': items,
         'header': 'Dataset',#this is viewed in the page
     }
@@ -56,12 +81,6 @@ def display_dataset(request):
 #function for display results
 def display_result(request):
     items = Batchdataset.objects.all()
-
-    #Vlidation
-    for item in items:
-        
-
-        item.invalid = False
 
     context = {
         'items': items,
