@@ -170,7 +170,7 @@ Users are provided with the ability to save the subclinical mastitis (SCM) statu
     <td style="padding: 10px;"><img src="./docs/images/register.png" alt="Image 1"></td>
     <td style="padding: 10px;"><img src="./docs/images/login.png" alt="Image 2"></td>
   </tr>
-</table> 
+</table> <br>
 
 ## Links
 
