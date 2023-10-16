@@ -131,34 +131,34 @@ When a user clicks on the individual data entry, the user will redirected to the
 <br> In order to predict the subclinical mastitis state of a cow, it is essential to input every required parameter into the system using the provided input form during individual data entry. Then, the user can click on the "Process" button and get the sub-clinical mastitis state of the cow. Then, the user can find the SCM status along with the key parameters influencing this status. To enhance clarity, the prediction result is presented within a color-coded box. A red box signifies a positive SCM result (infection), while a green color indicates no infection. From here a user can save the input data to the database for historical data analyzation or Return to the home page without saving.
 
 <!-- An image of prediction result sheet-->
-![banner](./docs/images/result.png) <br>
+![banner](./docs/images/result.png) 
 
-Each value entered by the user undergoes validation, and if a user enters a value outside the real-world limits for that parameter, the system promptly recognizes and indicates that the value is out of range. This prevents the user from processing inaccurate data. Furthermore, in the event that a user inadvertently enters an incorrect value, the system offers the user the convenience of identifying the specific field in which the error occurred. An out-of-range entry for a field is clearly indicated with red color, accompanied by an error message when the user attempts to process the data.
+<br> Each value entered by the user undergoes validation, and if a user enters a value outside the real-world limits for that parameter, the system promptly recognizes and indicates that the value is out of range. This prevents the user from processing inaccurate data. Furthermore, in the event that a user inadvertently enters an incorrect value, the system offers the user the convenience of identifying the specific field in which the error occurred. An out-of-range entry for a field is clearly indicated with red color, accompanied by an error message when the user attempts to process the data.
 
 <!-- An image of error occured data entry form -->
-![banner](./docs/images/inputformwitherror.png) <br>
+![banner](./docs/images/inputformwitherror.png) 
 
 ### Batch data Import
 
 Users can import data in batches from . XLSX files. This feature is developed for large farms with a large cattle group. The system checks for valid files and informs the user if a file is invalid. 
 
 <!-- An image of batch data import page -->
-![banner](./docs/images/batchdataimport.png) <br>
+![banner](./docs/images/batchdataimport.png) 
 
-Then the user can see a preview of the dataset. Batch data import also provides the functionality for editing and save the data of any cow in the dataset if needed. Then user can also process the changed dataset.
+<br> Then the user can see a preview of the dataset. Batch data import also provides the functionality for editing and save the data of any cow in the dataset if needed. Then user can also process the changed dataset.
 
 <!-- An image of preview -->
-![banner](./docs/images/preview.png) <br>
+![banner](./docs/images/preview.png) 
 
-If data for specific rows, such as values for certain parameters of individual cows, falls outside the acceptable range, the system will promptly identify these discrepancies and highlight the corresponding lines in red.
+<br> If data for specific rows, such as values for certain parameters of individual cows, falls outside the acceptable range, the system will promptly identify these discrepancies and highlight the corresponding lines in red.
 
 <!-- An image of preview with out of range values -->
-![banner](./docs/images/previewwitherror.png) <br>
+![banner](./docs/images/previewwitherror.png) 
 
-Users can get the sub-clinical mastitis state of all the cows in the dataset at once by clicking on the "Process" button.
+<br> Users can get the sub-clinical mastitis state of all the cows in the dataset at once by clicking on the "Process" button.
 
 <!-- Image of batch process result -->
-![banner](./docs/images/batchresult.png) <br>
+![banner](./docs/images/batchresult.png) 
 
 ### Historical Data Visualization and Analysis
 
@@ -170,7 +170,7 @@ Users are provided with the ability to save the subclinical mastitis (SCM) statu
     <td style="padding: 10px;"><img src="./docs/images/register.png" alt="Image 1"></td>
     <td style="padding: 10px;"><img src="./docs/images/login.png" alt="Image 2"></td>
   </tr>
-</table> <br>
+</table> 
 
 ## Links
 
