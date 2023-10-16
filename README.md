@@ -15,6 +15,7 @@ This is a sample image, to show how to add images to your page. To learn more op
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Getting Started](#getting-started)
+3. [Key Features] (#key-features)
 4. [Links](#links)
 
 ---
@@ -101,6 +102,12 @@ Before you begin, make sure you have the following prerequisites installed on yo
    This will return you to your system's global Python environment.
 
 Now you're ready to collaborate on our project. If you encounter any issues or have questions, please don't hesitate to reach out.
+
+## Key Features
+
+### User Authentication
+
+> The reason for including a user authentication for this application is to, iif a large farm has a very large heard that’s hard to maintain by a one farmer alone, The large heard can devided into several groups and each group can be assigned to a one different farmer for maintainn. User authentication provide functionality that these each farmer can manage their group of the heard individually.  
 
 ## Links
 
