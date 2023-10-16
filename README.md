@@ -114,7 +114,7 @@ The registration process has been streamlined; you only need to provide a userna
 <!-- two side by side images of register and login forms -->
 <table>
   <tr>
-    <td style="padding: 10px margin-top:10px;"><img src="./docs/images/register.png" alt="Image 1"></td>
+    <td style="padding: 10px;"><img src="./docs/images/register.png" alt="Image 1"></td>
     <td style="padding: 10px;"><img src="./docs/images/login.png" alt="Image 2"></td>
   </tr>
 </table>
