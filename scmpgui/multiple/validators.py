@@ -8,14 +8,16 @@ def StrictNumeric(value):#done
         return False
 
 def phRange(value, min_ph=0, max_ph=14):#done
-    if min_ph <= value <= max_ph:
+    val = float(value)
+    if min_ph <= val <= max_ph:
         return value
     else:
         return False
     
 def CowBreeds(value):#done
+    val = str(value)
     cow_breeds = ["*","Angus", "Hereford", "Holstein", "Jersey", "Guernsey", "Limousin", "Charolais", "Simmental", "TexasLonghorn", "Brahman", "Highland", "Shorthorn", "Galloway", "Wagyu", "BelgianBlue", "Dexter", "Chianina", "MurrayGrey", "Piedmontese", "RedPoll", "SantaGertrudis", "MaineAnjou", "Salers", "Normande", "Tarentaise", "Friesian"]    
-    words = value.lower().split()
+    words = val.lower().split()
     
     for word in words:
         if word not in map(str.lower, cow_breeds):
@@ -23,33 +25,35 @@ def CowBreeds(value):#done
         else:
             return value
 
-def is_empty(value):#done
-    if value and not value.isspace() and value !="None":
+def required(value):#done
+    val =str(value)
+    if val and not val.isspace() and val !="None":
         return value
     else:
         return False
 
-def Decimal_validator(value):
+   
+def Decimal_validator(value, max_digits=10, decimal_places=3):
     val = str(value)
 
-    if len(val) <= 10 and '.' in val:
+    if '.' in val:
         integer_part, decimal_part = val.split('.')
-        if len(decimal_part) <= 3 and decimal_part.isdigit():
-            return value
+        if len(integer_part) <= max_digits and len(decimal_part) <= decimal_places and decimal_part.isdigit():
+            return value  
+    elif val.isnumeric() and len(val) <= max_digits:
+        return value  
     
-    return False
+    else:
+        return False
 
 
-def validate_freezing_point(value):#done
+def Minvalue_validator(value,min_value=0):
     val = float(value)
 
-    if val < 10**10:
-        decimal_part = val - int(val)
-        if decimal_part == 0 or (decimal_part * 1000).is_integer():
-            return value
-        
-    return False
-
+    if val >=min_value:
+        return value
+    else:
+        return False
 
 if __name__ == "__main__":
     while True:
@@ -57,5 +61,5 @@ if __name__ == "__main__":
         if n == "EXIT":
             exit()
         else:
-            result = is_empty(n)
+            result = Decimal_validator(n)
             print(f"{n} --> {result}")
