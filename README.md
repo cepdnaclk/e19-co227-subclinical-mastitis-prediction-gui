@@ -114,10 +114,11 @@ The registration process has been streamlined; you only need to provide a userna
 <!-- two side by side images of register and login forms -->
 <table>
   <tr>
-    <td><img src="./docs/images/register.png" alt="Image 1"></td>
-    <td><img src="./docs/images/login.png" alt="Image 2"></td>
+    <td style="padding: 10px;"><img src="./docs/images/register.png" alt="Image 1"></td>
+    <td style="padding: 10px;"><img src="./docs/images/login.png" alt="Image 2"></td>
   </tr>
 </table>
+
 
 
 Users are unable to proceed beyond the login page without first logging in, and if not log out, will be automatically redirected to the home page. There is no need to log in every time when using the application.
