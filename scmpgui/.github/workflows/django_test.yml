@@ -3,7 +3,7 @@ name: Django Automated Testing
 on:
   push:
     branches:
-      - 'main'  # Adjust the branch name as needed
+      - 'main'  
 
 jobs:
   test:
