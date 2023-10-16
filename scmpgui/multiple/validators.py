@@ -29,15 +29,16 @@ def is_empty(value):#done
     else:
         return False
 
-def validate_digits(value):#done
+def Decimal_validator(value):
     val = str(value)
 
-    if 0 <= val < 10 ** 10:
-        decimal_part = val - int(val)
-        if decimal_part == 0 or (decimal_part * 1000).is_integer():
+    if len(val) <= 10 and '.' in val:
+        integer_part, decimal_part = val.split('.')
+        if len(decimal_part) <= 3 and decimal_part.isdigit():
             return value
-        
+    
     return False
+
 
 def validate_freezing_point(value):#done
     val = float(value)
@@ -56,5 +57,5 @@ if __name__ == "__main__":
         if n == "EXIT":
             exit()
         else:
-            result = validate_digits(n)
+            result = is_empty(n)
             print(f"{n} --> {result}")
