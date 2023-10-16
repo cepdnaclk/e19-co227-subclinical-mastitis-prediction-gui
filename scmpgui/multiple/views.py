@@ -83,13 +83,23 @@ def display_dataset(request):
     for item in items:
 
         validity = [
-            StrictNumeric(item.id_num),
-            StrictNumeric(item.sample_num),
-            #TODO farm
-            CowBreeds(item.breed),
-            StrictNumeric(item.lactation_num),
-            StrictNumeric(item.dim),
-            #TODO Rest of the fields
+            required(StrictNumeric(item.id_num)),
+            required(StrictNumeric(item.sample_num)),
+            required(item.farm),
+            required(CowBreeds(item.breed)),
+            required(StrictNumeric(item.lactation_num)),
+            required(StrictNumeric(item.dim)),
+            required(Minvalue_validator(Decimal_validator(item.avg_daily_milk_yield,10,3),0)),
+            required(Minvalue_validator(Decimal_validator(item.test_day_milk_yield,10,3),0)),
+            required(Minvalue_validator(Decimal_validator(item.fat_percentage,10,3),0)),
+            required(Minvalue_validator(Decimal_validator(item.snf_percentage,10,3),0)),
+            required(Minvalue_validator(Decimal_validator(item.milk_density,10,3),0)),
+            required(Minvalue_validator(Decimal_validator(item.protein_percentage,10,3),0)),
+            required(Minvalue_validator(Decimal_validator(item.milk_conductivity,10,3),0)),
+            required(phRange(Decimal_validator(item.milk_ph,10,3),0,14)),
+            required(Decimal_validator(item.freezing_point,10,3)),
+            required(Minvalue_validator(Decimal_validator(item.salt_percentage,10,3),0)),
+            required(Minvalue_validator(Decimal_validator(item.lactose_percentage,10,3),0)),
         ]
 
         if any(i is False for i in validity):
@@ -209,12 +219,11 @@ def delete_all_data(request):
 def export_dataset(request):
     items = Batchdataset.objects.all()
 
-    data = items.values('id_num', 'sample_num', 'label')
+    data = items.values('id_num', 'label')
     df = pd.DataFrame(data)
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="result_data.xlsx"'
     df.to_excel(response, index=False)
-
     return response
 
 def download_template_excel(request):
