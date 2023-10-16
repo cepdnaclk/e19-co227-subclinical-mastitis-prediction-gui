@@ -126,7 +126,8 @@ Users are unable to proceed beyond the login page without first logging in, and 
 When a user clicks on the individual data entry, the user will redirected to the individual data entry input form.
 
 <!-- An image of individual data entry form-->
-![banner](./docs/images/inputform.png) <br>
+![banner](./docs/images/inputform.png) 
+<br>
 
 In order to predict the subclinical mastitis state of a cow, it is essential to input every required parameter into the system using the provided input form during individual data entry. Then, the user can click on the "Process" button and get the sub-clinical mastitis state of the cow. Then, the user can find the SCM status along with the key parameters influencing this status. To enhance clarity, the prediction result is presented within a color-coded box. A red box signifies a positive SCM result (infection), while a green color indicates no infection. From here a user can save the input data to the database for historical data analyzation or Return to the home page without saving.
 
