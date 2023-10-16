@@ -115,6 +115,20 @@ The registration process has been streamlined; you only need to provide a userna
 
 Users are unable to proceed beyond the login page without first logging in, and if not log out, will be automatically redirected to the home page. There is no need to log in every time when using the application.
 
+### Individual Data Entry
+
+When a user clicks on the individual data entry, the user will redirected to the individual data entry input form.
+
+<!-- An image of individual data entry form-->
+
+In order to predict the subclinical mastitis state of a cow, it is essential to input every required parameter into the system using the provided input form during individual data entry. Then, the user can click on the "Process" button and get the sub-clinical mastitis state of the cow.
+
+<!-- An image of prediction result sheet-->
+
+Each value entered by the user undergoes validation, and if a user enters a value outside the real-world limits for that parameter, the system promptly recognizes and indicates that the value is out of range. This prevents the user from processing inaccurate data. Furthermore, in the event that a user inadvertently enters an incorrect value, the system offers the user the convenience of identifying the specific field in which the error occurred. An out-of-range entry for a field is clearly indicated with red color, accompanied by an error message when the user attempts to process the data.
+
+<!-- An image of error occured data entry form->
+
 ## Links
 
 - [Project Repository](https://github.com/cepdnaclk/e19-co227-subclinical-mastitis-prediction-gui)
