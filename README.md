@@ -107,7 +107,7 @@ Now you're ready to collaborate on our project. If you encounter any issues or h
 
 ### User Authentication
 
-> The reason for including a user authentication for this application is to, iif a large farm has a very large heard that’s hard to maintain by a one farmer alone, The large heard can devided into several groups and each group can be assigned to a one different farmer for maintainn. User authentication provide functionality that these each farmer can manage their group of the heard individually.  
+The reason for including a user authentication for this application is to, iif a large farm has a very large heard that’s hard to maintain by a one farmer alone, The large heard can devided into several groups and each group can be assigned to a one different farmer for maintainn. User authentication provide functionality that these each farmer can manage their group of the heard individually.  
 
 ## Links
 
