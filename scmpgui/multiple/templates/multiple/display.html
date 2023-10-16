@@ -1,127 +1,103 @@
 {% extends "base.html" %}
 
 {% block style_content %}
-.btn-primary {
-    background-color: rebeccapurple;
-    border-color: rebeccapurple;
-    color: white;
-    padding: 10px 30px;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 20px;
-    margin: 20px;
-}
-.btn-primary:hover,
-.btn-primary:focus {
-    background-color: darkorchid;
-    border-color: darkorchid;
+.table-container {
+max-width: 100%; /* Adjust the maximum width as needed */
+max-height: 65vh;
+overflow: auto; /* Enable horizontal scrollbar */
 }
 
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
 
-h2 {
-    font-weight: bold;
-    color: rebeccapurple;
-    margin: 10px;
-    text-align: center; /* Center the title */
-}
-
-
-.container-fluid {
-    overflow-x: auto;
-    margin: 0px;
-}
-table.table {
-    border-collapse: collapse;
-    width: 100%;
-}
-table.table th,
-table.table td {
-    border: 1px solid #dee2e6;
-    padding: 10px;
-    text-align: center;
-}
-.table-striped thead {
-    font-weight: bold;
-}
-
-
-.btn-warning {
-    margin-bottom: 3px;
-}
-
-
-.center-content {
-    text-align: center; /* Center the content */
-}
+.fixed-table-header th { /* header cell */
+    position: sticky;
+    top: 0;
+    background-color: #F9F8F8;
+    border-bottom: 1px solid #EB9486;
+  }
 
 {% endblock style_content %}
 
 {% block outside_content %}
-<div class="add_buttons">
-    <div class="button-group center-content">
-        <a href="{% url 'multiple_display_result' %}" class="btn btn-primary" role="button">Process</a>
-        <a href="{% url 'multiple_delete_all_data' %}" class="btn btn-primary" role="button">Cancel</a>
-        <h2>Currently Processing {{ header }}</h2>
-    </div>
-</div>
-
 <div class="container-fluid">
-    <table class="table table-striped table-bordered border-primary ">
-        <thead class="table-light">
-            <tr>
-                <td>Action</td>
-                <td>id_num</td>
-                <td>sample_num</td>
-                <td>farm</td>
-                <td>breed</td>
-                <td>lactation_num</td>
-                <td>dim</td>
-                <td>avg_daily_milk_yield</td>
-                <td>test_day_milk_yield</td>
-                <td>fat_percentage</td>
-                <td>snf_percentage</td>
-                <td>milk_density</td>
-                <td>protein_percentage</td>
-                <td>milk_conductivity</td>
-                <td>milk_ph</td>
-                <td>freezing_point</td>
-                <td>salt_percentage</td>
-                <td>lactose_percentage</td>
-            </tr>
-        </thead>
 
-        <tbody>
-            {% for item in items %}
-            <tr>
-                {% if header|lower == "dataset" %}
-                <td>
-                    <a href="{% url 'multiple_edit_data' item.pk %}" class="btn btn-warning btn-sm" role="button"
-                        aria-pressed="true">Edit</a>
-                    <br>
-                    <a href="{% url 'multiple_delete_data' item.pk%}" class="btn btn-danger btn-sm" role="button"
-                        aria-pressed="true">Del</a>
-                </td>
-                {% endif %}
-                <td>{{ item.id_num }}</td>
-                <td>{{ item.sample_num }}</td>
-                <td>{{ item.farm }} </td>
-                <td>{{ item.breed }}</td>
-                <td>{{ item.lactation_num }}</td>
-                <td>{{ item.dim }} </td>
-                <td>{{ item.avg_daily_milk_yield }}</td>
-                <td>{{ item.test_day_milk_yield }}</td>
-                <td>{{ item.fat_percentage }}</td>
-                <td>{{ item.snf_percentage }}</td>
-                <td>{{ item.milk_density }} </td>
-                <td>{{ item.protein_percentage }}</td>
-                <td>{{ item.milk_conductivity }} </td>
-                <td>{{ item.milk_ph }}</td>
-                <td>{{ item.freezing_point }}</td>
-                <td>{{ item.salt_percentage }} </td>
-                <td>{{ item.lactose_percentage }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <h2 class="text-primary mt-3 text-center">Preview of Dataset</h2>
+    <hr class="border border-primary" />
+
+    <div class="row text-center mt-3">
+        <div class="col">
+            <a href="{% url 'multiple_display_result' %}" class="btn btn-primary"><i class="fas fa-gears fa-lg" style="margin-right:10px;"></i>Process Dataset</a>
+        </div>
+        <div class="col">
+            <a href="{% url 'multiple_delete_all_data' %}" class="btn btn-warning"><i class="fas fa-undo fa-lg" style="margin-right:10px;"></i>Return Home and Discard</a>
+        </div>
+    </div>
+    <div class="container-fluid pt-3">
+        <div class="table-container">
+            <table class="table table-bordered">
+                <thead class="fixed-table-header">
+                    <tr>
+                        <th>Action</th>
+                        <th>id_num</th>
+                        <th>sample_num</th>
+                        <th>farm</th>
+                        <th>breed</th>
+                        <th>lactation_num</th>
+                        <th>dim</th>
+                        <th>avg_daily_milk_yield</th>
+                        <th>test_day_milk_yield</th>
+                        <th>fat_percentage</th>
+                        <th>snf_percentage</th>
+                        <th>milk_density</th>
+                        <th>protein_percentage</th>
+                        <th>milk_conductivity</th>
+                        <th>milk_ph</th>
+                        <th>freezing_point</th>
+                        <th>salt_percentage</th>
+                        <th>lactose_percentage</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>
+                            <div class="d-flex flex-column align-items-center">
+                                <a href="{% url 'multiple_edit_data' item.sample_num %}" class="btn btn-warning btn-sm mb-2" role="button" aria-pressed="true">
+                                    <i class="fas fa-edit fa-lg"></i>
+                                </a>
+                                <a href="{% url 'multiple_delete_data' item.sample_num  %}" class="btn btn-danger btn-sm" role="button" aria-pressed="true">
+                                    <i class="fas fa-trash fa-lg"></i>
+                                </a>
+                            </div>
+                        </td>
+                        
+                        <td class="text-center">{{ item.id_num }}</td>
+                        <td class="text-center">{{ item.sample_num }}</td>
+                        <td class="text-center">{{ item.farm }} </td>
+                        <td class="text-center">{{ item.breed }}</td>
+                        <td class="text-center">{{ item.lactation_num }}</td>
+                        <td class="text-center">{{ item.dim }} </td>
+                        <td class="text-center">{{ item.avg_daily_milk_yield }}</td>
+                        <td class="text-center">{{ item.test_day_milk_yield }}</td>
+                        <td class="text-center">{{ item.fat_percentage }}</td>
+                        <td class="text-center">{{ item.snf_percentage }}</td>
+                        <td class="text-center">{{ item.milk_density }} </td>
+                        <td class="text-center">{{ item.protein_percentage }}</td>
+                        <td class="text-center">{{ item.milk_conductivity }} </td>
+                        <td class="text-center">{{ item.milk_ph }}</td>
+                        <td class="text-center">{{ item.freezing_point }}</td>
+                        <td class="text-center">{{ item.salt_percentage }} </td>
+                        <td class="text-center">{{ item.lactose_percentage }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
 {% endblock outside_content %}
