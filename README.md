@@ -121,7 +121,7 @@ When a user clicks on the individual data entry, the user will redirected to the
 
 <!-- An image of individual data entry form-->
 
-In order to predict the subclinical mastitis state of a cow, it is essential to input every required parameter into the system using the provided input form during individual data entry. Then, the user can click on the "Process" button and get the sub-clinical mastitis state of the cow.
+In order to predict the subclinical mastitis state of a cow, it is essential to input every required parameter into the system using the provided input form during individual data entry. Then, the user can click on the "Process" button and get the sub-clinical mastitis state of the cow. Then, the user can find the SCM status along with the key parameters influencing this status. To enhance clarity, the prediction result is presented within a color-coded box. A red box signifies a positive SCM result (infection), while a green color indicates no infection. From here a user can save the input data to the database for historical data analyzation or Return to the home page without saving.
 
 <!-- An image of prediction result sheet-->
 
@@ -139,6 +139,11 @@ Then the user can see a preview of the dataset. Batch data import also provides 
 
 <!-- An image of preview -->
 
+If data for specific rows, such as values for certain parameters of individual cows, falls outside the acceptable range, the system will promptly identify these discrepancies and highlight the corresponding lines in red.
+
+<!-- An image of preview with out of range values -->
+
+
 Users can get the sub-clinical mastitis state of all the cows in the dataset at once by clicking on the "Process" button.
 
 <!-- Image of batch process result -->
@@ -148,8 +153,6 @@ Users can get the sub-clinical mastitis state of all the cows in the dataset at 
 Users are provided with the ability to save the subclinical mastitis (SCM) status, along with other relevant parameters, directly from the result page. The historical data input page will then display graphs depicting 'Percentage of SCM-contaminated cows' and 'Days in Milk vs Average Daily Milk Yield' using the saved data. This feature enables farmers to gain a comprehensive understanding of the health status of their entire herd or a specific group within their herd. A user can view this historical data visualization by clicking on the "Historical Data Visualization" card.
 
 <!-- two side by side images of historical data visualization -->
-
-### SCM Status Report
 
 ## Links
 
