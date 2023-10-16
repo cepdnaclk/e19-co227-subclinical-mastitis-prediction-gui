@@ -3,95 +3,96 @@
 {% block style_content %}
 
 .form-label {
-    font-size: 25px;
-    color: rebeccapurple;
-    margin-top: 10px;
-    margin-bottom: 20px;
+font-size: 25px;
+color: rebeccapurple;
+margin-top: 10px;
+margin-bottom: 20px;
 }
 .form-control {
-    border: 1px solid rebeccapurple;
-    border-radius: 8px;
-    color: rebeccapurple;
+border: 1px solid rebeccapurple;
+border-radius: 8px;
+color: rebeccapurple;
 }
 
 .btn-primary {
-    background-color: rebeccapurple;
-    border-color: rebeccapurple;
-    color: white;
-    padding: 10px 30px;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 20px;
+background-color: rebeccapurple;
+border-color: rebeccapurple;
+color: white;
+padding: 10px 30px;
+border-radius: 10px;
+cursor: pointer;
+margin-top: 20px;
+margin-bottom: 20px;
+font-size: 20px;
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-    background-color: darkorchid;
-    border-color: darkorchid;
+background-color: darkorchid;
+border-color: darkorchid;
 }
 
 .card-container {
-    display: flex;
-    justify-content: space-between;
+display: flex;
+justify-content: space-between;
 }
 
 .card {
-    flex: 1;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s;
-    cursor: pointer;
-    color: rebeccapurple;
+flex: 1;
+background-color: #fff;
+border: 1px solid #ddd;
+border-radius: 20px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+transition: all 0.2s;
+cursor: pointer;
+color: rebeccapurple;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #cbb1eb;
-    color: rebeccapurple;
+transform: translateY(-5px);
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+background-color: #cbb1eb;
+color: rebeccapurple;
 }
 
 .card-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: rebeccapurple;
+font-size: 20px;
+font-weight: bold;
+color: rebeccapurple;
 }
 
 a {
-    text-decoration: none !important;
+text-decoration: none !important;
 }
 
 .centered-button {
-    text-align: center;
+text-align: center;
 }
 
 {% endblock style_content %}
 
-{% block outside_content %}
-<div class="container mt-5">
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% endif %}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
-
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label for="myfile" class="form-label">Choose a File</label>
-            <input type="file" name="myfile" class="form-control" id="myfile">
-        </div>
-        <button type="submit" class="btn btn-primary">Import</button>
-    </form>
-
-    <div class="centered-button">
-        <a href="{% url 'multiple_display_dataset' %}" class="btn btn-primary">To Batch Process</a>
+{% block page_content %}
+<form method="post" enctype="multipart/form-data" id="upload-form">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="myfile" class="form-label">Choose a File</label>
+        <input type="file" name="myfile" class="form-control" id="myfile" onchange="submitForm()">
     </div>
-</div>
-{% endblock outside_content %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% endif %}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+</form>
+
+<script>
+    function submitForm() {
+        document.getElementById('upload-form').submit();
+    }
+</script>
+
+<span>Don't have a template for the dataset? <a href="{% url 'download_template' %}">Click here to download</a></span>
+
+{% endblock page_content %}

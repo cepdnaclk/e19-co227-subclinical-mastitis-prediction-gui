@@ -78,7 +78,9 @@ text-decoration: none;
         {% endfor %}
 
         <div class="text-center">
+            {% block change_button %}
             <button type="submit" class="btn btn-primary col-md-2">Process</button>
+            {% endblock change_button %}
         </div>
     </form>
 

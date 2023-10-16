@@ -23,16 +23,15 @@ from django.conf.urls.static import static
 from members.views import register_page
 
 urlpatterns = [
+    path('accounts/', include('members.urls')),
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
     path('data/', include('dataform.urls')),
     path('result/', include('results.urls')),
     path('multiple/', include('multiple.urls')),
-    # path('members/', include('django.contrib.auth.urls')),
-    path('members/', include('members.urls')),
     path('history/',include('history.urls')),
     #! MIND THE ORDER, THIS MUST BE LAST
-    path('', RedirectView.as_view(url='members/',permanent=True)),
+    path('', RedirectView.as_view(url='accounts/',permanent=True)),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

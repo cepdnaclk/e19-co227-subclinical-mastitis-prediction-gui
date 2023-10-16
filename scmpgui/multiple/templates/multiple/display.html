@@ -8,16 +8,26 @@ overflow: auto; /* Enable horizontal scrollbar */
 }
 
 table {
-    border-collapse: separate;
-    border-spacing: 0;
-  }
+border-collapse: separate;
+border-spacing: 0;
+}
 
 .fixed-table-header th { /* header cell */
-    position: sticky;
-    top: 0;
-    background-color: #F9F8F8;
-    border-bottom: 1px solid #EB9486;
-  }
+position: sticky;
+top: 0;
+background-color: #F9F8F8;
+border-bottom: 1px solid #EB9486;
+}
+
+.valid-row td {
+color: rgb(0, 0, 0);
+background-color: #ffffff; /* Your desired background color */
+}
+
+.invalid-row td {
+color: #c82333;
+background-color: #ffc8c8; /* Your desired background color */
+}
 
 {% endblock style_content %}
 
@@ -28,13 +38,21 @@ table {
     <hr class="border border-primary" />
 
     <div class="row text-center mt-3">
+
+        {% if bt_state == "disabled" %}
+        <span class="text-danger mb-2">There are erroneous data in the dataset. Please edit or remove them before processing.</span>
+        {% else %}
         <div class="col">
             <a href="{% url 'multiple_display_result' %}" class="btn btn-primary"><i class="fas fa-gears fa-lg" style="margin-right:10px;"></i>Process Dataset</a>
         </div>
+        {% endif %}
+
         <div class="col">
-            <a href="{% url 'multiple_delete_all_data' %}" class="btn btn-warning"><i class="fas fa-undo fa-lg" style="margin-right:10px;"></i>Return Home and Discard</a>
+            <a href="{% url 'multiple_delete_all_data' %}" class="btn btn-warning"><i class="fas fa-undo fa-lg" style="margin-right:10px;"></i>Discard and Upload Another File</a>
         </div>
+
     </div>
+
     <div class="container-fluid pt-3">
         <div class="table-container">
             <table class="table table-bordered">
@@ -63,7 +81,18 @@ table {
 
                 <tbody>
                     {% for item in items %}
-                    <tr>
+
+
+                    {% if item.invalid %}
+                    {% with "invalid-row" as validityclass %}
+                    <tr class="{{ validityclass }}">
+                        {% endwith %}
+                        {% else %}
+                        {% with "valid-row" as validityclass %}
+                    <tr class="{{ validityclass }}">
+                        {% endwith %}
+                        {% endif %}
+
                         <td>
                             <div class="d-flex flex-column align-items-center">
                                 <a href="{% url 'multiple_edit_data' item.sample_num %}" class="btn btn-warning btn-sm mb-2" role="button" aria-pressed="true">
@@ -74,7 +103,7 @@ table {
                                 </a>
                             </div>
                         </td>
-                        
+
                         <td class="text-center">{{ item.id_num }}</td>
                         <td class="text-center">{{ item.sample_num }}</td>
                         <td class="text-center">{{ item.farm }} </td>

@@ -43,25 +43,33 @@
     .result-sheet-container {
         text-align: center;
     }
+
+    .False-row td {
+    color: rgb(0, 118, 42);
+    background-color: rgb(199, 255, 229); /* Your desired background color */
+    }
+    
+    .True-row td {
+    color: #c82333;
+    background-color: #ffc8c8; /* Your desired background color */
+    }
     
 {% endblock style_content %}
 
-{% block outside_content %}
+{% block page_content %}
 <div class="container result-sheet-container">
     <h2>Result Sheet</h2>
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>ID Number</th>
-                <th>Sample Number</th>
                 <th>Result</th>
             </tr>
         </thead>
         <tbody>
             {% for item in items %}
-            <tr>
+            <tr class="{{ item.label }}-row">
                 <td>{{ item.id_num }}</td>
-                <td>{{ item.sample_num }}</td>
                 <td>{{ item.label }}</td>
 
             </tr>
@@ -75,4 +83,4 @@
     </div>
 
 </div>
-{% endblock outside_content %}
+{% endblock page_content %}
