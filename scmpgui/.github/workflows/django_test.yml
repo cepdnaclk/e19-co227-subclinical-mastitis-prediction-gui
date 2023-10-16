@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main  # Adjust the branch name as needed
-      - GITtesting
 
 jobs:
   test:
