@@ -1,9 +1,25 @@
 {
     "team": [
         {
-            "name": "C.O. Colombage",
+            "name": "Colombage C.O.",
             "email": "e19057@eng.pdn.ac.lk",
             "eNumber": "E/19/057"
+        },
+
+        {
+            "name": "Kumara I.P.S.N.U.",
+            "email": "e19205@eng.pdn.ac.lk",
+            "eNumber": "E/19/205"
+        },
+        {
+            "name": "Udugamasooriya D.P.",
+            "email": "e19409@eng.pdn.ac.lk",
+            "eNumber": "E/19/409"
+        },
+        {
+            "name": "Yashan W.V.",
+            "email": "e19455@eng.pdn.ac.lk",
+            "eNumber": "E/19/455"
         }
     ],
     "supervisors": [

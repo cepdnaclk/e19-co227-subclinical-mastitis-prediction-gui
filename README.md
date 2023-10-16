@@ -15,7 +15,7 @@ This is a sample image, to show how to add images to your page. To learn more op
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Getting Started](#getting-started)
-3. [Key Features](#key-features)
+3. [Documentation](#documentation)
 4. [Links](#links)
 
 ---
@@ -103,7 +103,7 @@ Before you begin, make sure you have the following prerequisites installed on yo
 
 Now you're ready to collaborate on our project. If you encounter any issues or have questions, please don't hesitate to reach out.
 
-## Key Features
+## Documentation
 
 ### User Authentication
 
