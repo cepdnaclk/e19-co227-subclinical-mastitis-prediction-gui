@@ -10,7 +10,7 @@ This is a sample image, to show how to add images to your page. To learn more op
 -  E/19/057, Colombage C.O., [email](mailto:e19057@eng.pdn.ac.lk)
 -  E/19/205, Kumara I.P.S.N.U., [email](mailto:e19205@eng.pdn.ac.lk)
 -  E/19/409, Udugamsooriya D.P., [email](mailto:e19409@eng.pdn.ac.lk)
--  E/19/455, Yashan W.V., [email](mailto:e19455@eng.pdn.ac.lk)
+-  E/19/455, Yahan W.V., [email](mailto:e19455@eng.pdn.ac.lk)
 
 ## Table of Contents
 1. [Introduction](#introduction)
