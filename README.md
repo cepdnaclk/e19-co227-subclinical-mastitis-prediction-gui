@@ -15,7 +15,7 @@ This is a sample image, to show how to add images to your page. To learn more op
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Getting Started](#getting-started)
-3. [Key Features] (#key-features)
+3. [Key Features](#key-features)
 4. [Links](#links)
 
 ---
@@ -167,8 +167,8 @@ Users are provided with the ability to save the subclinical mastitis (SCM) statu
 <!-- two side by side images of historical data visualization -->
 <table>
   <tr>
-    <td style="padding: 10px;"><img src="./docs/images/register.png" alt="Image 1"></td>
-    <td style="padding: 10px;"><img src="./docs/images/login.png" alt="Image 2"></td>
+    <td style="padding: 10px;"><img src="./docs/images/graph1.png" alt="Image 1"></td>
+    <td style="padding: 10px;"><img src="./docs/images/graph2.png" alt="Image 2"></td>
   </tr>
 </table> <br>
 
