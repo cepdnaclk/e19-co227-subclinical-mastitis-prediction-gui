@@ -21,8 +21,8 @@ def dataset_upload(request):
         else:
             try:
                 dataset.load(file.read(), format='xlsx')
-                
-                required_headers = ['Identification No', 'Sample No', 'Lac. No.', 'DIM( Days In Milk)', 'Avg(7 days). Daily MY( L )', 'Test day MY (L )', 'Fat (%)', 'SNF (%)', 'Density ( Kg/ m3', 'Protein (%)', 'Conductivity (mS/cm)', 'pH', 'Freezing point (⁰C)', 'Salt (%)', 'Lactose (%)']
+
+                required_headers = ['Identification No', 'Sample No', 'Farm' , 'Breed' , 'Lac. No.', 'DIM( Days In Milk)', 'Avg(7 days). Daily MY( L )', 'Test day MY (L )', 'Fat (%)', 'SNF (%)', 'Density ( Kg/ m3', 'Protein (%)', 'Conductivity (mS/cm)', 'pH', 'Freezing point (⁰C)', 'Salt (%)', 'Lactose (%)']                
 
                 # Check for required headers
                 if all(header in dataset.headers for header in required_headers):
@@ -219,7 +219,7 @@ def export_dataset(request):
 
 def download_template_excel(request):
     # Define the required headers
-    required_headers = ['Identification No', 'Sample No', 'Lac. No.', 'DIM( Days In Milk)', 'Avg(7 days). Daily MY( L )', 'Test day MY (L )', 'Fat (%)', 'SNF (%)', 'Density ( Kg/ m3', 'Protein (%)', 'Conductivity (mS/cm)', 'pH', 'Freezing point (⁰C)', 'Salt (%)', 'Lactose (%)']
+    required_headers = ['Identification No', 'Sample No', 'Farm' , 'Breed' , 'Lac. No.', 'DIM( Days In Milk)', 'Avg(7 days). Daily MY( L )', 'Test day MY (L )', 'Fat (%)', 'SNF (%)', 'Density ( Kg/ m3', 'Protein (%)', 'Conductivity (mS/cm)', 'pH', 'Freezing point (⁰C)', 'Salt (%)', 'Lactose (%)']
 
     # Create a Pandas DataFrame with only the headers
     df = pd.DataFrame(columns=required_headers)
