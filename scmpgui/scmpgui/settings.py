@@ -43,9 +43,9 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig', # home page of the project
     'dataform.apps.DataformConfig', #single from input page
     'results.apps.ResultsConfig', #the page ehere we display the results of the scm prediction
-    'multiple.apps.MultipleConfig', #the page ehere we display the results of the scm prediction
-    'members',
-    'history.apps.HistoryConfig',
+    'multiple.apps.MultipleConfig', #the page where we display the results of the scm prediction
+    'members.apps.MembersConfig',  #authentication system
+    'history.apps.HistoryConfig',   #historical data visullization
     'import_export',#this is needed for import multiple dataset
 ]
 
