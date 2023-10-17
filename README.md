@@ -106,5 +106,6 @@ Now you're ready to collaborate on our project. If you encounter any issues or h
 
 - [Project Repository](https://github.com/cepdnaclk/e19-co227-subclinical-mastitis-prediction-gui)
 - [Project Page](https://cepdnaclk.github.io/e19-co227-subclinical-mastitis-prediction-gui)
+- [Project Documentation](https://cepdnaclk.github.io/e19-co227-subclinical-mastitis-prediction-gui/site/index.html)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
