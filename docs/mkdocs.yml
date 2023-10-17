@@ -1,5 +1,8 @@
 site_name: SCMPGUI Documentation
 
+repo_url: https://github.com/cepdnaclk/e19-co227-subclinical-mastitis-prediction-gui
+repo_name: cepdnaclk/e19-co227-subclinical-mastitis-prediction-gui
+
 extra_css:
   - stylesheets/extra.css
 

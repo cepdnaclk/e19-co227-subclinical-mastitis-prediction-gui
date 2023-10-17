@@ -1,0 +1,12 @@
+:root {
+    --md-primary-fg-color: #4527A0;
+    --md-primary-bg-color: #D1C4E9;
+  }
+
+.md-typeset a {
+    color: #7E57C2;
+}
+
+.md-nav__item .md-nav__link--active, .md-nav__item .md-nav__link--active {
+    color: #7E57C2;
+}
